@@ -25,10 +25,12 @@
   h1 span { color: var(--gold); }
   .tagline { font-size: 1.25rem; color: var(--muted); max-width: 560px; margin: 0 auto; }
   .badge {
-    display: inline-block; margin-top: 24px; padding: 10px 22px;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 999px; color: var(--gold); font-weight: 600;
+    display: inline-block; margin-top: 24px; padding: 14px 30px;
+    background: var(--gold); border-radius: 999px;
+    color: #171205; font-weight: 700; text-decoration: none; font-size: 1.05rem;
   }
+  .badge:hover { background: #ffd27a; }
+  .badge-sub { display: block; margin-top: 10px; color: var(--muted); font-size: .88rem; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 40px 0; }
   .card {
     background: var(--card); border: 1px solid var(--border);
@@ -56,7 +58,8 @@
   <img class="logo" src="/logo-mark.png" alt="Dunk League" width="220" height="149">
   <h1>Dunk <span>League</span></h1>
   <p class="tagline">Les pronos basket entre potes. Gratuit, sans argent réel — juste des points, des DUNK et la gloire.</p>
-  <div class="badge">📱 Bientôt sur Google Play</div>
+  <a class="badge" href="/beta/">🏀 Rejoins la bêta</a>
+  <span class="badge-sub">Accès anticipé sur Android — gratuit, places ouvertes</span>
 </header>
 
 <div class="wrap">
@@ -92,6 +95,7 @@
 
 <footer>
   <div class="links">
+    <a href="/beta/">Rejoindre la bêta</a>
     <a href="/support/">Assistance</a>
     <a href="/privacy/">Politique de confidentialité</a>
     <a href="https://www.instagram.com/dunk_league_pronos" target="_blank" rel="noopener">Instagram</a>
