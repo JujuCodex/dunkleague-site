@@ -50,14 +50,31 @@
   .step p { color: var(--muted); font-size: .95rem; }
   .step a { color: var(--gold); }
 
-  .cta { text-align: center; margin: 32px 0 8px; }
-  .cta a {
-    display: inline-block; background: var(--gold); color: #171205;
-    font-weight: 700; text-decoration: none; padding: 15px 30px;
-    border-radius: 999px; font-size: 1.05rem;
+  /* Choix de plateforme : deux parcours, deux calendriers */
+  .platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .plat {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 22px; text-align: center;
+    display: flex; flex-direction: column; gap: 10px;
   }
-  .cta a:hover { background: #ffd27a; }
-  .cta .sub { color: var(--muted); font-size: .85rem; margin-top: 10px; }
+  .plat.now { border-color: var(--gold); }
+  .plat .os { font-size: 1.15rem; font-weight: 700; }
+  .plat .when {
+    font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  }
+  .plat.now .when { color: var(--gold); }
+  .plat.soon .when { color: var(--muted); }
+  .plat p { color: var(--muted); font-size: .92rem; flex: 1; }
+  .plat a {
+    display: block; text-decoration: none; font-weight: 700;
+    padding: 13px 20px; border-radius: 999px; margin-top: 4px;
+  }
+  .plat.now a { background: var(--gold); color: #171205; }
+  .plat.now a:hover { background: #ffd27a; }
+  .plat.soon a { border: 1px solid var(--gold); color: var(--gold); }
+  .plat.soon a:hover { background: rgba(245, 185, 75, .12); }
+
+  .cta-sub { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 12px; }
 
   .note {
     background: var(--card); border-left: 3px solid var(--gold);
@@ -92,24 +109,45 @@
     monde. Gratuit, sans argent réel — juste des points, des DUNK et la gloire.</p>
   </header>
 
-  <h2>Comment participer</h2>
+  <h2>Choisis ta plateforme</h2>
+  <div class="platforms">
+    <div class="plat now">
+      <div class="when">Disponible maintenant</div>
+      <div class="os">🤖 Android</div>
+      <p>Tu reçois ton lien d'accès sous 24 h et tu poses tes premiers pronos
+      le soir même.</p>
+      <a href="mailto:contact@dunkleague.app?subject=B%C3%AAta%20Dunk%20League%20%E2%80%94%20Android&body=Salut%20!%0A%0AJe%20veux%20participer%20%C3%A0%20la%20b%C3%AAta%20Android%20de%20Dunk%20League.%0A%0AMon%20adresse%20Google%20(Gmail)%20%3A%20%0A%0A%C3%80%20bient%C3%B4t%20!">Je m'inscris</a>
+    </div>
+    <div class="plat soon">
+      <div class="when">Ouverture imminente</div>
+      <div class="os">🍎 iPhone</div>
+      <p>La version iOS est en cours de validation par Apple. Inscris-toi dès
+      maintenant : tu seras dans la première vague invitée.</p>
+      <a href="mailto:contact@dunkleague.app?subject=B%C3%AAta%20Dunk%20League%20%E2%80%94%20iPhone&body=Salut%20!%0A%0AJe%20veux%20participer%20%C3%A0%20la%20b%C3%AAta%20iPhone%20de%20Dunk%20League.%0A%0AL%27adresse%20o%C3%B9%20recevoir%20mon%20invitation%20TestFlight%20%3A%20%0A%0A%C3%80%20bient%C3%B4t%20!">Je réserve ma place</a>
+    </div>
+  </div>
+  <p class="cta-sub">Un email pré-rempli s'ouvre — il ne reste qu'à indiquer ton adresse et envoyer.</p>
+
+  <h2>Comment ça se passe</h2>
   <ol class="steps">
     <li class="step">
       <div class="num">1</div>
       <div>
-        <h3>Envoie-nous ton adresse Gmail</h3>
-        <p>À <a href="mailto:contact@dunkleague.app?subject=Inscription%20b%C3%AAta%20Dunk%20League&body=Salut%20!%0A%0AJe%20veux%20participer%20%C3%A0%20la%20b%C3%AAta%20de%20Dunk%20League.%0A%0AMon%20adresse%20Google%20(Gmail)%20%3A%20%0A%0A%C3%80%20bient%C3%B4t%20!">contact@dunkleague.app</a>.
-        Ce doit être l'adresse de ton <strong>compte Google</strong>, celle de ton
-        téléphone Android — c'est elle qui débloque l'accès sur le Play Store.</p>
+        <h3>Envoie-nous ton adresse</h3>
+        <p>Sur <strong>Android</strong>, ce doit être l'adresse de ton
+        <strong>compte Google</strong>, celle de ton téléphone — c'est elle qui
+        débloque l'accès sur le Play Store. Sur <strong>iPhone</strong>, indique
+        simplement l'adresse où recevoir ton invitation TestFlight.</p>
       </div>
     </li>
     <li class="step">
       <div class="num">2</div>
       <div>
         <h3>On t'ajoute à la liste</h3>
-        <p>Sous 24 h, tu reçois par retour d'email ton lien d'accès. Ouvre-le
-        depuis ton téléphone, accepte de devenir testeur, puis installe l'app
-        depuis le Play Store comme n'importe quelle autre application.</p>
+        <p>Sur Android, tu reçois ton lien d'accès sous 24 h : ouvre-le depuis
+        ton téléphone, accepte de devenir testeur, puis installe l'app depuis le
+        Play Store. Sur iPhone, tu recevras une invitation TestFlight dès
+        l'ouverture — nous te préviendrons.</p>
       </div>
     </li>
     <li class="step">
@@ -123,13 +161,6 @@
     </li>
   </ol>
 
-  <div class="cta">
-    <a href="mailto:contact@dunkleague.app?subject=Inscription%20b%C3%AAta%20Dunk%20League&body=Salut%20!%0A%0AJe%20veux%20participer%20%C3%A0%20la%20b%C3%AAta%20de%20Dunk%20League.%0A%0AMon%20adresse%20Google%20(Gmail)%20%3A%20%0A%0A%C3%80%20bient%C3%B4t%20!">
-      Je m'inscris à la bêta
-    </a>
-    <p class="sub">Un email pré-rempli s'ouvre — il ne reste qu'à envoyer.</p>
-  </div>
-
   <div class="note">
     <p><strong>Pourquoi passer par un email ?</strong> Pendant la phase de test
     fermé, le Play Store n'ouvre l'accès qu'aux adresses inscrites à l'avance.
@@ -139,8 +170,6 @@
 
   <h2>Ce qu'il faut savoir</h2>
   <ul class="facts">
-    <li><strong>Android uniquement</strong> pour le moment. La version iPhone
-      arrive : écris-nous quand même, on te préviendra en priorité.</li>
     <li><strong>Il y a des matchs tous les soirs</strong> pendant toute la
       période de test : tu auras de quoi pronostiquer dès le premier jour.</li>
     <li><strong>Aucun pari, aucune mise, aucun argent réel.</strong> Les DUNK
