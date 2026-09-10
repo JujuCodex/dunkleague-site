@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dunk League — Ton compte</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; max-width: 520px;
+         margin: 0 auto; padding: 24px; line-height: 1.6;
+         background: #0c0e12; color: #e8eaed; }
+  h1 { font-size: 1.5rem; }
+  a { color: #ff8a4c; }
+  .back { display: inline-block; margin-bottom: 16px; text-decoration: none; }
+  .card { background: #15181e; border: 1px solid #232833; border-radius: 12px;
+          padding: 18px 20px; margin: 16px 0; }
+  .muted { color: #98a0ac; font-size: .95rem; }
+  label { display: block; margin: 14px 0 6px; font-weight: 600; }
+  input { width: 100%; padding: 12px 14px; border-radius: 10px; font-size: 1rem;
+          border: 1px solid #2b3140; background: #0c0e12; color: #f4f5f7; }
+  input:focus { outline: 2px solid #f5b94b; border-color: transparent; }
+  button { margin-top: 18px; width: 100%; padding: 14px; border: 0; border-radius: 999px;
+           background: #f5b94b; color: #171205; font-weight: 700; font-size: 1.05rem; cursor: pointer; }
+  button[disabled] { opacity: .6; cursor: default; }
+  .error { color: #ff7b7b; margin-top: 12px; }
+  .ok { color: #7ee2a8; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<a class="back" href="/">← dunkleague.app</a>
+<h1>🏀 Dunk League</h1>
+
+<!-- Chargement : le temps de lire le lien -->
+<div id="loading" class="card"><p class="muted">Un instant…</p></div>
+
+<!-- Nouveau mot de passe -->
+<div id="recovery" class="card" hidden>
+  <p><strong>Choisis ton nouveau mot de passe</strong></p>
+  <p class="muted">Il servira à te connecter dans l'app Dunk League.</p>
+  <form id="form" autocomplete="off">
+    <label for="pw">Nouveau mot de passe</label>
+    <input id="pw" type="password" minlength="6" required autocomplete="new-password" placeholder="6 caractères minimum">
+    <label for="pw2">Confirme-le</label>
+    <input id="pw2" type="password" minlength="6" required autocomplete="new-password">
+    <button id="submit" type="submit">Enregistrer</button>
+    <p id="form-error" class="error" hidden></p>
+  </form>
+</div>
+
+<!-- Confirmation d'adresse ou mot de passe enregistré -->
+<div id="done" class="card" hidden>
+  <p class="ok"><strong id="done-title"></strong></p>
+  <p id="done-text"></p>
+  <p class="muted">Tu peux fermer cette page.</p>
+</div>
+
+<!-- Lien invalide, expiré ou déjà utilisé -->
+<div id="failed" class="card" hidden>
+  <p><strong>Ce lien n'est plus valable</strong></p>
+  <p id="failed-text">Il a expiré ou a déjà été utilisé.</p>
+  <p>Refais une demande depuis l'app : écran de connexion → « Mot de passe oublié ? »,
+  ou recrée ton compte si tu n'avais pas encore confirmé ton adresse.</p>
+</div>
+
+<!-- Arrivée sans lien -->
+<div id="idle" class="card" hidden>
+  <p>Cette page s'ouvre depuis les emails envoyés par Dunk League : confirmation
+  d'adresse et nouveau mot de passe.</p>
+  <p class="muted">Si tu es arrivé ici par hasard, <a href="/">retourne à l'accueil</a>.</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(async function () {
+  // Clé « publishable » : publique par construction, la sécurité est portée
+  // par les règles RLS côté serveur, comme dans l'app.
+  var SUPABASE_URL = 'https://dqzkzrvwxbktcctknysl.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_5cxvhvY3U_hwz-_0nCHrlw_tow_nQ9_';
+
+  var $ = function (id) { return document.getElementById(id); };
+  function show(id) {
+    ['loading', 'recovery', 'done', 'failed', 'idle'].forEach(function (k) { $(k).hidden = (k !== id); });
+  }
+  function fail(text) {
+    if (text) $('failed-text').textContent = text;
+    show('failed');
+  }
+
+  // Les jetons arrivent dans le fragment (#access_token=…&type=recovery) ou,
+  // selon le modèle d'email, dans la requête (?token_hash=…&type=recovery).
+  var hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+  var query = new URLSearchParams(location.search);
+  var get = function (k) { return hash.get(k) || query.get(k); };
+  var type = get('type');
+  var errorDesc = get('error_description') || get('error');
+
+  // On efface tout de suite les jetons de la barre d'adresse (historique,
+  // captures d'écran, partage de lien par erreur).
+  if (location.hash || location.search) {
+    history.replaceState(null, '', location.pathname);
+  }
+
+  if (typeof supabase === 'undefined') {
+    return fail("Le script de connexion n'a pas pu être chargé. Vérifie ta connexion et rouvre le lien.");
+  }
+  var client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: { detectSessionInUrl: false, persistSession: false, autoRefreshToken: false },
+  });
+
+  if (errorDesc) {
+    var msg = /expired/i.test(errorDesc) ? 'Il a expiré.' :
+              /invalid|not found|already/i.test(errorDesc) ? 'Il est invalide ou a déjà été utilisé.' : null;
+    return fail(msg);
+  }
+  if (!type) return show('idle');
+
+  // Ouvre une session à partir du lien, quelle que soit sa forme.
+  async function openSession(otpType) {
+    var access = hash.get('access_token'), refresh = hash.get('refresh_token');
+    if (access && refresh) {
+      var r = await client.auth.setSession({ access_token: access, refresh_token: refresh });
+      return r.error || null;
+    }
+    var tokenHash = query.get('token_hash');
+    if (tokenHash) {
+      var v = await client.auth.verifyOtp({ token_hash: tokenHash, type: otpType });
+      return v.error || null;
+    }
+    return new Error('missing');
+  }
+
+  // Le formulaire est cable des le chargement : jamais de soumission native
+  // (qui rechargerait la page en perdant la session ouverte par le lien).
+  $('form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var pw = $('pw').value, pw2 = $('pw2').value, box = $('form-error');
+    box.hidden = true;
+    if (pw.length < 6) { box.textContent = 'Mot de passe : 6 caractères minimum.'; box.hidden = false; return; }
+    if (pw !== pw2) { box.textContent = 'Les deux mots de passe ne correspondent pas.'; box.hidden = false; return; }
+    $('submit').disabled = true;
+    var u = await client.auth.updateUser({ password: pw });
+    $('submit').disabled = false;
+    if (u.error) {
+      var m = u.error.message || '';
+      box.textContent = /different from the old/i.test(m) ? "Choisis un mot de passe différent de l'ancien." :
+                        /session/i.test(m) ? "Ce lien a expiré : refais une demande depuis l'app." :
+                        "Impossible d'enregistrer ce mot de passe. Réessaie dans un instant.";
+      box.hidden = false;
+      return;
+    }
+    await client.auth.signOut();
+    $('done-title').textContent = 'Mot de passe enregistré ✅';
+    $('done-text').textContent = "Retourne dans l'app Dunk League et connecte-toi avec ton nouveau mot de passe.";
+    show('done');
+  });
+
+  if (type === 'recovery') {
+    var err = await openSession('recovery');
+    if (err) return fail();
+    show('recovery');
+    $('pw').focus();
+    return;
+  }
+
+  // signup / email / email_change / magiclink : la vérification a déjà eu
+  // lieu côté serveur, on confirme simplement à l'utilisateur.
+  var err2 = await openSession(type === 'email_change' ? 'email_change' : 'email');
+  if (err2 && err2.message !== 'missing') return fail();
+  await client.auth.signOut();
+  $('done-title').textContent = 'Adresse confirmée ✅';
+  $('done-text').textContent = "Retourne dans l'app Dunk League et connecte-toi : ta ligue t'attend.";
+  show('done');
+})();
+</script>
+</body>
+</html>
