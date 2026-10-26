@@ -31,6 +31,11 @@
   }
   .badge:hover { background: #ffd27a; }
   .badge-sub { display: block; margin-top: 10px; color: var(--muted); font-size: .88rem; }
+  /* Boutons des stores : Android en plein (disponible), iPhone en contour (bêta TestFlight) */
+  .stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
+  .stores .badge { margin-top: 0; }
+  .badge.outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+  .badge.outline:hover { background: rgba(245, 185, 75, .12); }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 40px 0; }
   .card {
     background: var(--card); border: 1px solid var(--border);
@@ -58,8 +63,11 @@
   <img class="logo" src="/logo-mark.png" alt="Dunk League" width="220" height="149">
   <h1>Dunk <span>League</span></h1>
   <p class="tagline">Les pronos basket entre potes. Gratuit, sans argent réel — juste des points, des DUNK et la gloire.</p>
-  <a class="badge" href="/beta/">🏀 Rejoins la bêta</a>
-  <span class="badge-sub">Android et iPhone — gratuit, places ouvertes</span>
+  <div class="stores">
+    <a class="badge" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr" rel="noopener">🤖 Télécharger sur Google Play</a>
+    <a class="badge outline" href="https://testflight.apple.com/join/rxqP8tTP" rel="noopener">🍎 iPhone : bêta TestFlight</a>
+  </div>
+  <span class="badge-sub">Gratuit. Sur iPhone, l'app s'installe avec TestFlight en attendant l'App Store.</span>
 </header>
 
 <div class="wrap">
@@ -101,7 +109,7 @@
 
 <footer>
   <div class="links">
-    <a href="/beta/">Rejoindre la bêta</a>
+    <a href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr" rel="noopener">Google Play</a>
     <a href="/mpp-basket/">MPP basket</a>
     <a href="/support/">Assistance</a>
     <a href="/privacy/">Politique de confidentialité</a>
