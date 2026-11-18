@@ -37,7 +37,7 @@
       "description": "Le jeu de pronostics NBA entre amis : vainqueur et écart de points, ligues privées, classement de la semaine. Gratuit, sans argent réel.",
       "inLanguage": "fr-FR",
       "datePublished": "2026-10-26",
-      "dateModified": "2026-10-28",
+      "dateModified": "2026-11-18",
       "mainEntityOfPage": "https://dunkleague.app/mpp-basket/",
       "image": "https://dunkleague.app/og-mpp-basket.jpg",
       "author": { "@type": "Organization", "name": "Dunk League", "url": "https://dunkleague.app/" },
@@ -273,37 +273,58 @@
   classement général du jeu. Pas besoin de tout refaire pour chaque groupe d'amis. Un rappel peut
   aussi te prévenir une heure avant le premier match de la soirée, pour ne jamais oublier tes pronos.</p>
 
-  <h2 id="bareme">Le barème des points : 3, 5, 8 (et 1 de consolation)</h2>
+  <h2 id="bareme">Le barème des points : 3, 5, 10 et deux bonus</h2>
   <p>Le barème est fixe et identique pour tout le monde. Pas de calcul caché : chacun sait
   exactement ce qu'il vise avant de valider.</p>
   <div class="table">
     <table>
       <thead><tr><th>Ton prono</th><th>Points</th></tr></thead>
       <tbody>
-        <tr><td>Bon vainqueur et écart exact</td><td class="pts">8 pts</td></tr>
+        <tr><td>Bon vainqueur et écart exact</td><td class="pts">10 pts</td></tr>
         <tr><td>Bon vainqueur et écart trouvé à 5 points près</td><td class="pts">5 pts</td></tr>
         <tr><td>Bon vainqueur, écart plus éloigné</td><td class="pts">3 pts</td></tr>
-        <tr><td>Mauvais vainqueur, mais écart trouvé à 2 points près</td><td class="pts">1 pt</td></tr>
-        <tr><td>Mauvais vainqueur</td><td class="pts">0 pt</td></tr>
+        <tr><td>Mauvais vainqueur, quel que soit l'écart</td><td class="pts">0 pt</td></tr>
       </tbody>
     </table>
   </div>
-  <p>Les points ne s'additionnent pas d'un palier à l'autre : un écart exact rapporte 8 points au
-  total. Le point de consolation récompense celui qui avait senti un match serré, même s'il s'est
-  trompé de vainqueur.</p>
+  <p>Les points ne s'additionnent pas d'un palier à l'autre : un écart exact rapporte 10 points au
+  total. Seul le bon vainqueur marque : depuis le 16 novembre 2026, un mauvais vainqueur ne
+  rapporte plus aucun point, même avec un écart très proche.</p>
+  <div class="note">
+    <p><strong>À partir du 30 novembre 2026</strong> : l'écart exact passe de 8 à 10 points, et le
+    MVP de la Night fait son entrée. Les matchs joués avant cette date gardent leurs points.</p>
+  </div>
   <div class="example">
     <p><strong>Exemple :</strong> l'équipe A bat l'équipe B 112 à 104. L'écart réel est de 8 points.</p>
     <ul>
-      <li>Tu avais mis A gagnante de 8 points : <strong>8 pts</strong>.</li>
+      <li>Tu avais choisi A gagnante de 8 points : <strong>10 pts</strong>.</li>
       <li>A gagnante de 12 points : l'écart est à 4 points près, <strong>5 pts</strong>.</li>
       <li>A gagnante de 20 points : bon vainqueur seulement, <strong>3 pts</strong>.</li>
-      <li>B gagnante de 7 points : mauvais vainqueur, mais écart à 1 point près, <strong>1 pt</strong>.</li>
-      <li>B gagnante de 15 points : <strong>0 pt</strong>.</li>
+      <li>B gagnante, de 7 ou de 15 points : mauvais vainqueur, <strong>0 pt</strong>.</li>
     </ul>
   </div>
   <p>Ce barème crée un vrai choix tactique. Viser l'écart exact rapporte gros mais arrive rarement.
   Viser large garantit presque les 5 points quand on a le bon vainqueur. Selon ta place au classement
   de la semaine, tu prendras plus ou moins de risques.</p>
+  <h3>Les bonus : MVP de la Night et patron de la semaine</h3>
+  <div class="table">
+    <table>
+      <thead><tr><th>Bonus</th><th>Récompense</th></tr></thead>
+      <tbody>
+        <tr><td><strong>MVP de la Night</strong> : tous les matchs de la nuit pronostiqués et
+        tous les vainqueurs trouvés, sur une nuit d'au moins 5 matchs (à partir du 30 novembre)</td>
+        <td class="pts">+15 pts<br>+100 DUNK</td></tr>
+        <tr><td><strong>Patron de la semaine</strong> : premier de ta ligue sur la semaine, dans une
+        ligue d'au moins 3 joueurs actifs</td><td class="pts">+25 pts<br>+250 DUNK</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Les 15 points du MVP de la Night comptent dans le classement de la semaine et dans celui de
+  la saison : une grosse nuit peut faire basculer le titre de patron. Plusieurs joueurs peuvent être
+  MVP la même nuit. Les 25 points du patron s'ajoutent au classement de la saison. Le MVP n'est
+  versé qu'une fois par nuit. Pour le patron, les 25 points ne sont versés qu'une seule fois par
+  semaine, même si tu finis premier de plusieurs ligues, et les 250 DUNK le sont pour chaque ligue
+  gagnée.</p>
 
   <h2 id="ligues">Ligues privées, MVP League et badges</h2>
   <h3>Ta ligue entre potes</h3>
@@ -311,7 +332,8 @@
   WhatsApp, Instagram ou Snap. Chaque ligue a deux classements : <strong>celui de la semaine</strong>,
   qui repart de zéro tous les lundis, et <strong>celui de la saison</strong>. Le classement de la
   semaine change tout : même en arrivant en cours de saison, tu peux gagner dès ta première semaine.
-  Chaque lundi, le meilleur de la semaine dans chaque ligue est couronné et reçoit un bonus de DUNK.</p>
+  Chaque lundi, le meilleur de la semaine dans chaque ligue est couronné patron de la semaine :
+  +25 points au classement de la saison et 250 DUNK.</p>
   <h3>La MVP League</h3>
   <p>Tout joueur fait aussi partie de la MVP League, le classement général de Dunk League. C'est là
   que tu te mesures à tout le monde, au-delà de ton cercle d'amis.</p>
@@ -321,6 +343,8 @@
     <li><strong>Sniper</strong> : un écart exact trouvé.</li>
     <li><strong>On Fire</strong> : cinq bons pronos d'affilée.</li>
     <li><strong>Patron de la semaine</strong> : premier de ta ligue sur une semaine.</li>
+    <li><strong>MVP de la Night</strong> : tous les vainqueurs d'une nuit d'au moins 5 matchs
+    (à partir du 30 novembre).</li>
     <li><strong>Fondateur</strong> et <strong>Team player</strong> : créer ta première ligue, en rejoindre une.</li>
   </ul>
   <p>Les badges se gagnent, ils ne s'achètent pas. Pour pimenter ta ligue, rien n'empêche un
@@ -332,7 +356,7 @@
     <p><strong>Rien à déposer, rien à perdre.</strong> Dunk League se joue sans argent réel. Les
     pronos ne coûtent rien et ne rapportent que des points de classement.</p>
     <p>Les <strong>DUNK</strong> sont la monnaie virtuelle du jeu. Tu les gagnes en jouant : bons
-    pronos, séries, titre de la semaine, bonus quotidien. Ils servent uniquement à personnaliser ton
+    pronos, séries, titre de la semaine, MVP de la Night, bonus quotidien. Ils servent uniquement à personnaliser ton
     profil : avatars, bannières, thèmes de couleur, trophées. Ils n'ont aucune valeur monétaire, ne
     se convertissent pas et ne s'échangent pas entre joueurs.</p>
     <p><strong>Le classement ne s'achète pas.</strong> L'app propose des achats facultatifs, purement
@@ -378,10 +402,11 @@
     l'équipe menée réduit souvent la marque quand les remplaçants entrent : c'est le fameux
     « garbage time ».</li>
     <li><strong>Joue avec le barème.</strong> Un écart à 5 points près rapporte 5 points ; l'écart exact
-    en rapporte 8. Si tu es largement devant cette semaine, assure. Si tu dois remonter, tente
+    en rapporte 10. Si tu es largement devant cette semaine, assure. Si tu dois remonter, tente
     l'écart précis.</li>
-    <li><strong>Pense au match serré.</strong> Entre deux équipes très proches, un petit écart te met à
-    l'abri : même avec le mauvais vainqueur, un écart à 2 points près rapporte encore 1 point.</li>
+    <li><strong>Ne zappe aucun match de la nuit.</strong> Pour être MVP de la Night, il faut avoir
+    pronostiqué tous les matchs de la nuit : un seul oubli et les 15 points du bonus s'envolent.
+    Sur un match très indécis, choisis quand même un vainqueur.</li>
     <li><strong>Méfie-toi des fins de saison.</strong> En avril, certaines équipes déjà qualifiées font
     tourner, tandis que d'autres jouent leur place au play-in. La motivation change tout.</li>
     <li><strong>Sépare le cœur et la tête.</strong> Pronostiquer la victoire de ton équipe de cœur par
@@ -414,9 +439,22 @@
   </details>
   <details>
     <summary>Comment marchent les points ?</summary>
-    <p>8 points pour le bon vainqueur avec l'écart exact, 5 points si l'écart est trouvé à 5 points
-    près, 3 points pour le bon vainqueur seul. Avec le mauvais vainqueur, un écart à 2 points près
-    rapporte encore 1 point. Le barème est fixe et identique pour tous.</p>
+    <p>10 points pour le bon vainqueur avec l'écart exact (8 points jusqu'au 29 novembre 2026),
+    5 points si l'écart est trouvé à 5 points près, 3 points pour le bon vainqueur seul, 0 point
+    pour un mauvais vainqueur. S'y ajoutent deux bonus : MVP de la Night (+15 points) et patron de
+    la semaine (+25 points). Le barème est fixe et identique pour tous.</p>
+  </details>
+  <details>
+    <summary>Qu'est-ce que le MVP de la Night ?</summary>
+    <p>À partir du 30 novembre 2026, sur une nuit d'au moins 5 matchs, tu deviens MVP de la Night
+    si tu as pronostiqué tous les matchs et trouvé tous les vainqueurs. Tu gagnes 15 points, qui
+    comptent dans le classement de la semaine et de la saison, 100 DUNK et le badge MVP de la Night.</p>
+  </details>
+  <details>
+    <summary>Comment devenir patron de la semaine ?</summary>
+    <p>Finis premier du classement de la semaine de ta ligue, dans une ligue d'au moins 3 joueurs
+    actifs. Le titre est décerné chaque lundi et rapporte 25 points au classement de la saison, une
+    seule fois par semaine même en gagnant plusieurs ligues, et 250 DUNK par ligue gagnée.</p>
   </details>
   <details>
     <summary>Pourquoi ne pas pronostiquer le score exact comme au foot ?</summary>
