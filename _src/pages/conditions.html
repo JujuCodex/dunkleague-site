@@ -1,6 +1,6 @@
 <!--meta
 {
-  "_statut": "Brouillon : texte contractuel à faire valider par l'éditeur (et idéalement relu par un juriste) avant de retirer draft. Une fois en ligne, ajouter le lien vers /conditions/ dans la fiche App Store et dans l'écran Premium de l'app (aujourd'hui le CLUF standard d'Apple, premium.tsx:19).",
+  "_statut": "Âge (13 ans) et remboursement par les stores validés par l'éditeur le 24/11/2026. Reste : médiateur de la consommation. Une fois en ligne, ajouter le lien vers /conditions/ dans la fiche App Store et dans l'écran Premium de l'app (aujourd'hui le CLUF standard d'Apple, premium.tsx:19).",
   "title": "Conditions d'utilisation et Premium — Dunk League",
   "description": "Conditions d'utilisation de Dunk League : compte, pronos, DUNK sans valeur monétaire, abonnement Premium, renouvellement et résiliation dans les stores.",
   "h1": "Conditions d'utilisation de <em>Dunk League</em>",
@@ -9,7 +9,7 @@
   "intro": "Ces <strong>conditions d'utilisation</strong> encadrent l'appli Dunk League, sa version gratuite et l'abonnement Premium. Elles disent ce que tu peux attendre de l'appli, et ce que l'appli attend de toi.",
   "heroBadges": false,
   "noindex": true,
-  "draft": true,
+  "draft": false,
   "gabarit": "legal",
   "schema": ["WebPage"],
   "ctaCampaign": "conditions",
@@ -43,9 +43,9 @@
   <li>Tu crées ton compte avec une adresse email et un mot de passe. Tu es responsable de ce mot de passe : ne le partage avec personne.</li>
   <li>Ton pseudo fait de 3 à 20 caractères (lettres sans accent, chiffres et tiret bas) et ne peut pas être déjà pris. Il apparaît dans les classements de tes ligues, y compris dans celui de la MVP League, où tous les joueurs sont inscrits. Il doit respecter la <a href="/charte/">charte des joueurs</a>.</li>
   <li>Tu peux supprimer ton compte à tout moment depuis l'appli : Profil, puis Réglages, puis « Supprimer mon compte ». Profil, pronos, DUNK et ligues sont alors effacés définitivement. Sans accès à l'appli, passe par <a href="/delete-account/">la page de suppression du compte</a>.</li>
-  <li>[À COMPLÉTER : âge minimum retenu pour créer un compte, cohérent avec la classification d'âge des fiches App Store et Google Play.]</li>
+  <li>Il faut avoir au moins 13 ans pour créer un compte. Entre 13 et 15 ans, l'accord d'un parent ou du titulaire de l'autorité parentale est nécessaire, notamment pour la publicité personnalisée et les achats intégrés.</li>
 </ul>
-<!-- TODO-VERIFIER : aucun contrôle d'âge dans le code (onboarding.tsx, sign-up.tsx). L'âge minimum est une décision de l'éditeur, à aligner sur la classification des stores. -->
+<!-- Âge minimum fixé par l'éditeur le 24/11/2026 : 13 ans. Seuil de 15 ans : article 45 de la loi Informatique et Libertés. -->
 
 <h2>Les pronos et les résultats</h2>
 <ul class="facts">
@@ -58,7 +58,6 @@
 <p>Nous faisons notre possible pour que les matchs, les horaires et les scores soient justes et à jour, mais une erreur ou un retard du fournisseur peut arriver. Dans ce cas, le classement est corrigé dès que la donnée l'est.</p>
 
 <h2>Les DUNK</h2>
-<!-- TODO-VERIFIER : les packs de DUNK existent dans le code (purchases.ts:39-41, Boutique « Packs de DUNK »). L'éditeur doit confirmer qu'ils sont en vente dans les deux stores : si non, retirer la phrase sur les packs. -->
 <p>Les DUNK sont la monnaie virtuelle interne de l'appli. Ils s'obtiennent en jouant (bonus quotidien, vidéo bonus facultative, MVP de la Night, patron de la semaine) et des packs de DUNK peuvent aussi être proposés à l'achat dans la Boutique, au prix affiché dans le store.</p>
 <ul class="facts">
   <li>Les DUNK servent uniquement à débloquer des cosmétiques : avatars, bannières, thèmes, animations, trophées et cartes souvenir.</li>
@@ -68,25 +67,25 @@
 </ul>
 
 <h2>Premium et achats intégrés</h2>
-<!-- TODO-VERIFIER : prix lus dans le code (purchases.ts:20-38), écrits en dur. Vérifier dans App Store Connect et la Play Console avant publication ; le prix du store peut varier selon le pays. -->
-<p>La version gratuite donne accès à tout le jeu : pronos, ligues, classements, bonus et badges. Elle affiche de la publicité et permet de créer une ligue (en rejoindre reste illimité). Trois achats sont proposés dans l'écran Premium, en France aux prix suivants :</p>
+<p>La version gratuite donne accès à tout le jeu : pronos, ligues, classements, bonus et badges. Elle affiche de la publicité et permet de créer une ligue (en rejoindre reste illimité). Trois achats sont proposés dans l'écran Premium :</p>
 <div class="table"><table>
-<thead><tr><th>Offre</th><th>Type</th><th>Prix affiché dans l'appli</th></tr></thead>
+<thead><tr><th>Offre</th><th>Type</th></tr></thead>
 <tbody>
-<tr><td>Premium Mensuel</td><td>abonnement</td><td>3,99 € par mois</td></tr>
-<tr><td>Premium Annuel</td><td>abonnement</td><td>29,99 € par an</td></tr>
-<tr><td>Zéro pub, à vie</td><td>achat unique</td><td>49,99 €</td></tr>
+<tr><td>Premium Mensuel</td><td>abonnement mensuel</td></tr>
+<tr><td>Premium Annuel</td><td>abonnement annuel</td></tr>
+<tr><td>Zéro pub, à vie</td><td>achat unique</td></tr>
 </tbody>
 </table></div>
-<p>Le prix qui fait foi est celui affiché par l'App Store ou Google Play au moment de l'achat : il peut varier selon le pays. Premium retire la publicité, permet de créer autant de ligues que tu veux, ouvre des statistiques avancées sur la fiche de chaque match et des cosmétiques réservés aux abonnés (qui se débloquent en DUNK). Premium ne donne jamais de points ni d'avantage au classement.</p>
+<p>Le prix est affiché dans l'écran Premium avant l'achat, et celui qui fait foi est le prix indiqué par l'App Store ou Google Play au moment de la confirmation : il peut varier selon le pays. Premium retire la publicité, permet de créer autant de ligues que tu veux, ouvre des statistiques avancées sur la fiche de chaque match et des cosmétiques réservés aux abonnés (qui se débloquent en DUNK). Premium ne donne jamais de points ni d'avantage au classement.</p>
 <h3>Renouvellement</h3>
 <p>Premium Mensuel et Premium Annuel sont des abonnements renouvelés automatiquement au même tarif jusqu'à résiliation. Le paiement est débité sur ton compte App Store ou Google Play à la confirmation de l'achat, puis à chaque renouvellement.</p>
 <h3>Résiliation</h3>
 <p>Tu peux résilier à tout moment dans les réglages de ton compte App Store ou Google Play. Le renouvellement s'arrête si tu résilies au moins 24 heures avant la fin de la période en cours, et Premium reste actif jusqu'à cette date. Supprimer l'appli ou ton compte Dunk League ne résilie pas l'abonnement.</p>
 <h3>Remboursement et restauration</h3>
 <p>Les paiements sont traités par Apple ou par Google, pas par Dunk League : une demande de remboursement se fait auprès du store, selon ses propres règles. Sur un nouveau téléphone, le bouton « Restaurer mes achats » de l'écran Premium récupère un abonnement ou l'achat « Zéro pub, à vie » liés à ton compte store.</p>
-<!-- TODO-VERIFIER : clause de rétractation pour un contenu numérique fourni immédiatement, et médiateur de la consommation (obligatoire pour un professionnel qui vend à des consommateurs) : à faire valider par l'éditeur ou un juriste. -->
-<p>[À COMPLÉTER : clause sur le droit de rétractation et coordonnées du médiateur de la consommation.]</p>
+<h3>Droit de rétractation</h3>
+<p>Premium et « Zéro pub, à vie » sont des contenus numériques fournis dès la confirmation de l'achat. En confirmant l'achat dans le store, tu demandes qu'ils soient fournis tout de suite et tu reconnais perdre ton droit de rétractation (article L221-28 du Code de la consommation). Les demandes de remboursement restent possibles auprès d'Apple ou de Google, selon leurs propres règles.</p>
+<!-- TODO-VERIFIER : médiateur de la consommation (article L612-1 du Code de la consommation), à désigner par l'éditeur puis à ajouter ici. -->
 
 <h2>Publicité</h2>
 <p>La version gratuite affiche des publicités fournies par Google AdMob. Au premier lancement, tu choisis d'accepter ou non les publicités personnalisées, et tu peux changer d'avis dans Réglages, rubrique Confidentialité (« Publicité et données personnelles »), ou depuis le bouton « Confidentialité » de ton Profil. La vidéo bonus de la Boutique est facultative. Tes choix et les données concernées sont expliqués sur <a href="/privacy/">la page confidentialité</a>.</p>
@@ -103,4 +102,4 @@
 <p>L'appli est fournie telle quelle. Nous faisons en sorte qu'elle fonctionne chaque soir de match, mais une coupure, une maintenance ou une panne d'un prestataire peut la rendre indisponible pour un temps. Une indisponibilité ne donne pas droit à des points : le classement reflète les pronos réellement enregistrés avant chaque coup d'envoi.</p>
 
 <h2>Droit applicable et contact</h2>
-<p>Ces conditions sont soumises au droit français. [À COMPLÉTER : juridiction compétente, à valider.] Avant toute démarche, écris-nous : la plupart des soucis se règlent vite. L'éditeur et ses coordonnées sont sur la page des <a href="/mentions-legales/">mentions légales</a>, et l'adresse de contact est <a href="mailto:{{site.contactEmail}}">{{site.contactEmail}}</a>.</p>
+<p>Ces conditions sont soumises au droit français. En cas de litige, et à défaut d'accord amiable, les tribunaux compétents sont ceux prévus par la loi ; si tu es consommateur, tu peux saisir le tribunal de ton domicile. Avant toute démarche, écris-nous : la plupart des soucis se règlent vite. L'éditeur et ses coordonnées sont sur la page des <a href="/mentions-legales/">mentions légales</a>, et l'adresse de contact est <a href="mailto:{{site.contactEmail}}">{{site.contactEmail}}</a>.</p>
