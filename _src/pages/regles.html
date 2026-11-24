@@ -1,0 +1,154 @@
+<!--meta
+{
+  "_sources": "Faits vérifiés dans dunk-league (lecture seule) : barème et paliers non cumulés = mig 0028 compute_outcome l.255-306 + src/lib/scoring.ts l.1-38 ; heure limite = mig 0001 game_is_open l.338-345 et RLS l.558-567, game/[id].tsx l.341-397 ; écart 1 à 60 = mig 0001 l.116, margin-stepper.tsx ; reportés/annulés = fn sync-games l.120-165 ; corrections = mig 0027 resettle_changed_games ; MVP League = mig 0004 ; badges = catalog + seed.sql ; un prono par match = unique (user_id, game_id) mig 0001 l.119 ; ligue privée 20 membres = mig 0001 l.90 + 0014.",
+  "title": "Règles et barème des pronos basket — Dunk League",
+  "description": "{{bareme.vainqueur}} pts le bon vainqueur, {{bareme.ecartProche}} pts l'écart à ±{{bareme.fourchette}}, {{bareme.exact}} pts l'écart exact ({{bareme.exactAvant}} avant le {{bareme.dateChangement|court}}) : le barème, l'heure limite et les cas particuliers.",
+  "h1": "Les règles du jeu de <em>Dunk League</em>",
+  "kicker": "Le jeu",
+  "crumb": "Règles",
+  "relatedLabel": "Règles et barème",
+  "relatedBlurb": "Points, heure limite, cas particuliers",
+  "intro": "Un match, deux choix : le vainqueur, puis l'écart de points. Voici les <strong>règles</strong> et le <strong>barème</strong> de Dunk League, avec des exemples chiffrés, l'heure limite et ce qui se passe quand un match ne se déroule pas comme prévu.",
+  "primaryQuery": ["règles", "barème"],
+  "forbiddenInTitle": ["bonus", "MVP"],
+  "related": ["/regles/bonus/", "/pronostics-basket-entre-amis/", "/heure-des-matchs/", "/application-pronostics-basket/", "/questions/"],
+  "schema": ["Article"],
+  "ctaCampaign": "regles",
+  "gabarit": "guide",
+  "inMenu": true,
+  "modifiedOn": "2026-11-24",
+  "faq": [
+    {
+      "q": "Les points de l'écart exact s'ajoutent-ils à ceux du bon vainqueur ?",
+      "a": "Non. Chaque prono tombe dans un seul palier, le plus haut atteint. Un écart exact vaut {{bareme.exact}} points au total ({{bareme.exactAvant}} pour un match joué avant le {{bareme.dateChangement}}), pas {{bareme.exact}} + {{bareme.ecartProche}} + {{bareme.vainqueur}}."
+    },
+    {
+      "q": "Que se passe-t-il si j'oublie de pronostiquer un match ?",
+      "a": "Ce match ne te donne aucun point, et il n'y a pas de rattrapage une fois le coup d'envoi passé. À partir des nuits du {{bareme.mvp.depuis}}, sur une nuit d'au moins {{bareme.mvp.minMatchs}} matchs, un seul oubli t'écarte aussi du <a href=\"/regles/bonus/#mvp-de-la-night\">bonus de la nuit</a>."
+    },
+    {
+      "q": "Peut-on choisir un écart de zéro point ?",
+      "a": "Non. L'écart se choisit entre 1 et 60 points, car un match de basket ne peut pas finir à égalité. Tant que tu n'as pas choisi au moins 1 point, le bouton de validation reste inactif."
+    },
+    {
+      "q": "Le barème change-t-il pendant les playoffs ?",
+      "a": "Non. Dans les règles actuelles, un match de playoffs se compte exactement comme un match de saison régulière : même barème, même heure limite au coup d'envoi."
+    }
+  ]
+}
+-->
+<h2>Une nuit type</h2>
+<p>Vu de France, la plupart des matchs se jouent pendant la nuit. Le rythme est donc simple : tu poses tes pronos le soir, tu dors, et tu découvres tes points au réveil. Le détail des horaires et du décalage est sur la page <a href="/heure-des-matchs/">à quelle heure se jouent les matchs</a>.</p>
+<ol class="steps">
+  <li><h3>Le soir : tes pronos</h3><p>Pour chaque match, tu choisis l'équipe qui gagne, puis de combien. Toucher une carte de match ouvre la fiche, et tu enchaînes les matchs de la journée avec « Valider et match suivant ».</p></li>
+  <li><h3>Au coup d'envoi : le verrou</h3><p>Chaque match se ferme à son propre coup d'envoi. À partir de là, tu vois aussi les choix des autres joueurs de tes ligues.</p></li>
+  <li><h3>Après chaque match : les points</h3><p>Dès que le score final est connu, ton prono est réglé et le classement est recalculé.</p></li>
+  <li><h3>Le matin : le bilan</h3><p>Si tu as activé les notifications, un « Recap de la nuit » te donne tes points. Tu peux le partager en un geste avec « Partager ma nuit ».</p></li>
+</ol>
+<p>Un prono se fait une seule fois par match, et il compte dans toutes tes ligues en même temps : pas besoin de tout refaire pour chaque groupe.</p>
+
+<h2>Le barème des points</h2>
+<p>Le barème est fixe et le même pour tout le monde. Chaque prono tombe dans un seul palier, le plus haut que tu atteins : les points ne s'additionnent pas d'un palier à l'autre.</p>
+<ul class="stats">
+  <li class="stat"><b>+{{bareme.exact}}</b><span>écart exact, dès le {{bareme.dateChangement|court}}</span></li>
+  <li class="stat"><b>+{{bareme.ecartProche}}</b><span>écart à {{bareme.fourchette}} points près</span></li>
+  <li class="stat"><b>+{{bareme.vainqueur}}</b><span>bon vainqueur</span></li>
+  <li class="stat"><b>{{bareme.mauvaisVainqueur}}</b><span>mauvais vainqueur</span></li>
+</ul>
+<div class="table"><table class="wide">
+  <thead><tr><th>Ton prono</th><th>Matchs du {{bareme.dateChangement|court}} et après</th><th>Matchs du 16 au 29/11/2026</th></tr></thead>
+  <tbody>
+    <tr><td>Bon vainqueur et écart exact</td><td class="pts">{{bareme.exact}} pts</td><td class="pts">{{bareme.exactAvant}} pts</td></tr>
+    <tr><td>Bon vainqueur et écart trouvé à {{bareme.fourchette}} points près</td><td class="pts">{{bareme.ecartProche}} pts</td><td class="pts">{{bareme.ecartProche}} pts</td></tr>
+    <tr><td>Bon vainqueur, écart plus éloigné</td><td class="pts">{{bareme.vainqueur}} pts</td><td class="pts">{{bareme.vainqueur}} pts</td></tr>
+    <tr><td>Mauvais vainqueur, quel que soit l'écart</td><td class="pts">{{bareme.mauvaisVainqueur}} pt</td><td class="pts">{{bareme.mauvaisVainqueur}} pt</td></tr>
+  </tbody>
+</table></div>
+<p>En une phrase : {{bareme.phrases.exact}}, {{bareme.phrases.proche}}, {{bareme.phrases.vainqueur}}, et {{bareme.phrases.mauvais}}.</p>
+<p>C'est la date du match qui décide du barème, jamais la date à laquelle il est réglé. « À {{bareme.fourchette}} points près » veut dire que la différence entre l'écart que tu as choisi et l'écart réel ne dépasse pas {{bareme.fourchette}} points, dans un sens comme dans l'autre. Et l'écart ne compte que si le vainqueur est le bon : un mauvais vainqueur reste à {{bareme.mauvaisVainqueur}}, même avec le bon écart.</p>
+
+<h2>L'exemple du 112-104</h2>
+<div class="example">
+  <p><strong>Exemple :</strong> l'équipe A bat l'équipe B 112 à 104. L'écart réel est de 8 points.</p>
+  <ul>
+    <li>Tu avais choisi A gagnante de 8 points : écart exact, {{bareme.exact}} pts (ou {{bareme.exactAvant}} pts si le match a lieu avant le {{bareme.dateChangement}}).</li>
+    <li>A gagnante de 12 points : tu es à 4 points de l'écart réel, donc {{bareme.ecartProche}} pts.</li>
+    <li>A gagnante de 3 points : tu es à 5 points, c'est encore dans la fourchette, {{bareme.ecartProche}} pts.</li>
+    <li>A gagnante de 20 points : bon vainqueur seulement, {{bareme.vainqueur}} pts.</li>
+    <li>B gagnante, de 8 ou de 15 points : mauvais vainqueur, {{bareme.mauvaisVainqueur}} pt.</li>
+  </ul>
+</div>
+<p>Retiens la logique : le vainqueur ouvre la porte, l'écart fait la différence. Deux joueurs qui ont le même vainqueur se départagent presque toujours sur l'écart.</p>
+
+<h2>L'heure limite et le verrouillage</h2>
+<p>L'heure limite est fixée <strong>match par match</strong>, au coup d'envoi de chacun. Il n'y a pas d'heure unique pour toute la nuit : si le premier match commence plus tôt que les autres, lui seul se ferme à ce moment-là, et les suivants restent ouverts jusqu'à leur propre coup d'envoi.</p>
+<ul class="facts">
+  <li>Tu peux pronostiquer plusieurs jours à l'avance : les matchs à venir apparaissent dans l'onglet Matchs.</li>
+  <li>Tu peux changer d'avis autant que tu veux avec « Modifier mon prono », jusqu'au coup d'envoi.</li>
+  <li>Le verrou est appliqué par le serveur, à la même seconde pour tout le monde. Aucun achat, Premium compris, ne permet de modifier un prono verrouillé.</li>
+  <li>Les choix des autres membres de tes ligues ne s'affichent qu'à partir du coup d'envoi : personne ne copie personne.</li>
+</ul>
+<p>L'écart se règle avec les boutons -5, -1, +1 et +5, ou avec les raccourcis 3, 6, 9, 12 et 15. Il va de 1 à 60 points.</p>
+
+<div class="cta">
+  <p>Teste le barème sur les matchs de cette nuit : ton premier prono prend dix secondes.</p>
+{{badges}}
+</div>
+
+<h2>Les cas particuliers</h2>
+<h3>Les prolongations</h3>
+<p>Le score retenu est le score final du match, prolongations comprises. Comme il n'y a jamais de match nul au basket, il y a toujours un vainqueur, et l'écart se calcule sur ce score final.</p>
+<!-- TODO-VERIFIER : le code ne dit pas en toutes lettres « prolongations comprises ». Déduit du score final total transmis par le fournisseur (fn sync-games l.113-119 et 286-293) et de l'exclusion des matchs nuls (mig 0011 l.102). À confirmer par l'éditeur. -->
+<h3>Un match reporté</h3>
+<p>Ton prono est gardé, et il compte quand le match se joue. S'il est reprogrammé à une nouvelle date, il redevient modifiable jusqu'au nouveau coup d'envoi. Tant que le match n'est pas joué, il ne donne aucun point.</p>
+<h3>Un match annulé</h3>
+<p>Le prono ne compte pas, ni en plus ni en moins : il n'est jamais réglé.</p>
+<h3>Un score corrigé après coup</h3>
+<p>Si le score final est corrigé après le match, les points de ce match sont recalculés pour tout le monde, et le classement suit.</p>
+
+<h2 id="reperes">Repères pour jouer</h2>
+<p>Pas de recette miracle ici, ni d'avis sur un match : seulement des repères sur la mécanique du jeu, pour ne pas perdre de points bêtement.</p>
+<ol class="tips">
+  <li><strong>Pense à l'heure limite.</strong> Chaque match se ferme à son coup d'envoi. Le premier match de la soirée se verrouille avant les autres : c'est lui qu'on oublie le plus souvent.</li>
+  <li><strong>Prends de l'avance.</strong> Tu peux faire tes pronos plusieurs jours avant les matchs, puis les ajuster jusqu'au dernier moment.</li>
+  <li><strong>Vise la fourchette.</strong> Avec un écart choisi de 8, tout écart réel de 3 à 13 te donne au moins {{bareme.ecartProche}} points : onze écarts possibles, contre un seul pour l'écart exact.</li>
+  <li><strong>Mesure ton audace.</strong> L'écart exact vaut deux fois la fourchette ({{bareme.exact}} contre {{bareme.ecartProche}} dès le {{bareme.dateChangement|court}}), mais il demande de tomber pile.</li>
+  <li><strong>Ne laisse aucune case vide.</strong> Un match sans prono, c'est zéro point d'office. Sur un match très indécis, choisis quand même un vainqueur.</li>
+  <li><strong>Méfie-toi des nuits chargées.</strong> Quand le calendrier aligne dix matchs ou plus, l'enchaînement « Valider et match suivant » t'évite d'en sauter un.</li>
+  <li><strong>Joue avec ta place.</strong> Le classement de la semaine repart à zéro chaque lundi. Devant, la fourchette protège ton avance ; derrière, l'écart exact peut te faire remonter.</li>
+  <li><strong>Un prono vaut pour toutes tes ligues.</strong> Inutile de le refaire : il compte partout en même temps, MVP League comprise.</li>
+  <li><strong>Active le rappel du soir.</strong> Il ne part que si tu n'as encore rien pronostiqué pour la journée. Il se règle dans Réglages, section Notifications.</li>
+  <li><strong>Relis ton bilan.</strong> Le recap de la nuit et celui de la semaine montrent où tes points se sont joués : vainqueur raté ou écart trop large.</li>
+</ol>
+
+<h2 id="mvp-league">La MVP League</h2>
+<p>La MVP League est la ligue de tout le monde. Chaque joueur y est inscrit automatiquement à la création de son compte, elle n'a pas de limite de membres et on ne peut pas la quitter. Elle a, comme les autres ligues, un classement de la semaine et un classement de la saison, qui se consultent dans l'app, onglet Ligues. Il n'y a pas encore de classement public sur ce site.</p>
+<p>Tes ligues privées, elles, réunissent jusqu'à 20 membres, que tu invites avec un code à 6 caractères. Pour en lancer une, suis le guide <a href="/pronostics-basket-entre-amis/">pour créer ta ligue privée</a>.</p>
+
+<h2>Les badges</h2>
+<p>Les badges récompensent ce que tu fais dans le jeu, et apparaissent sur ton profil dans « Mes badges ».</p>
+<ul class="facts">
+  <li><strong>Premier panier</strong> : tes premiers points.</li>
+  <li><strong>Sniper</strong> : un écart exact.</li>
+  <li><strong>On Fire</strong> : cinq bons vainqueurs d'affilée.</li>
+  <li><strong>Patron de la semaine</strong> : premier de ta ligue sur une semaine.</li>
+  <li><strong>MVP de la Night</strong> : tous les vainqueurs d'une nuit d'au moins {{bareme.mvp.minMatchs}} matchs, à partir des nuits du {{bareme.mvp.depuis}}.</li>
+  <li><strong>Fondateur</strong> : créer ta première ligue.</li>
+  <li><strong>Team player</strong> : rejoindre la ligue de quelqu'un.</li>
+  <li><strong>Pré-saison</strong> : réservé aux comptes créés avant le premier coup d'envoi de la saison 2026-27, le 20 octobre 2026.</li>
+</ul>
+<p>Les deux bonus du jeu, le MVP de la Night et le patron de la semaine, ont leur page : <a href="/regles/bonus/">comment marchent les bonus</a>.</p>
+
+<h2>L'historique du barème</h2>
+<p>Le barème a évolué pendant la saison 2026-27. Chaque match garde les règles de sa date.</p>
+<div class="table"><table class="wide">
+  <thead><tr><th>Matchs joués</th><th>Ce qui change</th></tr></thead>
+  <tbody>
+    <tr><td>Du 20 octobre au 15 novembre 2026</td><td>Écart exact à {{bareme.exactAvant}} points, et 1 point de consolation pour un mauvais vainqueur dont l'écart était à 2 points près.</td></tr>
+    <tr><td>Du 16 au 29 novembre 2026</td><td>Fin du point de consolation : un mauvais vainqueur vaut {{bareme.mauvaisVainqueur}}. Le patron de la semaine reçoit aussi {{bareme.patron.points}} points, à partir de la semaine du 16 novembre.</td></tr>
+    <tr><td>À partir du {{bareme.dateChangement}}</td><td>L'écart exact passe à {{bareme.exact}} points, et le MVP de la Night démarre.</td></tr>
+  </tbody>
+</table></div>
+
+<aside class="in-app"><h2>Et dans Dunk League ?</h2><p>Le barème est rappelé en bas de chaque fiche match, dans l'encadré « Barème ». Avant de valider, le récapitulatif affiche ton choix sous la forme « Ton prono : équipe de N points », pour éviter les erreurs de doigt. Le bouton de validation reste inactif tant que tu n'as pas choisi d'écart. Une fois le match lancé, la pastille « Verrouillé » apparaît, puis « Terminé » quand le score final tombe. Dans l'onglet Mes pronos, la section « En attente » liste ce qui reste à jouer, et « Terminés » garde tous tes pronos réglés. Tout est décrit écran par écran sur la page <a href="/application-pronostics-basket/">de l'appli sur iPhone et Android</a>.</p></aside>
+<p class="muted">D'autres questions sur le compte, les ligues ou les achats ? Elles sont réunies dans <a href="/questions/">la foire aux questions</a>.</p>

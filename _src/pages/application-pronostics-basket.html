@@ -1,0 +1,151 @@
+<!--meta
+{
+  "_source": "Plan SEO, section 4.3. Faits relevés dans le code de l'app (dunk-league, lecture seule) : voir les commentaires de source dans le corps.",
+  "title": "Application de pronostics basket sur iPhone et Android",
+  "description": "L'appli Dunk League écran par écran : pronos de la nuit, ligues, bonus, cosmétiques et Premium. Gratuite sur iPhone et Android.",
+  "h1": "L'appli de pronos basket, <em>sur iPhone et Android</em>",
+  "kicker": "L'appli · écran par écran",
+  "crumb": "L'appli",
+  "relatedLabel": "L'appli",
+  "relatedBlurb": "Chaque onglet, les notifications, DUNK et Premium",
+  "intro": "Dunk League est une <strong>appli de pronostics basket</strong> gratuite : chaque soir, tu choisis le vainqueur et l'écart des matchs NBA de la nuit, et tu découvres tes points au réveil. Voici l'appli écran par écran, avec les vrais noms des onglets et des boutons, pour savoir exactement à quoi t'attendre avant de l'installer.",
+  "primaryQuery": ["application de pronostics basket", "appli de pronostics basket"],
+  "forbiddenInTitle": ["entre amis", "entre potes", "ligue"],
+  "related": ["/regles/", "/pronostics-basket-entre-amis/", "/questions/", "/support/", "/regles/bonus/"],
+  "schema": [
+    "WebPage",
+    {
+      "@type": "MobileApplication",
+      "@id": "https://dunkleague.app/#app",
+      "name": "Dunk League",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "iOS, Android",
+      "inLanguage": "fr-FR",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "featureList": [
+        "Pronos sur le vainqueur et l'écart des matchs de la nuit",
+        "Ligues privées avec code d'invitation",
+        "Classements de la semaine et de la saison",
+        "Recap de la nuit et recap de la semaine",
+        "Badges et cosmétiques à débloquer en jouant"
+      ]
+    }
+  ],
+  "ctaCampaign": "application",
+  "gabarit": "appli",
+  "modifiedOn": "2026-11-24",
+  "faq": [
+    {
+      "q": "Faut-il activer les notifications pour jouer ?",
+      "a": "Non. Tous les pronos se font dans l'appli, notifications ou pas. Elles servent surtout à ne rien oublier : le rappel du soir ne part que si tu n'as encore rien pronostiqué ce jour-là, et le recap du matin t'annonce tes points sans ouvrir l'appli. Les trois interrupteurs sont dans Réglages, section Notifications."
+    },
+    {
+      "q": "À quelle heure arrive le rappel du soir ?",
+      "a": "Vers 20 h, heure française, le jour des matchs. Si le premier match de la journée commence avant 21 h, le rappel arrive une heure avant son coup d'envoi. Il n'y en a qu'un par journée, et seulement si tu n'as pronostiqué aucun match de la journée."
+    },
+    {
+      "q": "Que montre en plus la fiche d'un match avec Premium ?",
+      "a": "En plus de « Qui gagne ? » et « De combien ? », les abonnés voient des statistiques : le bilan à domicile et à l'extérieur, l'écart moyen et la tendance de la communauté, c'est-à-dire la part des joueurs qui voient chaque équipe gagner. Ce sont des repères : le barème et l'heure limite restent les mêmes pour tout le monde."
+    },
+    {
+      "q": "Peut-on faire tous les matchs de la nuit à la suite ?",
+      "a": "Oui. Sur l'écran Matchs, touche une carte : la fiche s'ouvre en enchaînement. « Valider et match suivant » passe au match d'après, « Passer ce match » le saute, et « Valider et terminer » clôt la série. À la fin, l'appli affiche « Soirée bouclée ✅ » ou « Pronos enregistrés »."
+    }
+  ]
+}
+-->
+<!-- Faits vérifiés dans dunk-league (lecture seule) :
+     - onglets Matchs, Mes pronos, Ligues, Boutique, Profil ((tabs)/_layout.tsx:44-48)
+     - accueil : « Pose tes pronos à l'avance — chaque match se verrouille à son tip-off. » ((tabs)/index.tsx:242), « Bonus quotidien 🎁 », « Hier », « Pas de match ce soir », « Voir les prochains matchs » ; « Classement de la saison » = classement des équipes par conférence (standings.tsx)
+     - fiche match : « Qui gagne ? », « De combien ? », écart 1 à 60 (mig 0001:116, margin-stepper.tsx:38), boutons -5/-1/+1/+5 (margin-stepper.tsx:73-84), raccourcis 3, 6, 9, 12, 15 (lib/pick-chain.ts:26), « Valider mon prono » / « Modifier mon prono », enchaînement « Valider et match suivant » / « Valider et terminer » / « Passer ce match » (game/[id].tsx:241-445), « Soirée bouclée ✅ » / « Pronos enregistrés » ((tabs)/index.tsx:397-405)
+     - heure limite par match, au tip-off (mig 0001:338-345, game/[id].tsx:364-367)
+     - Mes pronos « Ton palmarès de visionnaire. », « En attente », « Terminés » (picks.tsx:118-181)
+     - Boutique « Du style, pas des points : le classement ne s'achète pas. », « Vidéo bonus 🎬 », « Packs de DUNK », sections (shop.tsx:22-29, 238-322) ; prix des cosmétiques 50 à 1 200 DUNK (catalog.ts:11-34)
+     - Profil : Points / Réussite / Meilleure série / Pronos, « Ma saison », « Mes bilans », « Ma vitrine », « Mes badges », « Derniers DUNK » ((tabs)/profile.tsx:130-198, my-recaps.tsx)
+     - recaps « 📤 Partager ma nuit », « 📤 Partager ma semaine », « Partager en story » (recap/night.tsx, recap/week.tsx, share-sheet.tsx)
+     - compte email + mot de passe seulement, « 30 secondes, et tu pronostiques ce soir. », « Vérifie tes emails 📬 » ((auth)/sign-up.tsx) ; aucune connexion Apple ou Google dans src/
+     - onboarding : pseudo, équipe de cœur facultative « Passer cette étape » (onboarding.tsx:127) ; MVP League automatique (mig 0004:34-48)
+     - notifications : 3 interrupteurs, « 🔔 Activer sur cet appareil » (settings.tsx:230-253) ; rappel 20 h ou 1 h avant un premier match avant 21 h, seulement sans prono (fn send-reminders) ; rien entre 23 h et 8 h (fn _shared/push.ts) ; titres « 🏀 Recap de la nuit », « 👑 MVP de la Night », « 📊 Recap de la semaine », « 👑 Patron de la semaine » (push.ts:69-74)
+     - DUNK : cosmétiques seulement, jamais convertibles (shop.tsx:266-268, scoring.ts:128), aucun code de retrait ni de transfert
+     - Premium : « Premium Mensuel », « Premium Annuel », « Zéro pub, à vie » (purchases.ts, premium.tsx:121-136), « Restaurer mes achats » (premium.tsx:140), renouvellement auto et résiliation dans le store au moins 24 h avant la fin de la période (premium.tsx:146-157) ; avantages vérifiés : pas de pub, ligues créées illimitées (gratuit = 1, mig 0014), cosmétiques réservés payés en DUNK (catalog.ts:25, 29, 31), stats de la fiche match (mig 0006, game-insights.tsx:105-140)
+     - export JSON : Confidentialité > « Tes droits » > « Exporter mes données » (privacy.tsx:87-120) ; suppression : Réglages > « Supprimer mon compte » (settings.tsx:279), Confidentialité > « Supprimer mon compte et mes données » (privacy.tsx:226) ; profil visible entre membres d'une même ligue (mig 0028:203-209, 1812), MVP League comprise (shares_league_with 0001:327-335 sans exception is_system, inscription d'office 0004:34-48) : donc visible par tous les joueurs
+     TODO-VERIFIER : versions minimales d'iOS et d'Android (non écrites ici) ; softwareVersion volontairement absente du JSON-LD tant que la version en ligne sur les stores n'est pas confirmée (1.0.4 dans app.json).
+     TODO-VERIFIER : les packs de DUNK sont affichés dans la Boutique (shop.tsx:265-287) ; confirmer avec l'éditeur qu'ils sont réellement en vente sur les deux stores.
+     TODO-VERIFIER : supprimer le compte ne résilie pas l'abonnement (le webhook ignore un compte disparu) : formulation prudente ci-dessous.
+-->
+<h2>Visite écran par écran</h2>
+<p>En bas de l'écran, cinq onglets : Matchs 🏀, Mes pronos 🎯, Ligues 👥, Boutique (l'icône du jeton DUNK) et Profil 👤. Voici ce que tu trouves derrière chacun.</p>
+
+<h3>Matchs, l'écran d'accueil</h3>
+<p>Il t'accueille par « Salut » et ton pseudo, avec la règle d'or en sous-titre : « Pose tes pronos à l'avance — chaque match se verrouille à son tip-off. » Les matchs sont rangés par journée, avec un compteur du type « 3/7 pronostiqués » pour voir d'un coup d'œil ce qu'il te reste. On y trouve aussi la carte « Bonus quotidien 🎁 » et le lien « Hier », qui ouvre le recap de la nuit passée. Le lien « 🏆 Classement de la saison » montre les bilans des équipes par conférence, pas le classement des joueurs. Un soir sans match, l'écran affiche « Pas de match ce soir » et propose « Voir les prochains matchs ».</p>
+
+<h3>La fiche d'un match</h3>
+<p>Deux questions, dans l'ordre : « Qui gagne ? », puis « De combien ? ». L'écart se règle de 1 à 60 points, avec les boutons -5, -1, +1 et +5 ou les raccourcis 3, 6, 9, 12 et 15. Le sélecteur part de zéro et le bouton reste inactif tant que tu n'as rien choisi, puisqu'un match de basket ne se termine jamais à égalité. Un résumé confirme ton choix, « Ton prono : » suivi de l'équipe et de l'écart, puis tu touches « Valider mon prono ». Tant que le match n'a pas commencé, le bouton devient « Modifier mon prono ». Un encadré « Barème » en bas de fiche rappelle ce que vaut chaque palier.</p>
+
+<h3>Mes pronos</h3>
+<p>Sous-titre : « Ton palmarès de visionnaire. » Deux sections, « En attente » pour les matchs à venir et « Terminés » pour les matchs joués.</p>
+
+<h3>Ligues</h3>
+<p>L'écran « Mes ligues » regroupe la MVP League, où tout le monde entre à l'inscription, et tes ligues privées. Les deux boutons du bas, « Créer une ligue » et « Rejoindre avec un code », lancent tout le reste. Le pas-à-pas complet, avec le partage du code et des idées de gages, est dans <a href="/pronostics-basket-entre-amis/">le guide pour lancer ta ligue avec ta bande</a>.</p>
+
+<h3>Boutique</h3>
+<p>Le ton est donné d'entrée : « Du style, pas des points : le classement ne s'achète pas. » On y trouve la « Vidéo bonus 🎬 », les objets rangés en Avatars, Bannières, Thèmes, Animations, Trophées et Cartes souvenir, avec les pastilles « Équipé » et « Acquis » sur ce que tu possèdes déjà. Tout ce qui s'y trouve est cosmétique (voir <a href="#dunk">la section sur les DUNK</a>).</p>
+
+<h3>Profil</h3>
+<p>Tes statistiques en quatre cases (Points, Réussite, Meilleure série, Pronos), le bloc « Ma saison » avec tes nuits MVP, tes titres de patron et ta meilleure nuit, puis « Mes bilans », « Ma vitrine », « Mes badges » et « Derniers DUNK ». C'est aussi là que se trouvent les boutons « Réglages » et « Confidentialité ». Le profil d'un autre joueur s'ouvre depuis les classements, dès que vous partagez une ligue. Comme tout le monde est inscrit d'office dans la MVP League, ça veut dire n'importe quel joueur de l'appli.</p>
+
+<h3>Les recaps de la nuit et de la semaine</h3>
+<p>Chaque matin, le « Recap de la nuit » fait le compte de tes pronos, avec le bouton « 📤 Partager ma nuit ». Le lundi, le « Recap de la semaine » fait le bilan, avec « 📤 Partager ma semaine ». La fenêtre « Partager mon recap » propose « Partager en story », pour afficher ton score sur Instagram. Tous tes anciens bilans restent dans « Mes bilans », rangés en Nuits et Semaines.</p>
+
+<h2>Un jeu de basket gratuit, sans manette</h2>
+<p>Dunk League n'est ni un jeu vidéo ni un fantasy. Pas de draft, pas d'équipe à composer, pas de budget à gérer : pour chaque match, deux choix, le vainqueur et l'écart. L'appli le promet dès l'écran de bienvenue, « Vainqueur + écart de points, en 10 secondes. » Une nuit entière se boucle en quelques minutes, le soir avant de dormir.</p>
+<p>Ensuite, tu n'as rien à faire. Les matchs se jouent pendant la nuit, heure française, et les points tombent quand les scores finaux arrivent. Le barème tient en une ligne : {{bareme.phrases.resume}}. Pour les prolongations, les matchs reportés et les autres cas particuliers, tout est dans <a href="/regles/">les règles du jeu, palier par palier</a>. Si tu viens du foot, <a href="/mpp-basket/">la différence entre un prono foot et un prono basket</a> tient surtout à cet écart.</p>
+
+<h2>Installer et démarrer en 3 étapes</h2>
+<ol class="steps">
+<li><h3>Télécharge l'appli</h3><p>Sur l'App Store pour iPhone, sur Google Play pour Android. Elle est gratuite.</p></li>
+<li><h3>Crée ton compte</h3><p>Touche « Créer un compte » et entre ton email et un mot de passe (« 30 secondes, et tu pronostiques ce soir. »), puis ouvre le lien reçu par email (« Vérifie tes emails 📬 »). La connexion se fait par email et mot de passe uniquement, sans compte Apple ou Google.</p></li>
+<li><h3>Choisis ton pseudo et fais ton premier prono</h3><p>Ton pseudo, puis une équipe de cœur si tu veux (« Passer cette étape » sinon). Tu entres automatiquement dans la MVP League, et tu peux pronostiquer les matchs du soir tout de suite.</p></li>
+</ol>
+
+<div class="cta"><p><strong>Installe l'appli avant les matchs de ce soir</strong> : ton premier prono est à deux minutes.</p>
+{{badges}}
+</div>
+
+<h2 id="notifications">Notifications et heure limite</h2>
+<p><strong>L'heure limite est fixée match par match.</strong> Chaque prono reste modifiable jusqu'au coup d'envoi de ce match précis, pas de la nuit entière. L'appli l'affiche sur chaque fiche : « Ensuite, c'est verrouillé pour tout le monde — aucun achat ne peut changer ça. » Tu peux donc faire tes pronos plusieurs heures, voire plusieurs jours à l'avance, puis les ajuster jusqu'au dernier moment.</p>
+<p>Trois notifications, chacune avec son interrupteur dans Réglages, section Notifications :</p>
+<ul class="facts">
+<li><strong>« Rappel des matchs du soir »</strong> : vers 20 h, heure française, ou une heure avant le premier match s'il commence avant 21 h. Il ne part que si tu n'as encore pronostiqué aucun match de la journée.</li>
+<li><strong>« Résultats et points gagnés »</strong> : un message par nuit, jamais entre 23 h et 8 h. Il s'intitule « 🏀 Recap de la nuit », ou « 👑 MVP de la Night » quand tu as trouvé tous les vainqueurs d'une nuit éligible.</li>
+<li><strong>« Recap de la semaine (et titre de patron) »</strong> : le lundi matin, « 📊 Recap de la semaine », ou « 👑 Patron de la semaine » si tu as fini premier d'une ligue.</li>
+</ul>
+<p>L'appli propose d'activer les notifications après ton premier prono, et le bouton « 🔔 Activer sur cet appareil » le permet à tout moment. Tes choix valent pour ton compte, sur tous tes appareils. Pourquoi les matchs tombent en pleine nuit chez nous, et lesquels se jouent avant minuit : c'est expliqué dans <a href="/heure-des-matchs/">le guide du décalage horaire</a>.</p>
+
+<h2 id="dunk">Les DUNK, la monnaie virtuelle de l'appli</h2>
+<p>Les DUNK sont la monnaie virtuelle de Dunk League. Ils se débloquent en jouant, notamment avec le « Bonus quotidien 🎁 » de l'accueil et, si tu veux, avec la « Vidéo bonus 🎬 » facultative de la Boutique, à regarder jusqu'au bout. La Boutique affiche aussi des packs de DUNK en achat intégré.</p>
+<p>Leur seul usage : les cosmétiques. Avatars, bannières, thèmes, animations, trophées et cartes souvenir coûtent de 50 à 1 200 DUNK. Certains objets sont réservés aux abonnés Premium, mais se règlent eux aussi en DUNK. L'appli est claire : « Les DUNK servent uniquement à la personnalisation. Ils ne donnent jamais de points, d'avantage de classement, ni d'argent réel. »</p>
+<ul class="facts">
+<li>un prono donne des points ; les DUNK ne changent rien au classement ;</li>
+<li>ils n'ont aucune valeur en dehors de l'appli ;</li>
+<li>ils ne se convertissent jamais en argent, ne se retirent pas et ne s'échangent pas entre joueurs.</li>
+</ul>
+<p>Les bonus de la nuit et de la semaine débloquent aussi des badges : <a href="/regles/bonus/">MVP de la Night et patron de la semaine</a> ont chacun le leur.</p>
+
+<h2 id="premium">Premium : du confort, aucun point en plus</h2>
+<p>La version gratuite suffit pour jouer toute la saison. Premium existe en abonnement, « Premium Mensuel » ou « Premium Annuel », et il y a à part un achat unique, « Zéro pub, à vie », qui garde la version gratuite sans publicité. Les prix s'affichent dans l'appli et sur ton store. Le sous-titre de l'écran résume l'esprit : « Plus de confort, plus de style — jamais d'avantage au classement. »</p>
+<p>Ce que Premium apporte :</p>
+<ul class="facts">
+<li>zéro publicité ;</li>
+<li>des ligues créées sans limite, là où la version gratuite permet d'en créer une (rejoindre des ligues reste illimité pour tout le monde) ;</li>
+<li>des cosmétiques réservés, comme l'avatar Sa Majesté, la bannière Gold Edition ou le thème Royal Premium, à débloquer avec tes DUNK ;</li>
+<li>des statistiques sur la fiche de chaque match : bilan à domicile et à l'extérieur, écart moyen et tendance de la communauté.</li>
+</ul>
+<p>Ce que Premium ne donne pas : aucun point, aucune place au classement, aucun prono rouvert après le coup d'envoi.</p>
+<p><strong>Restaurer un achat</strong> : sur l'écran Premium, touche « Restaurer mes achats », par exemple après un changement de téléphone. <strong>Résilier</strong> : les abonnements se renouvellent automatiquement et se résilient dans les réglages de l'App Store ou de Google Play, au moins 24 h avant la fin de la période en cours. La résiliation passe toujours par le store : supprimer ton compte Dunk League ne suffit pas à l'arrêter. Pour un souci de paiement, <a href="/support/">l'aide sur le compte et les achats</a> donne le contact de l'équipe.</p>
+
+<h2>Compatibilité</h2>
+<p>Dunk League existe sur iPhone, via l'App Store, et sur Android, via Google Play. Une ligue peut mélanger les deux sans aucune différence : mêmes matchs, même barème, mêmes classements. Ton compte te suit si tu changes de téléphone, même d'un système à l'autre : il suffit de te reconnecter avec ton email et ton mot de passe. L'appli est en français et demande une connexion internet pour enregistrer tes pronos.</p>
+
+<h2>Tes données personnelles</h2>
+<p>Pour jouer, il faut un email, un mot de passe et un pseudo. Ton profil de joueur (pseudo, points, rangs, derniers pronos terminés) est visible par les joueurs avec qui tu partages une ligue, donc, avec la MVP League où tout le monde est inscrit, par tous les joueurs de l'appli. Dans l'écran « Confidentialité », la rubrique « Tes droits » propose « Exporter mes données », qui produit un fichier de tes données au format JSON. Pour partir, Réglages, « Supprimer mon compte » : ton profil, tes pronos, tes DUNK et tes ligues sont alors définitivement supprimés. Le détail est dans <a href="/privacy/">la politique de confidentialité de Dunk League</a>.</p>

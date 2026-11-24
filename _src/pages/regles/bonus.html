@@ -1,0 +1,98 @@
+<!--meta
+{
+  "_sources": "Faits vérifiés dans dunk-league (lecture seule) : MVP de la Night = mig 0028 award_night_mvps l.494-588 et spec l.91-122, scoring.ts NIGHT_MVP_FROM et NIGHT_MVP_MIN_GAMES ; patron de la semaine = mig 0028 award_weekly_champions l.426-486, vue weekly_points l.389-416, fn weekly-rewards ; rank() et ex aequo = 0028 l.194-196 ; jamais retiré après correction = 0027 l.56-72, 0028 l.114-116 ; notifications = fn _shared/push.ts l.69-74. Section « nuits d'au moins 5 matchs par mois » omise faute de source fiable (vague 2).",
+  "title": "MVP de la Night et patron de la semaine : les bonus",
+  "description": "+{{bareme.mvp.points}} pts si tu trouves tous les vainqueurs d'une nuit d'au moins {{bareme.mvp.minMatchs}} matchs (dès le {{bareme.mvp.depuis|court}}), +{{bareme.patron.points}} pts pour le patron de la semaine : les bonus expliqués.",
+  "h1": "MVP de la Night et patron de la semaine, <em>les deux bonus</em>",
+  "kicker": "Le jeu",
+  "crumb": "Bonus",
+  "relatedLabel": "Les deux bonus",
+  "relatedBlurb": "MVP de la Night et patron de la semaine",
+  "intro": "En plus des points de chaque prono, deux bonus font bouger les classements : le <strong>MVP de la Night</strong>, pour une nuit sans faute, et le <strong>patron de la semaine</strong>, pour le premier de ta ligue. Voici leurs conditions exactes, les égalités et un exemple sur une semaine.",
+  "primaryQuery": ["MVP de la Night", "patron de la semaine"],
+  "forbiddenInTitle": ["barème"],
+  "related": ["/regles/", "/pronostics-basket-entre-amis/", "/saison/", "/application-pronostics-basket/", "/questions/"],
+  "schema": ["Article"],
+  "ctaCampaign": "bonus",
+  "gabarit": "guide",
+  "modifiedOn": "2026-11-24",
+  "faq": [
+    {
+      "q": "Un match reporté empêche-t-il d'être MVP de la Night ?",
+      "a": "Non. Les matchs reportés ou annulés sortent du compte : la nuit doit avoir au moins {{bareme.mvp.minMatchs}} matchs réellement joués, et il faut avoir trouvé le vainqueur de chacun d'eux. En revanche, si un score tarde à être réglé, l'attribution attend que toute la nuit le soit."
+    },
+    {
+      "q": "Que se passe-t-il en cas d'égalité en tête de la ligue ?",
+      "a": "Il n'y a pas de départage : les joueurs à égalité à la première place sont tous patrons de la semaine. Chacun reçoit les {{bareme.patron.points}} points et le badge."
+    },
+    {
+      "q": "Peut-on être patron de la semaine dans la MVP League ?",
+      "a": "Oui. La <a href=\"/regles/#mvp-league\">ligue de tous les joueurs</a> compte comme une autre : celui qui la termine en tête de la semaine en est le patron. Les {{bareme.patron.points}} points restent versés une seule fois par semaine, même s'il gagne aussi sa ligue privée."
+    },
+    {
+      "q": "Une correction de score peut-elle retirer un bonus déjà reçu ?",
+      "a": "Non. Si un score est corrigé après coup, les points des pronos sont recalculés, mais un titre de MVP de la Night ou de patron de la semaine déjà attribué n'est jamais retiré."
+    }
+  ]
+}
+-->
+<h2>Les deux bonus en bref</h2>
+<ul class="stats">
+  <li class="stat"><b>+{{bareme.mvp.points}}</b><span>MVP de la Night</span></li>
+  <li class="stat"><b>+{{bareme.patron.points}}</b><span>patron de la semaine</span></li>
+</ul>
+<p>Les deux bonus s'ajoutent aux points de tes pronos, détaillés dans <a href="/regles/">le barème match par match</a>. En une phrase : {{bareme.phrases.mvp}} ; et {{bareme.phrases.patron}}.</p>
+
+<h2 id="mvp-de-la-night">Le MVP de la Night</h2>
+<p>Le MVP de la Night récompense une nuit parfaite. Il existe à partir des nuits du {{bareme.mvp.depuis}}. Une « nuit », c'est une journée de championnat, telle qu'elle est datée aux États-Unis : vue de France, ses matchs se jouent surtout pendant notre nuit.</p>
+<h3>Les conditions</h3>
+<ul class="facts">
+  <li>La nuit compte au moins {{bareme.mvp.minMatchs}} matchs joués. Les matchs reportés ou annulés ne comptent pas.</li>
+  <li>Tu as fait un prono sur <strong>chacun</strong> de ces matchs. Un seul match oublié suffit à t'écarter.</li>
+  <li>Tu as trouvé le bon vainqueur à chaque fois. L'écart ne compte pas pour ce bonus : écart exact, écart à {{bareme.fourchette}} près ou vainqueur seul, tout passe tant que le vainqueur est le bon.</li>
+</ul>
+<h3>Ce que ça donne</h3>
+<p>Le MVP de la Night donne <strong>+{{bareme.mvp.points}} points</strong>, qui comptent dans le classement de la saison <em>et</em> dans le classement de la semaine. Une nuit sans faute peut donc décider du patron de la semaine. Il s'accompagne du badge MVP de la Night, une seule fois par joueur et par nuit.</p>
+<p>Il n'y a pas un seul gagnant : tous ceux qui réussissent la nuit parfaite sont MVP. Le titre est attribué dès que le dernier match joué de la nuit est réglé, et au plus tard avec la notification du matin, qui s'intitule alors « MVP de la Night » au lieu de « Recap de la nuit ». Si un score reste bloqué chez le fournisseur de données, l'attribution attend.</p>
+<!-- TODO-VERIFIER : la migration 0028 et la version 1.0.4 doivent être en ligne avant le 30/11/2026 (0028 l.12-14 et 224-237). Non vérifiable dans le dépôt. -->
+
+<h2 id="patron-de-la-semaine">Le patron de la semaine</h2>
+<p>Chaque ligue a un classement « Cette semaine », qui repart à zéro tous les lundis. Une semaine va du lundi au dimanche, selon la date des matchs. Le lundi matin, le premier de chaque ligue est sacré patron de la semaine.</p>
+<h3>Les conditions</h3>
+<ul class="facts">
+  <li>Tu termines premier du classement de la semaine de ta ligue, avec au moins un point.</li>
+  <li>La ligue compte au moins {{bareme.patron.minJoueursActifs}} joueurs actifs sur la semaine. Un joueur actif est un membre qui a au moins un prono réglé dans la semaine.</li>
+  <li>Toutes les ligues comptent, les ligues privées comme la MVP League.</li>
+</ul>
+<h3>Ce que ça donne</h3>
+<p>Le patron reçoit <strong>+{{bareme.patron.points}} points</strong> au classement de la saison, et le badge Patron de la semaine. Ces points n'entrent pas dans le classement « Cette semaine », qui reste celui des pronos et du MVP de la Night. Ils ne sont versés qu'<strong>une fois par semaine</strong>, même si tu termines premier de plusieurs ligues. La notification du lundi s'intitule alors « Patron de la semaine » au lieu de « Recap de la semaine ».</p>
+<p>Les points du patron existent pour les semaines à partir de celle du 16 novembre 2026. Avant cette date, le titre ne donnait pas de points.</p>
+<h3>Et en cas d'égalité ?</h3>
+<p>Il n'y a pas de critère de départage. Les ex aequo partagent le même rang, et si plusieurs joueurs sont à égalité en tête, ils sont <strong>tous</strong> patrons de la semaine. Dans la liste, les ex aequo s'affichent simplement par ordre alphabétique de pseudo, sans que cet ordre change quoi que ce soit.</p>
+
+<h2>Exemple sur une semaine</h2>
+<div class="example">
+  <p><strong>Exemple :</strong> une ligue de quatre amis, sur une semaine de décembre. Les prénoms et les chiffres sont inventés.</p>
+  <ul>
+    <li>Mardi, Léa trouve les vainqueurs des 7 matchs de la nuit : elle est MVP de la Night, +{{bareme.mvp.points}} points dans la semaine et dans la saison.</li>
+    <li>Dimanche soir, le classement « Cette semaine » donne : Léa 96 points (dont les {{bareme.mvp.points}} du MVP), Nico 89, Sam 61. Inès n'a fait aucun prono.</li>
+    <li>Joueurs actifs : Léa, Nico et Sam, soit 3. La ligue a donc un patron.</li>
+    <li>Lundi matin, Léa est patron de la semaine : +{{bareme.patron.points}} points au classement de la saison. Son total de la semaine reste à 96.</li>
+  </ul>
+</div>
+<p>Sans sa nuit parfaite, Léa aurait fini à 81 points, derrière Nico. C'est tout l'intérêt des deux bonus : ils s'enchaînent. Si Léa et Nico avaient fini tous les deux à 89, ils auraient été patrons tous les deux. Et si Sam n'avait rien joué, la ligue n'aurait eu que 2 joueurs actifs : pas de patron cette semaine-là.</p>
+
+<div class="cta">
+  <p>La prochaine nuit parfaite peut être la tienne : fais tes pronos avant le premier coup d'envoi.</p>
+{{badges}}
+</div>
+
+<h2>Badges et cosmétiques</h2>
+<p>Chaque bonus débloque aussi son badge, et des DUNK, la monnaie cosmétique du jeu : ils servent uniquement à personnaliser ton profil, ne donnent aucun point et ne se convertissent jamais en argent. Le détail est sur la page de l'appli, rubrique <a href="/application-pronostics-basket/#dunk">les DUNK et la boutique</a>.</p>
+
+<h2>Les bonus au fil de la saison</h2>
+<p>Les deux bonus valent pour toute la saison, playoffs compris dans les règles actuelles. Le MVP de la Night suppose une nuit d'au moins {{bareme.mvp.minMatchs}} matchs : selon le calendrier, certaines nuits n'en comptent pas assez, et n'ont donc pas de MVP. Pour repérer les grandes soirées et les temps forts, garde un œil sur <a href="/saison/">les dates clés de la saison</a>.</p>
+<p>Le patron de la semaine, lui, suppose une ligue vivante. Trois joueurs actifs suffisent, mais plus la ligue est grande, plus le titre se mérite. Pour réunir ton groupe, tout est expliqué dans le guide <a href="/pronostics-basket-entre-amis/">des pronos NBA entre amis</a>.</p>
+
+<aside class="in-app"><h2>Et dans Dunk League ?</h2><p>Tes titres s'affichent dans ton profil, bloc « Ma saison », avec les cases « Nuits MVP » et « Titres patron », et les badges dans « Mes badges ». Chaque matin, l'écran « Recap de la nuit » te dit si tu as été MVP, et le lundi, le « Recap de la semaine » fait le bilan de ta ligue, avec le bouton « Partager ma semaine » pour chambrer tes potes. Tous ces bilans restent dans « Mes bilans », avec les onglets Nuits et Semaines. Dans la fiche de ta ligue, la bascule « Cette semaine » / « Saison » montre qui est en route pour le titre. Tu règles les notifications du matin et du lundi dans Réglages, section Notifications.</p></aside>
+<p class="muted">Une question qui ne porte pas sur les bonus ? Direction <a href="/questions/">les questions fréquentes</a>.</p>

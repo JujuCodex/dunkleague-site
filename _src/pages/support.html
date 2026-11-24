@@ -1,0 +1,73 @@
+<!--meta
+{
+  "_note": "Plan 4.11. Compte, technique et achats seulement : les questions sur les règles du jeu vont dans /questions/. Chemins et libellés relevés dans le code de l'app (settings.tsx, privacy.tsx, premium.tsx, (auth)/*, send-reminders, _shared/push.ts).",
+  "title": "Aide et contact de l'appli Dunk League",
+  "description": "Un souci avec l'appli Dunk League ? Compte, connexion, achats Premium, suppression : les réponses rapides et le contact de l'équipe.",
+  "h1": "Aide et contact",
+  "kicker": "Assistance",
+  "crumb": "Aide",
+  "relatedLabel": "Aide et contact",
+  "relatedBlurb": "Compte, connexion, notifications, achats : les réponses rapides et l'adresse de l'équipe.",
+  "intro": "Cette page d'<strong>aide et contact</strong> couvre ton compte, les soucis techniques et les achats dans l'appli. Si la réponse n'y est pas, écris-nous : un humain te répond.",
+  "primaryQuery": ["aide et contact"],
+  "forbiddenInTitle": ["règles", "barème"],
+  "related": ["/questions/", "/application-pronostics-basket/", "/regles/", "/pronostics-basket-entre-amis/", "/"],
+  "schema": ["ContactPage"],
+  "ctaCampaign": "support",
+  "gabarit": "page",
+  "modifiedOn": "2026-11-24",
+  "replacesLegacy": true,
+  "faqTitle": "Réponses rapides",
+  "faq": [
+    {
+      "q": "Je n'arrive pas à me connecter à l'appli : que faire ?",
+      "a": "La connexion se fait uniquement avec ton email et ton mot de passe : il n'y a pas de connexion par un compte Apple ou Google. Si le mot de passe ne passe plus, touche « Mot de passe oublié » sur l'écran « Se connecter », puis « Envoyer le lien », et suis le lien reçu par email. Rien reçu au bout de quelques minutes ? Regarde dans les spams, puis écris-nous depuis l'adresse de ton compte."
+    },
+    {
+      "q": "Comment changer mon pseudo ?",
+      "a": "Va dans ton Profil, touche « Réglages », puis « Changer de pseudo ». Le nouveau pseudo s'affiche ensuite dans toutes tes ligues et dans la MVP League. Choisis un pseudo que tes potes reconnaîtront, sans nom ni information personnelle que tu ne veux pas voir dans un classement."
+    },
+    {
+      "q": "Je ne reçois aucune notification : que vérifier ?",
+      "a": "D'abord, que les notifications de Dunk League sont autorisées dans les réglages de ton téléphone. Ensuite, dans l'appli, Profil puis « Réglages », section « Notifications » : touche « Activer sur cet appareil » et vérifie les trois interrupteurs (rappel des matchs du soir, résultats, recap de la semaine). Bon à savoir : le rappel du soir ne part que si tu n'as encore pronostiqué aucun match de la journée, et aucun message de résultats ne part entre 23 h et 8 h, heure française."
+    },
+    {
+      "q": "Comment retrouver mon Premium sur un nouveau téléphone ?",
+      "a": "Connecte-toi à ton compte Dunk League, puis touche « Passer Premium » sur ton profil : en bas de l'écran Premium, choisis « Restaurer mes achats ». Le téléphone doit utiliser le même compte Apple ou Google que celui qui a servi à l'achat. Si l'abonnement n'apparaît toujours pas, écris-nous en précisant la date de l'achat, sans jamais joindre de mot de passe."
+    },
+    {
+      "q": "Comment arrêter mon abonnement Premium ?",
+      "a": "L'abonnement se renouvelle automatiquement et se résilie dans les réglages d'abonnement de l'App Store ou de Google Play, au moins 24 heures avant la fin de la période en cours. Supprimer ton compte Dunk League ou désinstaller l'appli ne suffit pas à l'arrêter : la résiliation passe toujours par le store."
+    }
+  ]
+}
+-->
+<!-- Sources : libellés relevés dans le code de l'app (lecture seule) : (auth)/index.tsx, sign-up.tsx, forgot-password.tsx ; settings.tsx:141-148, 230-241, 279 ; privacy.tsx:87-120, 215-226 ; premium.tsx:101-157 ; fn send-reminders ; fn _shared/push.ts (silence de 23 h à 8 h). Délai de réponse de 48 h et adresse : reprise de l'ancienne page support/index.html. Suppression sans accès à l'appli : reprise de delete-account/index.html. -->
+<!-- TODO-VERIFIER : supprimer le compte ne résilie pas un abonnement en cours (déduit du webhook RevenueCat qui ignore un compte disparu, « unknown_user ») ; formulation prudente gardée. -->
+<h2 id="ecrire">Écrire à l'équipe</h2>
+<p>Pour une question, un bug ou une idée, écris à <a href="mailto:{{site.contactEmail}}">{{site.contactEmail}}</a>. On répond généralement sous 48 heures. Écris de préférence depuis l'adresse email de ton compte Dunk League : on retrouve ton compte plus vite, et c'est indispensable pour une demande de suppression.</p>
+<p>Pour un bug, quelques détails nous font gagner un temps précieux :</p>
+<ul class="facts">
+<li>ton téléphone et son système : iPhone ou Android, et le modèle si tu le connais ;</li>
+<li>l'écran où tu étais et ce que tu venais de toucher ;</li>
+<li>le message d'erreur exact, ou une capture d'écran.</li>
+</ul>
+<div class="note info">
+<p>On ne te demandera jamais ton mot de passe, ni par email ni ailleurs. Ne l'envoie à personne, même à nous.</p>
+</div>
+
+<h2 id="compte">Ton compte</h2>
+<p>Un compte Dunk League se crée avec un email et un mot de passe, depuis l'écran « Créer un compte ». L'appli t'invite ensuite à vérifier tes emails : ouvre le lien reçu pour confirmer ton adresse. Ton pseudo se choisit au premier lancement, ton équipe de cœur aussi si tu le souhaites, et le pseudo reste modifiable ensuite.</p>
+<p>Ton compte suit tes pronos, tes ligues, tes badges et tes DUNK sur tous tes appareils : change de téléphone, connecte-toi avec le même email, et tu retrouves tout. Pour quitter ta session sur un appareil, passe par Profil, « Réglages », puis « Se déconnecter ». Tes réglages de notifications valent pour le compte, sur tous tes appareils.</p>
+
+<h2 id="achats">Achats et Premium</h2>
+<!-- TODO-VERIFIER : packs de DUNK présents dans le code (purchases.ts:39-41) et cités dans /privacy/, mais leur disponibilité réelle sur les stores n'est pas confirmée (point a). -->
+<p>Dunk League est gratuite et se joue sans argent réel. Quelques achats facultatifs existent dans l'appli : l'abonnement Premium, mensuel ou annuel, un achat unique pour retirer la publicité à vie, et des packs de DUNK pour les cosmétiques. Les paiements sont gérés par l'App Store ou Google Play : c'est aussi auprès d'eux que se font la résiliation et les demandes de remboursement.</p>
+<p>Aucun achat ne donne de points, ne débloque un prono verrouillé ni n'améliore ta place : le classement reste au mérite. Pour voir ce que contient le Premium écran par écran, lis la présentation de <a href="/application-pronostics-basket/">l'appli Dunk League</a>.</p>
+
+<h2 id="donnees">Tes données et la suppression du compte</h2>
+<p>Tu peux récupérer tes données à tout moment : depuis ton profil, ouvre « Confidentialité », puis « Exporter mes données ». L'appli prépare un fichier au format JSON qui reprend les données de ton compte.</p>
+<p>Pour supprimer ton compte : Profil, « Réglages », puis « Supprimer mon compte ». L'appli te demande de confirmer, car toutes tes données (profil, pronos, DUNK, ligues) sont alors effacées définitivement. Si tu n'as plus accès à l'appli, la marche à suivre par email est décrite sur la page <a href="/delete-account/">supprimer mon compte</a>. Le détail de ce que nous conservons, et pourquoi, est dans la <a href="/privacy/">politique de confidentialité</a>.</p>
+
+<h2 id="regles-du-jeu">Une question sur le jeu ?</h2>
+<p>Cette page ne traite que du compte, de la technique et des achats. Pour le barème, le verrouillage des pronos, les bonus ou les ligues, la <a href="/questions/">page des questions fréquentes</a> répond à tout, et <a href="/regles/">les règles détaillées</a> donnent des exemples chiffrés. Envie de lancer une ligue avec ta bande ? Le guide <a href="/pronostics-basket-entre-amis/">pour jouer entre potes</a> t'explique tout.</p>

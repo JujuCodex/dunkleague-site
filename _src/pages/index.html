@@ -1,0 +1,90 @@
+<!--meta
+{
+  "_sources": "Faits du jeu vérifiés dans le code de l'app dunk-league (lecture seule) : scoring.ts, migrations 0001, 0014, 0027, 0028, onboarding.tsx, game/[id].tsx, shop.tsx, premium.tsx, send-reminders, _shared/push.ts. Match de Bercy : communiqué de la ligue du 20/05/2026 sur pr.nba.com et fiche de l'Accor Arena (accorarena.com), vérifiés le 24/11/2026.",
+  "title": "Dunk League, le jeu de pronos basket entre potes",
+  "description": "Chaque soir, choisis le vainqueur et l'écart des matchs NBA de la nuit, et départage tes potes au classement. Gratuit, sans argent réel.",
+  "h1": "Dunk League, le jeu de pronos basket <em>entre potes</em>",
+  "kicker": "Pronos NBA entre potes · iPhone et Android",
+  "intro": "<p>Dunk League, c'est <strong>le jeu de pronos basket</strong> qui se joue en 10 secondes par match : tu choisis qui gagne et de combien, avant le coup d'envoi. Au réveil, tu découvres tes points et ta place face à tes potes. Gratuit, sans argent réel : juste des points, un classement et la gloire.</p>",
+  "primaryQuery": ["jeu de pronos basket"],
+  "forbiddenInTitle": ["application", "ligue privée", "entre amis"],
+  "related": ["/regles/", "/pronostics-basket-entre-amis/", "/application-pronostics-basket/", "/heure-des-matchs/", "/saison/", "/questions/"],
+  "schema": ["WebPage"],
+  "ctaCampaign": "home",
+  "gabarit": "accueil",
+  "ogType": "website",
+  "ogImageAlt": "Dunk League, le jeu de pronos basket entre potes",
+  "stickyCta": true,
+  "replacesLegacy": true,
+  "modifiedOn": "2026-11-24",
+  "faq": [
+    {
+      "q": "Faut-il veiller la nuit pour jouer ?",
+      "a": "<p>Non. Tu poses tes pronos à l'avance, le soir avant d'aller dormir ou même plusieurs jours avant : chaque match reste ouvert jusqu'à son propre coup d'envoi, puis se verrouille pour tout le monde. Les matchs se jouent pendant ta nuit, et le matin une notification te donne ton bilan. Aucun message de résultats ne part entre 23 h et 8 h, heure française. Pour comprendre pourquoi les matchs tombent si tard, lis <a href=\"/heure-des-matchs/\">le guide du décalage horaire</a>.</p>"
+    },
+    {
+      "q": "Combien de temps faut-il par soir ?",
+      "a": "<p>Compte une dizaine de secondes par match : un vainqueur, un écart, et tu valides. En touchant le premier match de la soirée, l'appli enchaîne les suivants, avec des écarts rapides tout prêts (3, 6, 9, 12 ou 15 points). Une soirée chargée se boucle en deux minutes. Et si tu oublies, un rappel arrive le soir quand tu n'as encore rien pronostiqué pour la journée.</p>"
+    },
+    {
+      "q": "Dunk League marche-t-elle sur iPhone et sur Android ?",
+      "id": "q-iphone-et-android",
+      "a": "<p>Oui. L'appli se télécharge gratuitement sur l'App Store et sur Google Play. Tu te connectes avec ton email et un mot de passe : le même compte marche sur tous tes appareils, avec tes pronos, tes ligues et tes cosmétiques. Un pote sur iPhone et un autre sur Android jouent donc dans la même ligue. Le détail des écrans est sur <a href=\"/application-pronostics-basket/\">la page de l'appli</a>.</p>"
+    }
+  ]
+}
+-->
+<!-- TODO-VERIFIER : capture de l'app en AVIF/WebP pour le hero (heroMedia, image LCP) et 3 ou 4 captures dans /captures/ (section 10 du plan 4.1) : le dossier n'existe pas encore, à ajouter dès que les captures sont prêtes (sans joueur, logo ni couleur d'équipe). -->
+
+<h2>C'est quoi, Dunk League ?</h2>
+<p>Dunk League est une appli de pronos sur les matchs NBA, pensée pour jouer entre potes. Chaque nuit, tu choisis le vainqueur de chaque match et l'écart de points final. Plus tu vises juste, plus tu marques de points. Tu les cumules semaine après semaine, dans tes ligues et dans la MVP League, où tous les joueurs sont réunis. Jouer ne coûte rien, et il n'y a aucun argent réel en jeu.</p>
+
+<h2 id="une-nuit">Une nuit de basket en 3 étapes</h2>
+<ol class="steps">
+<li><h3>Le soir, tu poses tes pronos</h3><p>Pour chaque match, deux choix : qui gagne, et de combien. Tu peux modifier ton prono jusqu'au coup d'envoi de ce match précis. Ensuite, il est verrouillé pour tout le monde, et aucun achat ne change ça.</p></li>
+<li><h3>La nuit, les matchs se jouent</h3><p>Tu dors, les équipes jouent. Les choix de tes potes deviennent visibles dès le coup d'envoi : impossible de copier sur le voisin avant.</p></li>
+<li><h3>Au réveil, le verdict</h3><p>Le score final compte, prolongations comprises. Une notification te donne le recap de ta nuit, et le classement de ta ligue est déjà recalculé. Le chambrage peut commencer.</p></li>
+</ol>
+
+<h2 id="points">Ce que vaut un bon prono</h2>
+<p>Chaque prono donne un seul résultat, le meilleur que tu as atteint. Les paliers ne s'additionnent pas : un écart exact ne cumule pas en plus les points du bon vainqueur et ceux de l'écart à {{bareme.fourchette}} près.</p>
+<ul class="stats">
+<li class="stat"><b>+{{bareme.vainqueur}}</b><span>bon vainqueur</span></li>
+<li class="stat"><b>+{{bareme.ecartProche}}</b><span>écart à {{bareme.fourchette}} points près</span></li>
+<li class="stat"><b>+{{bareme.exact}}</b><span>écart exact, dès le {{bareme.dateChangement|court}}</span></li>
+<li class="stat"><b>+{{bareme.mvp.points}}</b><span>MVP de la Night, dès le {{bareme.mvp.depuis|court}}</span></li>
+<li class="stat"><b>+{{bareme.patron.points}}</b><span>patron de la semaine</span></li>
+</ul>
+<p>En clair : {{bareme.phrases.exact}}, {{bareme.phrases.proche}}, {{bareme.phrases.vainqueur}} et {{bareme.phrases.mauvais}}. Pour les bonus, il y a {{bareme.phrases.mvp}}, et {{bareme.phrases.patron}}.</p>
+<p>Le détail, avec des exemples chiffrés et les cas des matchs reportés, est dans <a href="/regles/">les règles du jeu</a>. Les deux bonus ont <a href="/regles/bonus/">leur propre page</a>.</p>
+
+<h2 id="cosmetiques">Débloque des cosmétiques en jouant</h2>
+<p>À force de jouer, tu débloques des cosmétiques avec les DUNK, la monnaie cosmétique de l'appli. Ils servent à une seule chose, te mettre en valeur : avatars, bannières, thèmes, animations, trophées et cartes souvenir, à afficher dans ta vitrine.</p>
+<ul class="facts">
+<li>Les DUNK ne donnent aucun point et aucun avantage au classement.</li>
+<li>Ils ne se convertissent jamais en argent et ne se retirent pas.</li>
+<li>Même l'abonnement Premium ne donne aucun point : le classement ne s'achète pas.</li>
+</ul>
+<!-- TODO-VERIFIER : des packs de DUNK payants existent dans le code (purchases.ts). Ne jamais écrire « les DUNK ne s'achètent pas » tant que l'éditeur n'a pas tranché. -->
+
+<h2 id="ta-ligue">Ta ligue entre potes</h2>
+<p>Tu crées une ligue en quelques secondes, tu envoies son code à 6 caractères sur le groupe, et chacun la rejoint depuis l'appli. Pour bien la lancer, choisir son nom et tenir tout le monde en haleine jusqu'au lundi, suis <a href="/pronostics-basket-entre-amis/">le guide pour jouer entre amis</a>.</p>
+
+<h2 id="pas-un-fantasy">Pas un fantasy : 10 secondes par match</h2>
+<p>Dans un fantasy, tu composes une équipe de joueurs, tu surveilles les blessures et tu épluches les statistiques. Ici, rien à gérer. Un vainqueur, un écart, et tu passes au match suivant. C'est fait pour ceux qui regardent le basket, ou qui en lisent juste les résultats le matin, sans y passer la soirée.</p>
+<p>Le format reste simple, mais il a de la profondeur : trouver le vainqueur, tout le monde y arrive de temps en temps. Viser l'écart juste, c'est là que ta ligue se départage.</p>
+<!-- TODO-VERIFIER : ajouter le lien vers /fantasy-nba/ quand la page sera publiée (vague suivante). -->
+
+<div class="cta">
+<p>La prochaine nuit de matchs commence bientôt. Installe l'appli et pose tes premiers pronos ce soir.</p>
+{{badges}}
+</div>
+
+<h2 id="temps-fort">Le temps fort du moment : Bercy</h2>
+<div class="cards">
+<div class="card"><h3>Spurs-Pelicans à l'Accor Arena</h3><p>Le jeudi 14 janvier 2027, les Spurs et les Pelicans jouent un match de saison régulière à Bercy. Une affiche à pronostiquer comme les autres, mais à vivre de près : <a href="/saison/bercy/">tout sur le match de Bercy</a>.</p></div>
+<div class="card"><h3>Toute la saison 2026-27</h3><p>Week-end All-Star, play-in, playoffs : les dates clés sont réunies, en heure française, sur <a href="/saison/">le calendrier de la saison</a>.</p></div>
+</div>
+
+<h2 id="foot-ou-basket">Tu fais déjà tes pronos foot ?</h2>
+<p>Le principe te parlera : des pronos entre potes, un classement, et le plaisir d'avoir eu raison. Le basket change surtout le rythme, avec des matchs presque chaque nuit et un écart de points à viser plutôt qu'un score exact. Pour voir ce qui change, lis <a href="/mpp-basket/">pronos foot ou basket</a>. Une autre question ? <a href="/questions/">Toutes les réponses sont ici</a>.</p>

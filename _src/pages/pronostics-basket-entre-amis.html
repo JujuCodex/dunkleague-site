@@ -1,0 +1,162 @@
+<!--meta
+{
+  "_source": "Plan SEO, section 4.2. Faits relevés dans le code de l'app (dunk-league, lecture seule) : voir les commentaires de source dans le corps.",
+  "title": "Pronos NBA entre amis : crée ta ligue privée — Dunk League",
+  "description": "Crée ta ligue privée de pronos NBA, partage le code sur WhatsApp et départage tes potes chaque nuit. Gratuit à jouer, sans argent réel en jeu.",
+  "h1": "Tes pronos NBA <em>entre amis</em>, dans ta ligue privée",
+  "kicker": "Ligue privée · le guide de l'organisateur",
+  "crumb": "Entre amis",
+  "relatedLabel": "Entre amis",
+  "relatedBlurb": "Crée ta ligue privée et invite ta bande",
+  "intro": "Des <strong>pronos NBA entre amis</strong>, c'est une ligue privée, un code à envoyer sur le groupe et un classement qui tranche chaque matin qui avait vu juste. Voici comment la créer dans Dunk League, la faire vivre toute la saison et fixer un règlement maison sans un centime en jeu.",
+  "primaryQuery": ["pronos NBA entre amis", "ligue privée"],
+  "forbiddenInTitle": ["jeu", "application"],
+  "related": ["/regles/", "/regles/bonus/", "/application-pronostics-basket/", "/questions/", "/saison/"],
+  "schema": ["WebPage"],
+  "ctaCampaign": "entre-amis",
+  "gabarit": "pilier",
+  "inMenu": true,
+  "modifiedOn": "2026-11-24",
+  "faq": [
+    {
+      "q": "Combien de potes peut-on réunir dans une ligue privée ?",
+      "a": "Une ligue privée accueille 20 membres au maximum. Pour une bande plus large, un autre membre peut créer une deuxième ligue avec son propre code. Et tout le monde se retrouve de toute façon dans la MVP League, la ligue qui réunit tous les joueurs de l'appli, sans limite de membres."
+    },
+    {
+      "q": "Les autres membres voient-ils mon prono avant le match ?",
+      "a": "Non. Les choix des autres joueurs de tes ligues ne s'affichent qu'au coup d'envoi de chaque match, au moment où plus personne ne peut modifier le sien. Avant, chacun pronostique dans son coin : impossible de recopier le vainqueur choisi par le meilleur de la bande."
+    },
+    {
+      "q": "Où retrouver le code d'invitation de ma ligue ?",
+      "a": "Ouvre l'onglet Ligues et touche ta ligue : la carte « Code d'invitation » affiche les 6 caractères, avec le bouton « Partager 📤 » pour les renvoyer au groupe. Un nouveau venu n'a plus qu'à toucher « Rejoindre avec un code » dans son appli."
+    },
+    {
+      "q": "Peut-on arriver dans une ligue en cours de saison ?",
+      "a": "Oui, à tout moment. Le classement « Cette semaine » repart de zéro chaque lundi : même arrivé en plein hiver, tu peux finir patron dès ta première semaine si tu fais mieux que les autres sur les matchs de la semaine. Le classement « Saison », lui, récompense la régularité sur la durée."
+    }
+  ]
+}
+-->
+<!-- Faits vérifiés dans dunk-league (lecture seule) :
+     - écran Ligues : « Mes ligues », « Là où se joue le chambrage. », boutons « Créer une ligue » et « Rejoindre avec un code » (src/app/(tabs)/leagues.tsx:54, 126-128)
+     - création : « Nom de la ligue » 3 à 40 caractères, « Emblème de la ligue » parmi 8 emojis, « Créer la ligue », « Ligue créée ! 🎉 » (league/create.tsx ; mig 0001:87), badge Fondateur (mig 0014:84)
+     - 1 ligue créée en version gratuite, rejoindre illimité (mig 0014:53-86, free_tier_league_limit)
+     - code de 6 caractères sans I, L, O, 0 ni 1, insensible à la casse et aux espaces (mig 0001:346-359, 0014:99), badge Team player (0014:113-115)
+     - message de partage « Rejoins ma ligue "…" sur Dunk League ! Code d'invitation : … 🏀 » via Share.share (league/[id].tsx:45-46, bouton « Partager 📤 » l.77)
+     - 20 membres par ligue privée (mig 0001:90, max_members default 20)
+     - bascule « Cette semaine » / « Saison », « Classement recalculé après chaque match — uniquement au mérite. » (league/[id].tsx:22, 127)
+     - semaine du lundi au dimanche selon la date des matchs (mig 0028:393), ex aequo au même rang (rank())
+     - patron : rang 1, points > 0, au moins 3 joueurs actifs ; plusieurs patrons possibles ; +25 pts une fois par semaine ; hors « Cette semaine » (mig 0028:426-486, 59-63)
+     - pronos des autres visibles au coup d'envoi (mig 0001:551-556)
+     - pseudo modifiable : Réglages > « ✏️ Changer de pseudo » ; bouton « 📤 Partager ma semaine » (recap/week.tsx)
+     - onboarding « Zéro argent réel » / « Rien à déposer, rien à perdre, rien à retirer. » (onboarding.tsx:76) ; premium.tsx:143 « Le classement reste 100 % au mérite… »
+-->
+<h2>Créer ta ligue en 3 étapes</h2>
+<p>Tout se passe dans l'appli, depuis l'onglet Ligues 👥. Compte deux minutes, le temps de trouver un nom qui fera rire le groupe.</p>
+<ol class="steps">
+<li><h3>Ouvre l'onglet Ligues</h3><p>L'écran s'appelle « Mes ligues », avec ce sous-titre qui annonce la couleur : « Là où se joue le chambrage. » Touche le bouton « Créer une ligue ».</p></li>
+<li><h3>Donne-lui un nom et un emblème</h3><p>Le champ « Nom de la ligue » accepte de 3 à 40 caractères. Choisis ensuite l'« Emblème de la ligue » parmi 8 emojis, puis valide avec « Créer la ligue ».</p></li>
+<li><h3>Récupère le code et envoie-le</h3><p>L'appli affiche « Ligue créée ! 🎉 » avec un code d'invitation de 6 caractères à partager. Au passage, tu débloques le badge Fondateur 🏗️.</p></li>
+</ol>
+<p>Avec la version gratuite, tu peux créer une ligue, et rejoindre celles des autres sans aucune limite. Créer plusieurs ligues à ton nom fait partie des avantages de <a href="/application-pronostics-basket/#premium">l'offre Premium de l'appli</a>, qui ne donne aucun point en plus.</p>
+
+<h2>Partager le code : WhatsApp, Instagram ou Snap</h2>
+<p>Sur la fiche de ta ligue, la carte « Code d'invitation » porte un bouton « Partager 📤 ». Il ouvre le menu de partage de ton téléphone : tu choisis le groupe WhatsApp de la bande, un message Instagram, Snap ou un simple SMS. Le texte est déjà prêt : « Rejoins ma ligue "…" sur Dunk League ! Code d'invitation : … 🏀 ».</p>
+<p>Pour tes potes, c'est trois gestes :</p>
+<ul class="facts">
+<li>ils installent l'appli et créent leur compte ;</li>
+<li>dans l'onglet Ligues, ils touchent « Rejoindre avec un code » ;</li>
+<li>ils tapent le code, puis « Rejoindre la ligue ». Majuscules ou minuscules, peu importe, et les espaces en trop sont ignorés.</li>
+</ul>
+<p>Le code n'utilise jamais les lettres I, L et O ni les chiffres 0 et 1 : personne ne confond un O avec un zéro en le recopiant depuis une capture. Ceux qui te rejoignent débloquent le badge Team player 🤝. Une ligue privée compte 20 membres au maximum.</p>
+
+<h2>Deux classements : la semaine et la saison</h2>
+<p>Chaque ligue a deux classements, avec une bascule « Cette semaine » / « Saison » en haut de la fiche. L'appli le dit sans détour : « Classement recalculé après chaque match — uniquement au mérite. »</p>
+<ul class="facts">
+<li><strong>Cette semaine</strong> : les points des matchs du lundi au dimanche, d'après la date des matchs. Le compteur repart de zéro chaque lundi.</li>
+<li><strong>Saison</strong> : tous tes points depuis le début de la saison. C'est le classement de la régularité, celui qu'on regarde au printemps.</li>
+</ul>
+<p>Ce double classement change tout pour celui qui arrive tard. Ton pote qui s'inscrit en janvier n'a aucune chance de rattraper la saison du premier, mais il peut gagner sa première semaine dès le lundi suivant. Deux joueurs à égalité partagent le même rang, sans critère de départage.</p>
+<p>Autre détail qui entretient le suspense : les pronos des autres membres restent cachés jusqu'au coup d'envoi de chaque match. Personne ne peut copier son voisin, et dès que le match démarre, tu vois qui a choisi quoi. Le chambrage commence en direct.</p>
+<p>Ta ligue privée tourne en parallèle de la MVP League, la ligue de tous les joueurs de l'appli, où chacun entre automatiquement à l'inscription. Tes points comptent dans les deux.</p>
+
+<h2>Le patron de la semaine</h2>
+<p>Chaque lundi matin, le premier de la semaine dans ta ligue devient patron de la semaine, avec le badge 👑. Le barème : {{bareme.phrases.patron}}.</p>
+<p>Quelques précisions utiles pour l'organisateur :</p>
+<ul class="facts">
+<li>un <strong>joueur actif</strong> est un membre qui a au moins un prono réglé dans la semaine. Une ligue de dix inscrits où seuls deux ont joué ne désigne donc pas de patron ;</li>
+<li>il faut avoir marqué des points : une semaine blanche ne fait pas de patron ;</li>
+<li>en cas d'égalité en tête, il y a plusieurs patrons, et chacun reçoit le titre ;</li>
+<li>les {{bareme.patron.points}} points comptent dans le classement de la saison, mais pas dans « Cette semaine ».</li>
+</ul>
+<p>Le titre arrive avec la notification « 👑 Patron de la semaine » du lundi matin. Pour les conditions exactes et l'autre bonus, celui de la nuit, lis <a href="/regles/bonus/">les deux bonus expliqués pas à pas</a>.</p>
+
+<h2>Exemple : une nuit de 7 matchs entre 4 potes</h2>
+<p>Pour voir comment le classement bouge, prends une nuit de 7 matchs jouée à partir du {{bareme.dateChangement}}. Le barème, rappel : {{bareme.phrases.resume}}. S'y ajoutent {{bareme.phrases.mvp}}.</p>
+<div class="table"><table class="wide">
+<thead><tr><th>Joueur</th><th>Écart exact</th><th>Écart à ±{{bareme.fourchette}}</th><th>Vainqueur seul</th><th>Mauvais vainqueur</th><th>Bonus</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>Max</td><td>0</td><td>1</td><td>6</td><td>0</td><td>MVP de la Night</td><td class="pts">38 pts</td></tr>
+<tr><td>Léa</td><td>1</td><td>2</td><td>3</td><td>1</td><td>—</td><td class="pts">29 pts</td></tr>
+<tr><td>Inès</td><td>2</td><td>0</td><td>2</td><td>3</td><td>—</td><td class="pts">26 pts</td></tr>
+<tr><td>Sam</td><td>0</td><td>1</td><td>3</td><td>3</td><td>—</td><td class="pts">14 pts</td></tr>
+</tbody>
+</table></div>
+<div class="example"><p><strong>Exemple :</strong> le détail des totaux.</p>
+<ul>
+<li>Max : 1 écart à ±{{bareme.fourchette}} (5) et 6 vainqueurs seuls (18), soit 23 points. Il a trouvé les 7 vainqueurs : +15 pour le MVP de la Night, 38 au total.</li>
+<li>Léa : 1 écart exact (10), 2 écarts à ±{{bareme.fourchette}} (10) et 3 vainqueurs seuls (9), soit 29 points. Un seul vainqueur raté lui coûte le bonus.</li>
+<li>Inès : 2 écarts exacts (20) et 2 vainqueurs seuls (6), soit 26 points, malgré 3 ratés.</li>
+<li>Sam : 1 écart à ±{{bareme.fourchette}} (5) et 3 vainqueurs seuls (9), soit 14 points.</li>
+</ul></div>
+<p>La leçon de cette nuit : Max n'a trouvé aucun écart exact, mais il gagne la nuit parce qu'il ne s'est jamais trompé de vainqueur. Sur une nuit jouée avant le {{bareme.dateChangement}}, l'écart exact vaut {{bareme.exactAvant}} points et le MVP de la Night n'existe pas encore : Léa aurait fini première avec 27 points, devant Max (23) et Inès (22). Le détail des paliers et des cas particuliers est dans <a href="/regles/">le barème complet</a>.</p>
+
+<h2>Le règlement maison : des gages, jamais d'argent</h2>
+<p>Une ligue entre potes vit mieux avec un petit enjeu. Le vôtre tient en une règle : des gages qui font rire, rien qui coûte quoi que ce soit, rien qu'on doive à quelqu'un. Quelques idées à fixer dans le groupe avant la première nuit :</p>
+<ol class="tips">
+<li><strong>Le pseudo de la honte.</strong> Le dernier de la semaine porte pendant 7 jours le pseudo choisi par le patron. Il se change dans Réglages, « ✏️ Changer de pseudo ».</li>
+<li><strong>La story obligatoire.</strong> Le dernier partage son bilan avec « 📤 Partager ma semaine », même s'il pique un peu.</li>
+<li><strong>Le chroniqueur.</strong> L'avant-dernier rédige le résumé de la semaine dans le groupe, ton de commentateur obligatoire.</li>
+<li><strong>Le match défi.</strong> Le patron désigne un match de la semaine suivante que tout le monde doit pronostiquer, sans exception.</li>
+<li><strong>La photo du groupe.</strong> Le patron choisit la photo du groupe de discussion jusqu'au lundi suivant.</li>
+<li><strong>Le DJ.</strong> Le patron choisit la musique de la prochaine soirée passée ensemble devant un match.</li>
+</ol>
+
+<h2>20 idées de noms de ligue</h2>
+<p>Le nom, c'est la moitié de l'ambiance. Toutes ces idées tiennent dans les 40 caractères du champ, et aucune n'emprunte le nom d'une équipe ou d'un joueur :</p>
+<ul class="facts">
+<li>Les Potes du Parquet</li>
+<li>Le Cercle des Couche-Tard</li>
+<li>Réveil à 4 h</li>
+<li>Les Insomniaques du Lundi</li>
+<li>Écart Parfait</li>
+<li>Pick and Potes</li>
+<li>Les Rois du Tip-off</li>
+<li>Zone Raquette</li>
+<li>Les Snipers du Canapé</li>
+<li>La Ligue des Nuits Blanches</li>
+<li>Les Prolongations</li>
+<li>Panier Garni</li>
+<li>Le Club des Lève-Tôt</li>
+<li>Les Chambreurs</li>
+<li>Trois Points Pile</li>
+<li>Les Visionnaires</li>
+<li>La Bande du Rebond</li>
+<li>Box Score Café</li>
+<li>Les Ronfleurs du Banc</li>
+<li>Les Accros du Buzzer</li>
+</ul>
+
+<h2>Gratuit, sans argent réel : ce que ça veut dire</h2>
+<p>L'appli le résume dès le premier écran : « Zéro argent réel », avec « Rien à déposer, rien à perdre, rien à retirer. » Concrètement :</p>
+<ul class="facts">
+<li>l'appli est gratuite à installer et à jouer, toute la saison ;</li>
+<li>un prono donne des points, et les points ne servent qu'au classement. Il n'y a ni lot ni prix à la clé : on joue pour la gloire, le badge et la place sur le podium ;</li>
+<li>l'offre Premium est facultative et n'apporte que du confort. L'appli le précise : « Le classement reste 100 % au mérite : aucun achat ne donne de points, ne modifie un prono verrouillé ou n'améliore ta place. » ;</li>
+<li>les DUNK, la monnaie virtuelle de l'appli, servent uniquement aux cosmétiques et ne se convertissent jamais en argent.</li>
+</ul>
+<p>Pour le reste, la <a href="/application-pronostics-basket/">visite de l'appli écran par écran</a> montre chaque onglet, et la saison a ses <a href="/saison/">temps forts à cocher avec la bande</a>.</p>
+
+<div class="cta"><p><strong>Crée ta ligue ce soir.</strong> Le compte se fait en quelques instants, le code part sur le groupe, et la première nuit de pronos commence.</p>
+{{badges}}
+</div>

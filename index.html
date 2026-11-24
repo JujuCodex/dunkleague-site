@@ -3,121 +3,213 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dunk League — Les pronos basket entre potes</title>
-<meta name="description" content="Pronostique les matchs de basket US avec tes amis. Gratuit, sans argent réel : ligues privées, classements, DUNK et gloire éternelle.">
+<title>Dunk League, le jeu de pronos basket entre potes</title>
+<meta name="description" content="Chaque soir, choisis le vainqueur et l'écart des matchs NBA de la nuit, et départage tes potes au classement. Gratuit, sans argent réel.">
+<link rel="canonical" href="https://dunkleague.app/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0c0e12">
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="apple-itunes-app" content="app-id=6801577074">
-<style>
-  :root {
-    --bg: #0c0e12; --card: #15181e; --border: #232833;
-    --text: #f4f5f7; --muted: #98a0ac; --brand: #ff6b1a; --gold: #f5b94b;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    background: var(--bg); color: var(--text); line-height: 1.6;
-  }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 24px; }
-  header { text-align: center; padding: 72px 16px 40px; }
-  .logo { width: 220px; height: auto; filter: drop-shadow(0 8px 28px rgba(245, 185, 75, .28)); }
-  h1 { font-size: 2.6rem; letter-spacing: -1px; margin: 8px 0; }
-  h1 span { color: var(--gold); }
-  .tagline { font-size: 1.25rem; color: var(--muted); max-width: 560px; margin: 0 auto; }
-  .badge {
-    display: inline-block; margin-top: 24px; padding: 14px 30px;
-    background: var(--gold); border-radius: 999px;
-    color: #171205; font-weight: 700; text-decoration: none; font-size: 1.05rem;
-  }
-  .badge:hover { background: #ffd27a; }
-  .badge-sub { display: block; margin-top: 10px; color: var(--muted); font-size: .88rem; }
-  /* Boutons des stores : les deux en plein, l'app est disponible partout */
-  .stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
-  .stores .badge { margin-top: 0; }
-  .badge.outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
-  .badge.outline:hover { background: rgba(245, 185, 75, .12); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 40px 0; }
-  .card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 24px;
-  }
-  .card .emoji { font-size: 34px; }
-  .card h2 { font-size: 1.1rem; margin: 10px 0 6px; }
-  .card p { color: var(--muted); font-size: .95rem; }
-  .fair {
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-    padding: 24px; margin: 8px 0 40px; text-align: center;
-  }
-  .fair strong { color: var(--brand); }
-  footer {
-    border-top: 1px solid var(--border); padding: 32px 16px 48px;
-    text-align: center; color: var(--muted); font-size: .9rem;
-  }
-  footer a { color: var(--brand); text-decoration: none; }
-  footer .links { margin-bottom: 12px; }
-  footer .links a { margin: 0 12px; }
-</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dunk League">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Dunk League, le jeu de pronos basket entre potes">
+<meta property="og:description" content="Chaque soir, choisis le vainqueur et l'écart des matchs NBA de la nuit, et départage tes potes au classement. Gratuit, sans argent réel.">
+<meta property="og:url" content="https://dunkleague.app/">
+<meta property="og:image" content="https://dunkleague.app/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dunk League, le jeu de pronos basket entre potes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dunk League, le jeu de pronos basket entre potes">
+<meta name="twitter:description" content="Chaque soir, choisis le vainqueur et l'écart des matchs NBA de la nuit, et départage tes potes au classement. Gratuit, sans argent réel.">
+<meta name="twitter:image" content="https://dunkleague.app/og-default.jpg">
+<meta name="generator" content="dunkleague-build">
+<style>:root{--bg:#0c0e12;--card:#15181e;--border:#232833;--text:#f4f5f7;--muted:#98a0ac;--brand:#ff6b1a;--gold:#f5b94b;--gold2:#ffd27a;--ink:#171205;color-scheme:dark}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:1.0625rem}
+a{color:var(--gold)}a:hover{color:var(--gold2)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+img{max-width:100%;height:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--ink);padding:8px 14px;border-radius:8px;z-index:30}.skip:focus{left:8px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(12,14,18,.94);border-bottom:1px solid var(--border)}
+.bar-in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px}
+.brand{display:flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;font-weight:800;font-size:1.1rem;letter-spacing:-.3px}
+.brand picture{display:flex}.brand img{width:44px;height:30px}.brand em{font-style:normal;color:var(--gold)}
+.menu{order:3;width:100%;display:flex;flex-wrap:wrap;gap:2px 18px;font-size:.95rem}
+.menu a{color:var(--muted);text-decoration:none;padding:2px 0}.menu a:hover,.menu a[aria-current]{color:var(--text)}
+.btn-dl{margin-left:auto;background:var(--gold);color:var(--ink);font-weight:700;text-decoration:none;padding:8px 18px;border-radius:999px;font-size:.95rem;white-space:nowrap}
+.btn-dl:hover{background:var(--gold2);color:var(--ink)}
+@media(min-width:760px){.menu{order:0;width:auto;margin-left:8px}}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.crumbs{margin:20px 0 0;font-size:.85rem;color:var(--muted)}
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap}.crumbs li+li::before{content:"›";margin:0 8px}
+.crumbs a{color:var(--gold);text-decoration:none}
+.hero{text-align:center;padding:28px 0 8px}
+.kicker{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+h1{font-size:clamp(1.75rem,5.2vw,2.5rem);line-height:1.15;letter-spacing:-.5px;margin-bottom:14px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--gold)}
+.intro{color:var(--muted);max-width:36em;margin:0 auto;font-size:1.08rem}.intro p{margin:0 0 10px}.intro strong{color:var(--text)}
+.hero-note,.disclaimer{color:var(--muted);font-size:.82rem;max-width:40em;margin:12px auto}
+.hero-media{margin-top:24px}
+.stores{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:22px 0 6px}
+.store{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--text);text-decoration:none;font-weight:600;font-size:.98rem}
+.store:hover{color:var(--gold2);border-color:var(--gold)}
+.store.img{padding:0;border:0;background:none;min-width:0;height:auto}.store.img img{display:block;width:auto}
+.related{margin:28px 0 8px}
+.related-t{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.related ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.related a{display:block;height:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;color:var(--text);text-decoration:none;font-weight:600;font-size:.95rem}
+.related a span{display:block;color:var(--muted);font-weight:400;font-size:.85rem;margin-top:2px}.related a:hover{border-color:var(--gold)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin:24px 0}
+.toc p{font-weight:700;margin-bottom:6px}.toc ol{padding-left:20px;color:var(--muted);display:grid;gap:4px}.toc a{color:var(--text);text-decoration:none}
+h2{font-size:1.45rem;line-height:1.3;margin:44px 0 14px;scroll-margin-top:90px}
+h3{font-size:1.08rem;line-height:1.35;margin:24px 0 8px;scroll-margin-top:90px}
+p{margin:0 0 14px}
+.content ul,.content ol{padding-left:22px;margin:0 0 16px}.content li{margin-bottom:6px}
+.muted{color:var(--muted)}strong{color:var(--text)}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:18px 0 22px!important;padding:0!important}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;margin:0!important}
+.stat b{display:block;font-size:2.2rem;line-height:1.1;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.stat span{display:block;color:var(--muted);font-size:.9rem;margin-top:4px}
+.table{overflow-x:auto;margin:16px 0 18px;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}table.wide{min-width:520px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--card);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}td.pts{font-weight:800;color:var(--gold);white-space:nowrap}
+.note{background:var(--card);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+.note.info{border-left-color:var(--brand)}.note p{color:var(--muted)}.note p:last-child{margin:0}
+.example{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin:14px 0}
+.example p:last-child,.example ul:last-child{margin-bottom:0}.example li{color:var(--muted)}
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:12px;margin:16px 0!important;padding:0!important}
+ol.steps>li{counter-increment:s;position:relative;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px 16px 64px;margin:0}
+ol.steps>li::before{content:counter(s);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800}
+ol.steps h3{margin:2px 0 4px}ol.steps p{color:var(--muted);margin:0;font-size:.97rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0 20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px}.card p{color:var(--muted);font-size:.95rem;margin:0 0 8px}.card p:last-child{margin:0}
+ul.facts{list-style:none;padding:0!important}ul.facts li{padding-left:22px;position:relative;color:var(--muted)}
+ul.facts li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+ol.tips li{color:var(--muted)}ol.tips li strong{display:block;color:var(--text)}
+.shots{display:flex;gap:14px;overflow-x:auto;padding:4px 0 12px;margin:16px 0;scroll-snap-type:x mandatory}
+.shots figure{flex:0 0 auto;width:min(220px,62vw);scroll-snap-align:start}
+.shots img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--border)}
+.shots figcaption{color:var(--muted);font-size:.85rem;margin-top:6px;text-align:center}
+.in-app{background:linear-gradient(135deg,rgba(245,185,75,.1),rgba(255,107,26,.06));border:1px solid rgba(245,185,75,.35);border-radius:16px;padding:20px 22px;margin:36px 0}
+.in-app h2{margin:0 0 10px;font-size:1.25rem}.in-app p:last-child{margin:0}
+.cta{text-align:center;margin:32px 0}.cta p{color:var(--muted)}
+.faq h3{margin-top:22px}.faq .a p{color:var(--muted)}
+.updated{color:var(--muted);font-size:.85rem;margin:36px 0 0}
+.reassure{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--card);margin-top:40px}
+.reassure ul{list-style:none;max-width:1080px;margin:0 auto;padding:14px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;font-size:.9rem;color:var(--muted)}
+.reassure li+li::before{content:"·";margin:0 10px;color:var(--gold)}
+.dl{text-align:center;padding:44px 16px 36px}.dl h2{margin:0 0 6px}.dl p{color:var(--muted)}
+.foot{border-top:1px solid var(--border);padding:36px 16px 44px;color:var(--muted);font-size:.9rem}
+.foot-in{max-width:1080px;margin:0 auto}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+@media(min-width:760px){.cols{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.foot-t{color:var(--text);font-weight:700;margin-bottom:8px}.foot ul{list-style:none}.foot li{margin-bottom:6px}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--gold)}
+.legal{margin-top:28px;font-size:.8rem;line-height:1.55}.foot-meta{margin-top:10px;font-size:.8rem}
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:25;display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px 12px 10px 16px;font-size:.92rem}
+.sticky.on{display:flex}.sticky .btn-dl{margin:0}
+@media(max-width:759px){body:has(.sticky.on){padding-bottom:84px}}
+@media(min-width:760px){.sticky.on{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dunkleague.app/#org","name":"Dunk League","url":"https://dunkleague.app/","logo":{"@type":"ImageObject","url":"https://dunkleague.app/logo-mark.png","width":640,"height":434},"sameAs":["https://www.instagram.com/dunk_league_pronos","https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074","https://play.google.com/store/apps/details?id=com.dunkleague.app&hl=fr"]},{"@type":"WebSite","@id":"https://dunkleague.app/#website","url":"https://dunkleague.app/","name":"Dunk League","inLanguage":"fr-FR","publisher":{"@id":"https://dunkleague.app/#org"}},{"@type":"MobileApplication","@id":"https://dunkleague.app/#app","name":"Dunk League","applicationCategory":"GameApplication","operatingSystem":"iOS, Android","inLanguage":"fr-FR","url":"https://dunkleague.app/","installUrl":"https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@id":"https://dunkleague.app/#org"},"sameAs":["https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074","https://play.google.com/store/apps/details?id=com.dunkleague.app&hl=fr"]},{"@type":"WebPage","@id":"https://dunkleague.app/#webpage","url":"https://dunkleague.app/","name":"Dunk League, le jeu de pronos basket entre potes","description":"Chaque soir, choisis le vainqueur et l'écart des matchs NBA de la nuit, et départage tes potes au classement. Gratuit, sans argent réel.","inLanguage":"fr-FR","isPartOf":{"@id":"https://dunkleague.app/#website"},"about":{"@id":"https://dunkleague.app/#app"},"dateModified":"2026-11-24"}]}</script>
 </head>
 <body>
-<header>
-  <img class="logo" src="/logo-mark.png" alt="Dunk League" width="220" height="149">
-  <h1>Dunk <span>League</span></h1>
-  <p class="tagline">Les pronos basket entre potes. Gratuit, sans argent réel — juste des points, des DUNK et la gloire.</p>
-  <div class="stores">
-    <a class="badge" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr" rel="noopener">🤖 Télécharger sur Google Play</a>
-    <a class="badge" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074" rel="noopener">🍎 Télécharger sur l'App Store</a>
-  </div>
-  <span class="badge-sub">Gratuit, sur Android et iPhone.</span>
-</header>
-
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="bar"><div class="bar-in">
+<a class="brand" href="/"><picture><source type="image/avif" srcset="/logo-mark-88.avif"><source type="image/webp" srcset="/logo-mark-88.webp"><img src="/logo-mark-88.png" alt="" width="44" height="30" decoding="async"></picture><span>Dunk <em>League</em></span></a>
+<nav class="menu" aria-label="Menu principal"><a href="/regles/">Le jeu</a><a href="/pronostics-basket-entre-amis/">Entre amis</a><a href="/saison/">Saison</a><a href="/questions/">Questions</a></nav>
+<a class="btn-dl" href="#telecharger" data-dl data-ios="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=home&amp;mt=8" data-android="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dhome">Télécharger</a>
+</div></header>
+<main id="contenu">
 <div class="wrap">
-  <div class="grid">
-    <div class="card">
-      <div class="emoji">🎯</div>
-      <h2>Pronostique en 10 secondes</h2>
-      <p>Vainqueur + écart de points sur les matchs du soir. Verrouillé au coup d'envoi, pour tout le monde.</p>
-    </div>
-    <div class="card">
-      <div class="emoji">👥</div>
-      <h2>Défie tes potes</h2>
-      <p>Crée ta ligue privée, partage un code à 6 caractères, et que le chambrage commence.</p>
-    </div>
-    <div class="card">
-      <div class="emoji">🏆</div>
-      <h2>Grimpe au classement</h2>
-      <p>Classements hebdo et saison, MVP League globale, badges de mérite et séries de bons picks.</p>
-    </div>
-    <div class="card">
-      <div class="emoji">🪙</div>
-      <h2>Gagne des DUNK</h2>
-      <p>La monnaie du jeu : débloque avatars, thèmes et trophées. Purement cosmétique, zéro pay-to-win.</p>
-    </div>
-  </div>
 
-  <div class="fair">
-    <p><strong>Le classement ne s'achète pas.</strong> Dunk League est un jeu 100 % gratuit entre amis :
-    rien à déposer, rien à perdre, aucun argent réel. Les DUNK n'ont aucune valeur monétaire
-    et ne s'échangent pas.</p>
-  </div>
+<header class="hero">
+<p class="kicker">Pronos NBA entre potes · iPhone et Android</p>
+<h1>Dunk League, le jeu de pronos basket <em>entre potes</em></h1>
+<div class="intro"><p>Dunk League, c'est <strong>le jeu de pronos basket</strong> qui se joue en 10 secondes par match : tu choisis qui gagne et de combien, avant le coup d'envoi. Au réveil, tu découvres tes points et ta place face à tes potes. Gratuit, sans argent réel : juste des points, un classement et la gloire.</p></div>
+<div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=home&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dhome" data-store="android" rel="noopener">Voir sur Google Play</a></div>
+</header>
+<nav class="related" aria-label="Pages liées"><p class="related-t">Pages liées</p><ul><li><a href="/regles/">Règles et barème<span>Points, heure limite, cas particuliers</span></a></li><li><a href="/pronostics-basket-entre-amis/">Entre amis<span>Crée ta ligue privée et invite ta bande</span></a></li><li><a href="/application-pronostics-basket/">L'appli<span>Chaque onglet, les notifications, DUNK et Premium</span></a></li><li><a href="/heure-des-matchs/">Heure des matchs<span>Décalage horaire et créneaux</span></a></li><li><a href="/saison/">Saison 2026-27<span>Toutes les dates clés</span></a></li><li><a href="/questions/">Questions fréquentes<span>Toutes les réponses, rubrique par rubrique</span></a></li></ul></nav>
 
-  <div class="fair">
-    <p><strong>Tu fais tes pronos foot sur MPP ?</strong> En basket, il manquait l'équivalent :
-    découvre <a href="/mpp-basket/" style="color: var(--gold)">les pronos NBA entre potes avec Dunk League</a>,
-    le barème, le calendrier de la saison 2026-27 et nos conseils pour bien pronostiquer.</p>
-  </div>
+<article class="content">
+<h2 id="c-est-quoi-dunk-league">C'est quoi, Dunk League ?</h2>
+<p>Dunk League est une appli de pronos sur les matchs NBA, pensée pour jouer entre potes. Chaque nuit, tu choisis le vainqueur de chaque match et l'écart de points final. Plus tu vises juste, plus tu marques de points. Tu les cumules semaine après semaine, dans tes ligues et dans la MVP League, où tous les joueurs sont réunis. Jouer ne coûte rien, et il n'y a aucun argent réel en jeu.</p>
+
+<h2 id="une-nuit">Une nuit de basket en 3 étapes</h2>
+<ol class="steps">
+<li><h3>Le soir, tu poses tes pronos</h3><p>Pour chaque match, deux choix : qui gagne, et de combien. Tu peux modifier ton prono jusqu'au coup d'envoi de ce match précis. Ensuite, il est verrouillé pour tout le monde, et aucun achat ne change ça.</p></li>
+<li><h3>La nuit, les matchs se jouent</h3><p>Tu dors, les équipes jouent. Les choix de tes potes deviennent visibles dès le coup d'envoi : impossible de copier sur le voisin avant.</p></li>
+<li><h3>Au réveil, le verdict</h3><p>Le score final compte, prolongations comprises. Une notification te donne le recap de ta nuit, et le classement de ta ligue est déjà recalculé. Le chambrage peut commencer.</p></li>
+</ol>
+
+<h2 id="points">Ce que vaut un bon prono</h2>
+<p>Chaque prono donne un seul résultat, le meilleur que tu as atteint. Les paliers ne s'additionnent pas : un écart exact ne cumule pas en plus les points du bon vainqueur et ceux de l'écart à 5 près.</p>
+<ul class="stats">
+<li class="stat"><b>+3</b><span>bon vainqueur</span></li>
+<li class="stat"><b>+5</b><span>écart à 5 points près</span></li>
+<li class="stat"><b>+10</b><span>écart exact, dès le 30/11/2026</span></li>
+<li class="stat"><b>+15</b><span>MVP de la Night, dès le 30/11/2026</span></li>
+<li class="stat"><b>+25</b><span>patron de la semaine</span></li>
+</ul>
+<p>En clair : 10 points pour le bon vainqueur avec l'écart exact (8 points pour les matchs joués avant le 30 novembre 2026), 5 points pour le bon vainqueur avec un écart trouvé à 5 points près, 3 points pour le bon vainqueur seul et 0 point pour un mauvais vainqueur. Pour les bonus, il y a +15 points pour le MVP de la Night, quand tu trouves tous les vainqueurs d'une nuit d'au moins 5 matchs (à partir des nuits du 30 novembre 2026), et +25 points pour le patron de la semaine, une seule fois par semaine même si tu termines premier de plusieurs ligues, dans une ligue d'au moins 3 joueurs actifs.</p>
+<p>Le détail, avec des exemples chiffrés et les cas des matchs reportés, est dans <a href="/regles/">les règles du jeu</a>. Les deux bonus ont <a href="/regles/bonus/">leur propre page</a>.</p>
+
+<h2 id="cosmetiques">Débloque des cosmétiques en jouant</h2>
+<p>À force de jouer, tu débloques des cosmétiques avec les DUNK, la monnaie cosmétique de l'appli. Ils servent à une seule chose, te mettre en valeur : avatars, bannières, thèmes, animations, trophées et cartes souvenir, à afficher dans ta vitrine.</p>
+<ul class="facts">
+<li>Les DUNK ne donnent aucun point et aucun avantage au classement.</li>
+<li>Ils ne se convertissent jamais en argent et ne se retirent pas.</li>
+<li>Même l'abonnement Premium ne donne aucun point : le classement ne s'achète pas.</li>
+</ul>
+
+
+<h2 id="ta-ligue">Ta ligue entre potes</h2>
+<p>Tu crées une ligue en quelques secondes, tu envoies son code à 6 caractères sur le groupe, et chacun la rejoint depuis l'appli. Pour bien la lancer, choisir son nom et tenir tout le monde en haleine jusqu'au lundi, suis <a href="/pronostics-basket-entre-amis/">le guide pour jouer entre amis</a>.</p>
+
+<h2 id="pas-un-fantasy">Pas un fantasy : 10 secondes par match</h2>
+<p>Dans un fantasy, tu composes une équipe de joueurs, tu surveilles les blessures et tu épluches les statistiques. Ici, rien à gérer. Un vainqueur, un écart, et tu passes au match suivant. C'est fait pour ceux qui regardent le basket, ou qui en lisent juste les résultats le matin, sans y passer la soirée.</p>
+<p>Le format reste simple, mais il a de la profondeur : trouver le vainqueur, tout le monde y arrive de temps en temps. Viser l'écart juste, c'est là que ta ligue se départage.</p>
+
+
+<div class="cta">
+<p>La prochaine nuit de matchs commence bientôt. Installe l'appli et pose tes premiers pronos ce soir.</p>
+<div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=home&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dhome" data-store="android" rel="noopener">Voir sur Google Play</a></div>
 </div>
 
-<footer>
-  <div class="links">
-    <a href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr" rel="noopener">Google Play</a>
-    <a href="/mpp-basket/">MPP basket</a>
-    <a href="/support/">Assistance</a>
-    <a href="/privacy/">Politique de confidentialité</a>
-    <a href="https://www.instagram.com/dunk_league_pronos" target="_blank" rel="noopener">Instagram</a>
-    <a href="mailto:contact@dunkleague.app">Contact</a>
-  </div>
-  <p>© 2026 Dunk League. Application indépendante, non affiliée à la NBA ni à aucune ligue officielle.</p>
-</footer>
+<h2 id="temps-fort">Le temps fort du moment : Bercy</h2>
+<div class="cards">
+<div class="card"><h3>Spurs-Pelicans à l'Accor Arena</h3><p>Le jeudi 14 janvier 2027, les Spurs et les Pelicans jouent un match de saison régulière à Bercy. Une affiche à pronostiquer comme les autres, mais à vivre de près : <a href="/saison/bercy/">tout sur le match de Bercy</a>.</p></div>
+<div class="card"><h3>Toute la saison 2026-27</h3><p>Week-end All-Star, play-in, playoffs : les dates clés sont réunies, en heure française, sur <a href="/saison/">le calendrier de la saison</a>.</p></div>
+</div>
+
+<h2 id="foot-ou-basket">Tu fais déjà tes pronos foot ?</h2>
+<p>Le principe te parlera : des pronos entre potes, un classement, et le plaisir d'avoir eu raison. Le basket change surtout le rythme, avec des matchs presque chaque nuit et un écart de points à viser plutôt qu'un score exact. Pour voir ce qui change, lis <a href="/mpp-basket/">pronos foot ou basket</a>. Une autre question ? <a href="/questions/">Toutes les réponses sont ici</a>.</p>
+</article>
+<section class="faq" aria-labelledby="questions"><h2 id="questions">Questions</h2><div class="qa"><h3 id="q-faut-il-veiller-la-nuit-pour-jouer">Faut-il veiller la nuit pour jouer ?</h3><div class="a"><p>Non. Tu poses tes pronos à l'avance, le soir avant d'aller dormir ou même plusieurs jours avant : chaque match reste ouvert jusqu'à son propre coup d'envoi, puis se verrouille pour tout le monde. Les matchs se jouent pendant ta nuit, et le matin une notification te donne ton bilan. Aucun message de résultats ne part entre 23 h et 8 h, heure française. Pour comprendre pourquoi les matchs tombent si tard, lis <a href="/heure-des-matchs/">le guide du décalage horaire</a>.</p></div></div><div class="qa"><h3 id="q-combien-de-temps-faut-il-par-soir">Combien de temps faut-il par soir ?</h3><div class="a"><p>Compte une dizaine de secondes par match : un vainqueur, un écart, et tu valides. En touchant le premier match de la soirée, l'appli enchaîne les suivants, avec des écarts rapides tout prêts (3, 6, 9, 12 ou 15 points). Une soirée chargée se boucle en deux minutes. Et si tu oublies, un rappel arrive le soir quand tu n'as encore rien pronostiqué pour la journée.</p></div></div><div class="qa"><h3 id="q-iphone-et-android">Dunk League marche-t-elle sur iPhone et sur Android ?</h3><div class="a"><p>Oui. L'appli se télécharge gratuitement sur l'App Store et sur Google Play. Tu te connectes avec ton email et un mot de passe : le même compte marche sur tous tes appareils, avec tes pronos, tes ligues et tes cosmétiques. Un pote sur iPhone et un autre sur Android jouent donc dans la même ligue. Le détail des écrans est sur <a href="/application-pronostics-basket/">la page de l'appli</a>.</p></div></div></section>
+<p class="updated">Actualisé le <time datetime="2026-11-24">24/11/2026</time></p>
+</div>
+<section class="reassure" aria-label="En bref"><ul><li>Les points ne servent qu'au classement</li><li>Gratuit à jouer, sans argent réel en jeu</li><li>iPhone et Android</li><li>2 minutes par soir</li></ul></section>
+<section class="dl" id="telecharger" aria-labelledby="telecharger-t"><h2 id="telecharger-t">Télécharge Dunk League</h2><p>Gratuit à jouer sur iPhone et Android, sans argent réel en jeu.</p><div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=home&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dhome" data-store="android" rel="noopener">Voir sur Google Play</a></div></section>
+</main>
+<footer class="foot"><div class="foot-in">
+<div class="cols">
+<div><p class="foot-t">Le jeu</p><ul><li><a href="/regles/">Règles</a></li><li><a href="/regles/bonus/">Bonus</a></li><li><a href="/questions/">Questions</a></li><li><a href="/application-pronostics-basket/">Appli</a></li></ul></div>
+<div><p class="foot-t">Jouer</p><ul><li><a href="/pronostics-basket-entre-amis/">Entre amis</a></li><li><a href="/saison/">Saison</a></li></ul></div>
+<div><p class="foot-t">Comprendre</p><ul><li><a href="/heure-des-matchs/">Heure des matchs</a></li><li><a href="/mpp-basket/">Pronos foot ou basket</a></li></ul></div>
+<div><p class="foot-t">Dunk League</p><ul><li><a href="/support/">Aide</a></li><li><a href="/privacy/">Confidentialité</a></li><li><a href="/delete-account/">Supprimer mon compte</a></li><li><a href="https://www.instagram.com/dunk_league_pronos" rel="noopener">Instagram</a></li></ul></div>
+</div>
+<p class="legal">Dunk League est une application indépendante, non affiliée à la NBA, à ses équipes ni à ses partenaires. Les noms de compétitions et d'équipes sont cités à titre d'information et appartiennent à leurs titulaires. Pronos entre potes : les points ne servent qu'au classement. Apple et le logo Apple sont des marques d'Apple Inc. App Store est une marque de service d'Apple Inc. Google Play et le logo Google Play sont des marques de Google LLC.</p>
+<p class="foot-meta">© 2026 Dunk League · <a href="mailto:contact@dunkleague.app">Contact</a></p>
+</div></footer>
+<div class="sticky" id="sticky"><span>Tes pronos de la nuit, gratuitement</span><a class="btn-dl" href="#telecharger" data-dl data-ios="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=home&amp;mt=8" data-android="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dhome">Télécharger</a></div><script>(function(){var u=navigator.userAgent||"",d=document,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),an=/Android/i.test(u);d.querySelectorAll("[data-dl]").forEach(function(a){var h=ios?a.getAttribute("data-ios"):an?a.getAttribute("data-android"):null;if(h)a.setAttribute("href",h)});var s=d.getElementById("sticky");if(s&&!ios){var f=function(){var m=d.documentElement;if((m.scrollTop+innerHeight)/m.scrollHeight>.5){s.classList.add("on");removeEventListener("scroll",f)}};addEventListener("scroll",f,{passive:true})}})();</script>
 </body>
 </html>

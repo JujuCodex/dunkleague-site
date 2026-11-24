@@ -1,0 +1,32 @@
+{
+  "_doc": "Barème du jeu, seule source pour les pages. Vérifié dans dunk-league/supabase/migrations/0028_night_mvp_recaps_profile.sql (écart exact 10 pts à partir des matchs du 2026-11-30, 8 avant ; MVP de la Night à partir de la nuit du 2026-11-30, 5 matchs minimum, 15 pts) et 0025 (patron de la semaine, 3 joueurs actifs). Marqueurs : {{bareme.exact}}, {{bareme.mvp.points}}, {{bareme.phrases.exact}}... Une date AAAA-MM-JJ s'affiche « 30 novembre 2026 » ; avec |court elle s'affiche « 30/11/2026 ». Les DUNK par prono existent dans le code mais ne sont volontairement pas ici : un prono donne des points, les DUNK ne sont jamais présentés comme le prix d'un prono.",
+  "dateChangement": "2026-11-30",
+  "exact": 10,
+  "exactAvant": 8,
+  "ecartProche": 5,
+  "fourchette": 5,
+  "vainqueur": 3,
+  "mauvaisVainqueur": 0,
+  "mvp": {
+    "points": 15,
+    "dunk": 100,
+    "minMatchs": 5,
+    "depuis": "2026-11-30"
+  },
+  "patron": {
+    "points": 25,
+    "dunkParLigue": 250,
+    "minJoueursActifs": 3
+  },
+  "phrases": {
+    "exact": "{{bareme.exact}} points pour le bon vainqueur avec l'écart exact ({{bareme.exactAvant}} points pour les matchs joués avant le {{bareme.dateChangement}})",
+    "proche": "{{bareme.ecartProche}} points pour le bon vainqueur avec un écart trouvé à {{bareme.fourchette}} points près",
+    "vainqueur": "{{bareme.vainqueur}} points pour le bon vainqueur seul",
+    "mauvais": "{{bareme.mauvaisVainqueur}} point pour un mauvais vainqueur",
+    "mvp": "+{{bareme.mvp.points}} points pour le MVP de la Night, quand tu trouves tous les vainqueurs d'une nuit d'au moins {{bareme.mvp.minMatchs}} matchs (à partir des nuits du {{bareme.mvp.depuis}})",
+    "patron": "+{{bareme.patron.points}} points pour le patron de la semaine, une seule fois par semaine même si tu termines premier de plusieurs ligues, dans une ligue d'au moins {{bareme.patron.minJoueursActifs}} joueurs actifs",
+    "mvpDunk": "le MVP de la Night débloque aussi {{bareme.mvp.dunk}} DUNK, à dépenser en cosmétiques",
+    "patronDunk": "le patron de la semaine débloque aussi {{bareme.patron.dunkParLigue}} DUNK par ligue gagnée, à dépenser en cosmétiques",
+    "resume": "{{bareme.exact}} points pour l'écart exact ({{bareme.exactAvant}} points pour les matchs joués avant le {{bareme.dateChangement}}), {{bareme.ecartProche}} points pour l'écart à {{bareme.fourchette}} points près, {{bareme.vainqueur}} points pour le bon vainqueur, {{bareme.mauvaisVainqueur}} point pour un mauvais vainqueur"
+  }
+}

@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /_src/
+Disallow: /_config/
+Disallow: /_scripts/
 
 Sitemap: https://dunkleague.app/sitemap.xml

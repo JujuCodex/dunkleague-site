@@ -1,0 +1,109 @@
+{
+  "_doc": "Réglages du site lus par _scripts/build.mjs. Marqueurs disponibles dans les pages : {{site.<clé>}} pour les valeurs texte de premier niveau.",
+  "name": "Dunk League",
+  "baseUrl": "https://dunkleague.app",
+  "lang": "fr",
+  "locale": "fr_FR",
+  "inLanguage": "fr-FR",
+  "themeColor": "#0c0e12",
+  "appleId": "6801577074",
+  "appStoreUrl": "https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074",
+  "appStoreProviderToken": null,
+  "androidPackage": "com.dunkleague.app",
+  "playUrl": "https://play.google.com/store/apps/details?id=com.dunkleague.app&hl=fr",
+  "instagram": "https://www.instagram.com/dunk_league_pronos",
+  "contactEmail": "contact@dunkleague.app",
+  "copyright": "© 2026 Dunk League",
+  "defaultOgImage": "/og-default.jpg",
+  "logo": {
+    "_doc": "src/webp/avif : logo de l'en-tête, 88×60 (affiché en 44×30). schemaSrc : grand logo pour Organization.logo dans le JSON-LD.",
+    "src": "/logo-mark-88.png",
+    "webp": "/logo-mark-88.webp",
+    "avif": "/logo-mark-88.avif",
+    "width": 44,
+    "height": 30,
+    "schemaSrc": "/logo-mark.png",
+    "schemaWidth": 640,
+    "schemaHeight": 434
+  },
+  "badges": {
+    "_doc": "Badges officiels FR à déposer à ces chemins (fichiers non modifiés, téléchargés depuis les guides Apple et Google). Tant qu'ils manquent, le build affiche des boutons texte sobres et le signale.",
+    "ios": "/badges/app-store-fr.svg",
+    "android": "/badges/google-play-fr.svg",
+    "height": 52
+  },
+  "reassurance": [
+    "Les points ne servent qu'au classement",
+    "Gratuit à jouer, sans argent réel en jeu",
+    "iPhone et Android",
+    "2 minutes par soir"
+  ],
+  "legalLine": "Dunk League est une application indépendante, non affiliée à la NBA, à ses équipes ni à ses partenaires. Les noms de compétitions et d'équipes sont cités à titre d'information et appartiennent à leurs titulaires. Pronos entre potes : les points ne servent qu'au classement. Apple et le logo Apple sont des marques d'Apple Inc. App Store est une marque de service d'Apple Inc. Google Play et le logo Google Play sont des marques de Google LLC.",
+  "disclaimerShort": "Dunk League est une application indépendante, non affiliée à la NBA, à ses équipes ni à ses partenaires.",
+  "menu": [
+    { "label": "Le jeu", "path": "/regles/" },
+    { "label": "Entre amis", "path": "/pronostics-basket-entre-amis/" },
+    { "label": "Saison", "path": "/saison/" },
+    { "label": "Questions", "path": "/questions/" },
+    { "label": "Ce soir", "path": "/ce-soir/" }
+  ],
+  "footer": [
+    {
+      "title": "Le jeu",
+      "links": [
+        { "label": "Règles", "path": "/regles/" },
+        { "label": "Bonus", "path": "/regles/bonus/" },
+        { "label": "Questions", "path": "/questions/" },
+        { "label": "Appli", "path": "/application-pronostics-basket/" }
+      ]
+    },
+    {
+      "title": "Jouer",
+      "links": [
+        { "label": "Entre amis", "path": "/pronostics-basket-entre-amis/" },
+        { "label": "Concours", "path": "/concours-pronostics-basket/" },
+        { "label": "Ce soir", "path": "/ce-soir/" },
+        { "label": "Saison", "path": "/saison/" }
+      ]
+    },
+    {
+      "title": "Comprendre",
+      "links": [
+        { "label": "Heure des matchs", "path": "/heure-des-matchs/" },
+        { "label": "Écart de points", "path": "/ecart-de-points/" },
+        { "label": "Regarder la NBA", "path": "/regarder-la-nba-en-france/" },
+        { "label": "Fantasy ou pronos", "path": "/fantasy-nba/" },
+        { "label": "Pronos foot ou basket", "path": "/mpp-basket/" }
+      ]
+    },
+    {
+      "title": "Dunk League",
+      "links": [
+        { "label": "À propos", "path": "/a-propos/" },
+        { "label": "Presse", "path": "/presse/" },
+        { "label": "Aide", "path": "/support/" },
+        { "label": "Charte", "path": "/charte/" },
+        { "label": "Conditions", "path": "/conditions/" },
+        { "label": "Confidentialité", "path": "/privacy/" },
+        { "label": "Mentions légales", "path": "/mentions-legales/" },
+        { "label": "Supprimer mon compte", "path": "/delete-account/" },
+        { "label": "Instagram", "url": "https://www.instagram.com/dunk_league_pronos" }
+      ]
+    }
+  ],
+  "legacy": {
+    "_doc": "Pages écrites à la main, servies telles quelles tant qu'elles n'ont pas de source dans _src/pages. indexable=true : dans le sitemap avec lastmod. Le build ne les modifie jamais.",
+    "pages": [
+      { "path": "/", "crumb": "Accueil", "indexable": true, "lastmod": "2026-10-28" },
+      { "path": "/mpp-basket/", "crumb": "Pronos foot ou basket", "indexable": true, "lastmod": "2026-11-18" },
+      { "path": "/support/", "crumb": "Aide", "indexable": true, "lastmod": "2026-11-18" },
+      { "path": "/privacy/", "crumb": "Confidentialité", "indexable": false },
+      { "path": "/delete-account/", "crumb": "Supprimer mon compte", "indexable": false },
+      { "path": "/auth/", "crumb": "Compte", "indexable": false },
+      { "path": "/beta/", "crumb": "Bêta", "indexable": false }
+    ]
+  },
+  "page404": {
+    "links": ["/", "/regles/", "/pronostics-basket-entre-amis/", "/application-pronostics-basket/", "/saison/", "/questions/", "/support/"]
+  }
+}

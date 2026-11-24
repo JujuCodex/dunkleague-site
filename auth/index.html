@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
+<meta name="robots" content="noindex,follow">
 <title>Dunk League — Ton compte</title>
+<meta name="description" content="Confirmation d'adresse email et nouveau mot de passe pour ton compte Dunk League, le jeu de pronos basket entre potes.">
+<link rel="canonical" href="https://dunkleague.app/auth/">
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
@@ -76,7 +79,7 @@
 <script>
 (async function () {
   // Clé « publishable » : publique par construction, la sécurité est portée
-  // par les règles RLS côté serveur, comme dans l'app.
+  // par les règles RLS du serveur, comme dans l'app.
   var SUPABASE_URL = 'https://dqzkzrvwxbktcctknysl.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_5cxvhvY3U_hwz-_0nCHrlw_tow_nQ9_';
 
@@ -166,7 +169,7 @@
   }
 
   // signup / email / email_change / magiclink : la vérification a déjà eu
-  // lieu côté serveur, on confirme simplement à l'utilisateur.
+  // lieu sur le serveur, on confirme simplement à l'utilisateur.
   var err2 = await openSession(type === 'email_change' ? 'email_change' : 'email');
   if (err2 && err2.message !== 'missing') return fail();
   await client.auth.signOut();

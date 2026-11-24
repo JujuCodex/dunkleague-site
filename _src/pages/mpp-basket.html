@@ -1,0 +1,130 @@
+<!--meta
+{
+  "_note": "Plan 4.7. URL /mpp-basket/ conservée faute de données Search Console (exception dans _config/exceptions.json). Marque tierce : usage référentiel seulement, jamais dans le H1 ni l'og:title. Vérification de l'offre de Mon Petit Prono : fiche App Store FR (id1378863579) consultée le 24/11/2026, football seulement. À refaire avant chaque actualisation de la page.",
+  "title": "MPP basket ? Une appli indépendante pour tes pronos NBA",
+  "description": "Mon Petit Prono couvre le foot. Pour la NBA entre potes, Dunk League est une appli indépendante, sans lien avec MPP : vainqueur et écart.",
+  "h1": "Les pronos entre potes, <em>version basket</em>",
+  "ogTitle": "Les pronos entre potes, version basket — Dunk League",
+  "ogDescription": "Vainqueur et écart de points, ligues privées, classement au réveil : les pronos NBA gratuits et sans argent réel, sur iPhone et Android.",
+  "ogImage": "/og-mpp-basket.jpg",
+  "ogImageAlt": "Logo de Dunk League, l'appli de pronos basket",
+  "kicker": "Pronos foot ou basket",
+  "crumb": "Pronos foot ou basket",
+  "relatedLabel": "Pronos foot ou basket",
+  "relatedBlurb": "Tu viens des pronos foot ? Ce qui change quand on passe au basket.",
+  "intro": "Tu cherches « <strong>MPP basket</strong> » pour jouer la NBA avec ta bande ? Mon Petit Prono reste un jeu de football. Dunk League est une appli indépendante, pensée pour le basket : chaque soir, tu choisis le vainqueur et l'écart de points, et le classement départage ta ligue au réveil.",
+  "heroNote": "<p class=\"muted\">Dunk League est une application indépendante, sans lien avec Mon Petit Prono (MPP), Fantaleague, LFP Media ni la NBA. Ces noms appartiennent à leurs titulaires respectifs.</p>",
+  "primaryQuery": ["MPP basket", "Mon Petit Prono basket"],
+  "forbiddenInTitle": ["application", "ligue privée"],
+  "related": ["/regles/", "/pronostics-basket-entre-amis/", "/application-pronostics-basket/", "/heure-des-matchs/", "/questions/"],
+  "schema": ["Article"],
+  "ctaCampaign": "foot-ou-basket",
+  "gabarit": "guide",
+  "publishedOn": "2026-10-26",
+  "modifiedOn": "2026-11-24",
+  "replacesLegacy": true,
+  "faq": [
+    {
+      "q": "Dunk League a-t-elle un lien avec Mon Petit Prono ?",
+      "a": "Non. Dunk League est une application indépendante : elle n'a aucun lien avec Mon Petit Prono, avec Fantaleague, avec LFP Media, ni avec la NBA ou ses équipes. On cite Mon Petit Prono seulement parce que beaucoup de joueurs le connaissent et cherchent la même ambiance pour le basket. Les deux applis n'ont ni compte, ni ligue, ni classement en commun."
+    },
+    {
+      "q": "Au basket, quel est l'équivalent du score exact ?",
+      "a": "L'écart de points entre les deux équipes. Trouver 117-109 pile serait presque impossible, alors que deviner que le vainqueur s'impose de 8 points reste à ta portée. Dans Dunk League, l'écart exact donne {{bareme.exact}} points ({{bareme.exactAvant}} points pour les matchs joués avant le {{bareme.dateChangement}}), et un écart trouvé à {{bareme.fourchette}} points près en donne {{bareme.ecartProche}}. Le détail est sur la page des <a href=\"/regles/\">règles du jeu</a>."
+    },
+    {
+      "q": "Pourquoi n'y a-t-il jamais de match nul à pronostiquer en NBA ?",
+      "a": "Parce qu'un match NBA se termine toujours avec un vainqueur : en cas d'égalité à la fin du temps réglementaire, on enchaîne des prolongations de cinq minutes jusqu'à ce qu'une équipe passe devant. Dans l'appli, tu choisis donc toujours une équipe et un écart d'au moins 1 point. Le score final compte, prolongations comprises."
+    },
+    {
+      "q": "Peut-on retrouver sa ligue de pronos foot sur Dunk League ?",
+      "a": "Pas telle quelle : rien ne passe d'une appli à l'autre. Mais la recréer prend une minute. Un joueur crée la ligue dans l'onglet Ligues, choisit son nom et son emblème, puis envoie le code d'invitation de 6 caractères sur le groupe habituel. Une ligue privée accueille jusqu'à 20 joueurs. Le pas-à-pas complet est sur la page <a href=\"/pronostics-basket-entre-amis/\">pronos NBA entre amis</a>."
+    }
+  ]
+}
+-->
+<!-- Sources des faits de cette page :
+     - Offre de Mon Petit Prono : fiche App Store FR https://apps.apple.com/fr/app/id1378863579, consultée le 24/11/2026 (football seulement : championnats français, Ligue des champions, grands tournois ; vendeur FANTALEAGUE). Rachat de Fantaleague par LFP Media annoncé en octobre 2022 (presse).
+     - Barème, écart de 1 à 60, verrouillage par match, 20 membres par ligue, MVP League : code de l'app (mig 0001, 0004, 0014, 0028 ; scoring.ts ; margin-stepper.tsx ; game/[id].tsx).
+     - Prolongations : déduit du score final total transmis par le fournisseur (sync-games), pas écrit tel quel dans le code. -->
+<h2 id="reponse">Mon Petit Prono et le basket : la réponse courte</h2>
+<p>La question d'une version basket revient souvent chez ceux qui font déjà leurs pronos foot le week-end. Au 24 novembre 2026, la réponse est non : la fiche App Store de Mon Petit Prono présente un jeu consacré au football, avec les championnats français, la Ligue des champions et les grands tournois internationaux. Le basket n'y figure pas.</p>
+<p>L'envie, elle, ne dépend pas du sport. Un groupe de potes, un classement qui bouge chaque soir, une conversation qui s'enflamme au réveil et la petite fierté d'avoir vu venir le résultat que personne n'attendait. Le basket s'y prête même très bien, avec des matchs presque tous les soirs pendant des mois. C'est pour ça que Dunk League existe : une appli de pronos en français, construite autour de la NBA et de ses particularités, et non une copie d'un jeu de football.</p>
+<div class="note">
+<p>Dunk League est une application indépendante, non affiliée à la NBA, à ses équipes, ni à Mon Petit Prono (MPP), Fantaleague ou LFP Media. Aucun compte, aucune ligue et aucun classement ne sont partagés avec une autre appli.</p>
+</div>
+<!-- TODO-VERIFIER : avant chaque actualisation de la page, revérifier sur la fiche App Store et sur le site de Mon Petit Prono que le basket n'est toujours pas proposé. S'il l'est, réécrire la page en « foot et basket : deux applis, deux formats » (plan 4.7). -->
+
+<h2 id="foot-ou-basket">Prono foot ou prono basket : ce qui change</h2>
+<p>Si tu viens du foot, deux différences changent ta façon de jouer. La première : il n'y a jamais de match nul en NBA. À égalité au bout du temps réglementaire, les équipes repartent pour des prolongations de cinq minutes, autant de fois qu'il le faut. Le choix à trois issues du foot devient un choix à deux issues, et chaque soir tu dois trancher.</p>
+<p>La seconde : les scores. Une équipe NBA dépasse souvent les 100 points. Viser le score exact n'aurait aucun sens, personne ne tomberait jamais juste. Au basket, la précision se joue sur l'écart entre les deux équipes : c'est lui qui sépare celui qui a lu le match de celui qui a seulement choisi le bon camp.</p>
+<div class="table"><table class="wide">
+<thead><tr><th></th><th>Prono foot</th><th>Prono basket (NBA)</th></tr></thead>
+<tbody>
+<tr><td>Issues possibles</td><td>Victoire, nul ou défaite</td><td>Victoire ou défaite, jamais de nul</td></tr>
+<tr><td>Le prono de précision</td><td>Le score exact</td><td>L'écart de points exact</td></tr>
+<tr><td>Ordre de grandeur du score</td><td>Quelques buts</td><td>Souvent plus de 100 points par équipe</td></tr>
+<tr><td>Rythme</td><td>Une journée par week-end, parfois un soir de semaine</td><td>Des matchs presque tous les soirs, d'octobre à avril pour la saison régulière</td></tr>
+<tr><td>Volume</td><td>Une trentaine de journées de championnat</td><td>82 matchs par équipe en saison régulière</td></tr>
+<tr><td>Heure, vu de France</td><td>L'après-midi ou la soirée</td><td>Surtout la nuit : pronos le soir, résultats au réveil</td></tr>
+</tbody>
+</table></div>
+<p>Ce dernier point surprend au début, puis devient un rituel. La plupart des matchs se jouent pendant ta nuit : tu poses tes pronos avant de dormir et tu découvres tes points avec le café. Pour comprendre pourquoi les coups d'envoi tombent si tard, lis notre guide sur <a href="/heure-des-matchs/">le décalage horaire des matchs</a>.</p>
+
+<h2 id="en-bref">Le fonctionnement en bref</h2>
+<ol class="steps">
+<li><h3>Installe l'appli et choisis ton pseudo</h3><p>Le compte se crée avec un email et un mot de passe, en quelques secondes. Tu choisis ensuite ton pseudo, et ton équipe de cœur si tu en as une.</p></li>
+<li><h3>Crée ta ligue ou rejoins celle d'un pote</h3><p>Dans l'onglet Ligues, « Créer une ligue » te donne un code de 6 caractères à partager. Tes potes passent par « Rejoindre avec un code ». Tu es aussi inscrit d'office à la MVP League, où jouent tous les joueurs.</p></li>
+<li><h3>Choisis le vainqueur, puis l'écart</h3><p>Sur chaque match : « Qui gagne ? », puis « De combien ? », de 1 à 60 points. Tu peux pronostiquer plusieurs jours à l'avance et changer d'avis jusqu'au coup d'envoi de ce match précis.</p></li>
+<li><h3>Découvre le classement au réveil</h3><p>Les points tombent quand les matchs sont terminés. Ta ligue a un classement de la semaine et un classement de la saison, tous deux calculés au mérite.</p></li>
+</ol>
+<p>Un même prono compte dans toutes tes ligues à la fois : pas besoin de tout refaire pour la ligue du bureau et celle de la famille. Pour la visite complète des écrans, direction la présentation de <a href="/application-pronostics-basket/">l'appli sur iPhone et Android</a>.</p>
+
+<h2 id="bareme">Le barème, en points</h2>
+<p>Le barème est le même pour tout le monde, et tu sais exactement ce que tu vises avant de valider.</p>
+<div class="table"><table>
+<thead><tr><th>Ton prono</th><th>Points</th></tr></thead>
+<tbody>
+<tr><td>Bon vainqueur et écart exact</td><td class="pts">{{bareme.exact}} pts <span class="muted">(dès le {{bareme.dateChangement|court}})</span></td></tr>
+<tr><td>Bon vainqueur, écart trouvé à {{bareme.fourchette}} points près</td><td class="pts">{{bareme.ecartProche}} pts</td></tr>
+<tr><td>Bon vainqueur, écart plus éloigné</td><td class="pts">{{bareme.vainqueur}} pts</td></tr>
+<tr><td>Mauvais vainqueur, quel que soit l'écart</td><td class="pts">{{bareme.mauvaisVainqueur}} pt</td></tr>
+</tbody>
+</table></div>
+<p>Pour les matchs joués avant le {{bareme.dateChangement}}, l'écart exact vaut {{bareme.exactAvant}} points, et ces matchs gardent leurs points. Les paliers ne s'additionnent pas, chaque prono donne un seul résultat. Un écart exact vaut donc {{bareme.exact}} points au total, pas la somme des trois lignes.</p>
+<div class="example">
+<p><strong>Exemple :</strong> un match joué à partir du {{bareme.dateChangement}}, l'équipe A bat l'équipe B 112 à 104. L'écart réel est de 8 points.</p>
+<ul>
+<li>Tu avais mis A de 8 points : écart exact, {{bareme.exact}} points.</li>
+<li>A de 12, ou A de 3 : écart trouvé à {{bareme.fourchette}} points près, {{bareme.ecartProche}} points.</li>
+<li>A de 20 : bon vainqueur seulement, {{bareme.vainqueur}} points.</li>
+<li>B, de 2 comme de 15 points : mauvais vainqueur, {{bareme.mauvaisVainqueur}} point.</li>
+</ul>
+</div>
+<p>Deux bonus s'ajoutent : {{bareme.phrases.mvp}}, et {{bareme.phrases.patron}}. Leurs conditions exactes et les cas d'égalité sont détaillés dans <a href="/regles/bonus/">MVP de la Night et patron de la semaine</a>.</p>
+
+<div class="cta">
+<p>Ta bande joue déjà au foot ? Lance la version basket ce soir, il y a des matchs presque chaque nuit.</p>
+{{badges}}
+</div>
+
+<h2 id="ligue-entre-potes">Ce qui ne change pas : la ligue entre potes</h2>
+<p>Le cœur du jeu reste le même que dans tes pronos foot : un petit groupe qui se connaît, et un classement qui fait parler. Chaque ligue a deux classements. Celui de la semaine repart de zéro tous les lundis, ce qui permet à un retardataire de gagner dès sa première semaine. Celui de la saison récompense la régularité sur la durée.</p>
+<p>Le lundi matin, le premier de chaque ligue d'au moins {{bareme.patron.minJoueursActifs}} joueurs actifs est sacré patron de la semaine. En cas d'égalité en tête, ils sont plusieurs à porter le titre. Pour organiser tout ça, les idées de noms de ligue et le règlement maison sans argent, la page <a href="/pronostics-basket-entre-amis/">pour jouer entre amis</a> te guide pas à pas.</p>
+
+<h2 id="sans-argent">Sans argent réel, comme il se doit</h2>
+<p>Dunk League se joue sans argent réel : rien à déposer, rien à perdre, rien à retirer. Un bon prono donne des points, et ces points ne servent qu'au classement de tes ligues.</p>
+<ul class="facts">
+<li>Les DUNK, la monnaie virtuelle de l'appli, débloquent seulement des cosmétiques : avatars, bannières, thèmes, trophées.</li>
+<li>Ils ne donnent aucun point et ne se convertissent jamais en argent.</li>
+<li>L'abonnement Premium apporte du confort (pas de pub, plus de ligues créées, des stats en plus), jamais de points ni de meilleure place.</li>
+</ul>
+<p>Une question sur le compte, les DUNK ou le Premium ? La <a href="/questions/">foire aux questions</a> rassemble toutes les réponses.</p>
+
+<aside class="in-app">
+<h2>Et dans Dunk League ?</h2>
+<p>Le premier écran résume l'idée : « Vainqueur + écart de points, en 10 secondes. » Touche la carte d'un match et l'appli t'enchaîne ceux de la soirée avec « Valider et match suivant », jusqu'au message « Soirée bouclée ». Le récapitulatif affiche ton choix en clair, par exemple « Ton prono : équipe A de 8 points ». Un match se verrouille à son coup d'envoi, pour tout le monde en même temps, et les pronos des autres membres de ta ligue n'apparaissent qu'à ce moment-là. Pas de copie de dernière minute sur le voisin. Au réveil, le recap de la nuit t'attend, prêt à être partagé sur le groupe pour chambrer ceux qui ont raté le match du jour.</p>
+</aside>
+
+<h2 id="pour-commencer">Par où commencer</h2>
+<p>Le plus simple : installe l'appli, crée ta ligue et envoie le code à ceux qui jouent déjà avec toi au foot. Si tu veux d'abord maîtriser la mécanique, garde sous la main <a href="/regles/">le barème et les cas particuliers</a>, comme les matchs reportés. Et pour repérer les grands rendez-vous de l'hiver, des matchs de Noël au match de Bercy, jette un œil au <a href="/saison/">calendrier de la saison</a>.</p>

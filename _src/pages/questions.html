@@ -1,0 +1,212 @@
+<!--meta
+{
+  "_sources": "Faits vérifiés dans dunk-league (lecture seule). Barème et paliers non cumulés = mig 0028 compute_outcome l.255-306, scoring.ts l.1-38 ; verrouillage = RLS 0001 l.338-345 et 558-567, game/[id].tsx l.341 et 364-367 ; reportés et annulés = fn sync-games l.120-165 ; correction de score = 0027 l.34-69 ; un prono par match = 0001 l.119 ; ligues = leagues.tsx l.105 et 126-128, league/create.tsx, league/join.tsx, 0001 l.87 et 346-359, 0014 l.53-115 ; MVP League = 0004 ; classements = league/[id].tsx l.22-23 et 127, 0028 l.59-63 ; aucun bouton quitter ou supprimer une ligue dans src/ ; MVP de la Night = 0028 l.494-588 ; patron = 0028 l.389-486 ; DUNK = catalog.ts l.3-34, shop.tsx l.241-287, 0001 l.189-192 et 420-441, 0003 l.18-49, scoring.ts l.128 ; badges = catalog.ts l.56-72 ; Premium = premium.tsx l.23-29, 121-157, 0014 free_tier_league_limit ; publicité = lib/ads.ts l.12-17, components/ad-banner.tsx ; compte = sign-up.tsx, onboarding.tsx l.103-127, 0001 l.68-69 ; profil = player/[id].tsx l.152-215, 0028 l.203-209 ; suppression = settings.tsx l.141-148 et 279, privacy.tsx l.226, 0003 l.7-16 ; export = privacy.tsx l.87-120 et 215-220 ; saison = constants/season.ts l.5-12. Mon Petit Prono : fiche App Store FR id1378863579 consultée le 24/11/2026 par l'agent mpp-support.",
+  "title": "Questions fréquentes sur Dunk League, pronos basket",
+  "description": "Points, écart, MVP de la Night, ligues privées, DUNK, Premium, compte : toutes les réponses sur Dunk League, le jeu de pronos basket gratuit.",
+  "h1": "Tes questions sur <em>Dunk League</em>",
+  "kicker": "Questions",
+  "crumb": "Questions",
+  "relatedLabel": "Questions fréquentes",
+  "relatedBlurb": "Toutes les réponses, rubrique par rubrique",
+  "intro": "Points, écart, ligues, bonus, DUNK, Premium, compte : voici les <strong>questions fréquentes</strong> sur Dunk League, rangées en cinq rubriques. Chaque réponse tient en quelques lignes et renvoie vers la page qui détaille le sujet.",
+  "primaryQuery": ["questions fréquentes"],
+  "related": ["/regles/", "/regles/bonus/", "/pronostics-basket-entre-amis/", "/application-pronostics-basket/", "/support/"],
+  "schema": ["FAQPage"],
+  "ctaCampaign": "questions",
+  "gabarit": "questions",
+  "toc": false,
+  "modifiedOn": "2026-11-24",
+  "faq": [
+    {
+      "group": "Le jeu",
+      "id": "q-points-d-un-match",
+      "q": "Comment marque-t-on des points sur un match ?",
+      "a": "Tu choisis le vainqueur et l'écart final, puis un seul palier s'applique à ton prono : {{bareme.phrases.exact}} ; {{bareme.phrases.proche}} ; {{bareme.phrases.vainqueur}} ; {{bareme.phrases.mauvais}}. Tous les cas, avec un exemple chiffré, sont sur <a href=\"/regles/\">la page du barème</a>."
+    },
+    {
+      "group": "Le jeu",
+      "id": "q-changer-son-prono",
+      "q": "Jusqu'à quand peut-on changer son prono ?",
+      "a": "Jusqu'au coup d'envoi du match concerné, avec le bouton « Modifier mon prono » sur la fiche du match. Chaque match se verrouille à son propre coup d'envoi : tu peux encore retoucher le dernier match de la nuit quand le premier est déjà commencé. Une fois verrouillé, plus rien ne bouge, pour personne, et aucun achat n'y change rien. Tout est dans <a href=\"/regles/#l-heure-limite-et-le-verrouillage\">l'heure limite expliquée</a>."
+    },
+    {
+      "group": "Le jeu",
+      "id": "q-match-reporte-ou-annule",
+      "q": "Que devient mon prono si un match est reporté ou annulé ?",
+      "a": "Match reporté : ton prono est gardé et compte quand le match se joue. S'il est reprogrammé, tu peux le modifier jusqu'au nouveau coup d'envoi. Match annulé : le prono ne compte pas, ni en plus ni en moins. Les autres situations rares sont réunies dans <a href=\"/regles/#les-cas-particuliers\">les cas particuliers des règles</a>."
+    },
+    {
+      "group": "Le jeu",
+      "id": "q-score-qui-compte",
+      "q": "Quel score sert à calculer les points ?",
+      "a": "Le score final officiel du match, prolongations comprises, transmis par notre fournisseur de données une fois le match terminé. L'écart réel se calcule sur ce score. Si le fournisseur corrige un score après coup, les points sont recalculés automatiquement. En attendant le résultat définitif, ton prono reste dans la section « En attente » de l'onglet Mes pronos. Le reste est dans <a href=\"/regles/\">les règles complètes du jeu</a>."
+    },
+    {
+      "group": "Le jeu",
+      "id": "q-bareme-30-novembre",
+      "q": "Qu'est-ce qui change dans le barème le 30 novembre 2026 ?",
+      "a": "Pour les matchs joués à partir du {{bareme.dateChangement}}, l'écart exact donne {{bareme.exact}} points au lieu de {{bareme.exactAvant}}. Les autres paliers ne bougent pas. Les nuits de ce même jour sont aussi les premières où l'on peut devenir MVP de la Night. C'est la date du match qui décide du barème, pas celle du résultat. Les étapes passées sont retracées dans <a href=\"/regles/#l-historique-du-bareme\">l'évolution du barème</a>."
+    },
+    {
+      "group": "Le jeu",
+      "id": "q-mon-petit-prono-basket",
+      "q": "Mon Petit Prono propose-t-il le basket ?",
+      "a": "Au 24/11/2026, la fiche App Store française de l'appli Mon Petit Prono présente uniquement du football : championnats français, Ligue des champions et grands tournois internationaux. Elle ne mentionne ni le basket ni la NBA. Dunk League est une appli indépendante, sans lien avec Mon Petit Prono, faite pour les pronos basket entre potes. La différence entre les deux sports est sur <a href=\"/mpp-basket/\">la page qui compare foot et basket</a>."
+    },
+    {
+      "group": "Ligues",
+      "id": "q-creer-une-ligue",
+      "q": "Comment créer une ligue privée ?",
+      "a": "Dans l'onglet Ligues, touche « Créer une ligue ». Donne-lui un nom de 3 à 40 caractères, choisis un emblème parmi les huit proposés, puis valide avec « Créer la ligue ». L'appli affiche aussitôt le code d'invitation à envoyer à tes potes, et tu reçois le badge Fondateur. Le pas-à-pas, avec des idées de noms, est dans <a href=\"/pronostics-basket-entre-amis/\">le guide des ligues entre amis</a>."
+    },
+    {
+      "group": "Ligues",
+      "id": "q-rejoindre-une-ligue",
+      "q": "Comment rejoindre la ligue d'un pote ?",
+      "a": "Demande-lui le code de sa ligue : 6 caractères, lettres et chiffres, par exemple KJ7M2P. Dans l'onglet Ligues, touche « Rejoindre avec un code », tape-le en majuscules ou en minuscules, peu importe, puis « Rejoindre la ligue ». Le code ne contient jamais I, L, O, 0 ni 1, pour éviter les confusions. Les bonnes façons de l'envoyer au groupe sont dans <a href=\"/pronostics-basket-entre-amis/#partager-le-code-whatsapp-instagram-ou-snap\">le partage du code</a>."
+    },
+    {
+      "group": "Ligues",
+      "id": "q-combien-de-ligues",
+      "q": "Combien de ligues peut-on créer ou rejoindre ?",
+      "a": "Tu peux rejoindre autant de ligues que tu veux, gratuitement. En version gratuite, tu peux en créer une ; avec Premium, le nombre de ligues créées n'est plus limité. Dans tous les cas, tu fais aussi partie de la MVP League, la ligue commune à tous les joueurs. Le détail de l'offre est dans <a href=\"/application-pronostics-basket/#premium\">la section Premium de la page appli</a>."
+    },
+    {
+      "group": "Ligues",
+      "id": "q-un-prono-toutes-les-ligues",
+      "q": "Faut-il refaire ses pronos dans chaque ligue ?",
+      "a": "Non. Tu fais un seul prono par match, et il compte en même temps dans toutes tes ligues, privées comme la MVP League. Pas besoin de saisir deux fois la même soirée. Tes potes d'une ligue et tes collègues d'une autre te voient donc avec les mêmes choix, et un écart exact te fait monter partout à la fois. Voir <a href=\"/regles/#une-nuit-type\">le déroulé d'une nuit type</a>."
+    },
+    {
+      "group": "Ligues",
+      "id": "q-mvp-league",
+      "q": "Qu'est-ce que la MVP League ?",
+      "a": "C'est la ligue de tout le monde : chaque joueur y est inscrit automatiquement dès la création de son compte, sans limite de membres, et elle ne se quitte pas. Dans ta liste de ligues, elle s'affiche avec la mention « Classement global — tout le monde participe ». Elle a, comme les autres, un classement de la semaine et un de la saison. Elle est présentée dans <a href=\"/regles/#mvp-league\">la partie MVP League des règles</a>."
+    },
+    {
+      "group": "Ligues",
+      "id": "q-classement-d-une-ligue",
+      "q": "Comment fonctionne le classement d'une ligue ?",
+      "a": "Chaque ligue a deux classements, à basculer sur sa fiche : « Cette semaine », qui repart de zéro chaque lundi, et « Saison ». Ils sont recalculés après chaque match, uniquement au mérite. Les points du MVP de la Night comptent dans les deux, ceux du patron de la semaine seulement dans la saison. Deux joueurs à égalité partagent le même rang. Tout est expliqué dans <a href=\"/pronostics-basket-entre-amis/#deux-classements-la-semaine-et-la-saison\">les deux classements d'une ligue</a>."
+    },
+    {
+      "group": "Ligues",
+      "id": "q-quitter-une-ligue",
+      "q": "Peut-on quitter ou supprimer une ligue ?",
+      "a": "Pas depuis l'appli pour le moment : aucun bouton ne permet de quitter une ligue privée ni de la supprimer. Si tu en as besoin, écris à l'équipe depuis <a href=\"/support/#ecrire\">la page d'aide et contact</a>, en donnant le nom de la ligue et ton pseudo. La MVP League, elle, ne se quitte pas : elle réunit tous les joueurs de l'appli."
+    },
+    {
+      "group": "Bonus et DUNK",
+      "id": "q-devenir-mvp-de-la-night",
+      "q": "Comment devenir MVP de la Night ?",
+      "a": "Il faut une nuit sans faute : un prono sur chaque match joué et le bon vainqueur à chaque fois, quel que soit l'écart. En résumé : {{bareme.phrases.mvp}}. Plusieurs joueurs peuvent être MVP la même nuit. Les conditions complètes sont sur <a href=\"/regles/bonus/#mvp-de-la-night\">la fiche du MVP de la Night</a>."
+    },
+    {
+      "group": "Bonus et DUNK",
+      "id": "q-devenir-patron-de-la-semaine",
+      "q": "Comment devient-on patron de la semaine ?",
+      "a": "En terminant premier de ta ligue au classement « Cette semaine » (du lundi au dimanche), avec au moins un point. Le titre tombe le lundi matin : {{bareme.phrases.patron}}. Un joueur actif a au moins un prono réglé dans la semaine. Les égalités sont traitées sur <a href=\"/regles/bonus/#patron-de-la-semaine\">la fiche du patron</a>."
+    },
+    {
+      "group": "Bonus et DUNK",
+      "id": "q-a-quoi-servent-les-dunk",
+      "q": "À quoi servent les DUNK ?",
+      "a": "Uniquement à personnaliser ton profil dans la Boutique : avatars, bannières, thèmes, animations, trophées et cartes souvenir, de 50 à 1 200 DUNK selon l'objet. Ils ne donnent aucun point et n'améliorent jamais ta place au classement. Certains objets sont réservés aux abonnés Premium, mais se règlent eux aussi en DUNK. Ce que tu as débloqué s'affiche dans ta vitrine, sur ton profil. Voir <a href=\"/application-pronostics-basket/#dunk\">les DUNK dans l'appli</a>."
+    },
+    {
+      "group": "Bonus et DUNK",
+      "id": "q-obtenir-des-dunk",
+      "q": "Comment obtenir des DUNK ?",
+      "a": "Chaque jour avec le bonus quotidien de l'onglet Matchs (+5 DUNK), et en option avec la vidéo bonus de la Boutique (+20 DUNK, trois fois par jour au plus). En plus, {{bareme.phrases.mvpDunk}}, et {{bareme.phrases.patronDunk}}. La Boutique propose aussi des packs en achat intégré. Les deux bonus sont détaillés sur <a href=\"/regles/bonus/\">la page des bonus</a>."
+    },
+    {
+      "group": "Bonus et DUNK",
+      "id": "q-dunk-argent-reel",
+      "q": "Les DUNK peuvent-ils être convertis en argent ?",
+      "a": "Non, jamais. Les DUNK sont une monnaie virtuelle propre à l'appli : ils ne se convertissent pas en argent réel, ne se retirent pas et ne s'échangent pas entre joueurs. Ils ne servent qu'aux cosmétiques. Dunk League reste un jeu sans argent réel : rien à déposer, rien à retirer, juste des points pour le classement. Plus de contexte dans <a href=\"/pronostics-basket-entre-amis/#gratuit-sans-argent-reel-ce-que-ca-veut-dire\">ce que veut dire « sans argent réel »</a>."
+    },
+    {
+      "group": "Bonus et DUNK",
+      "id": "q-badges",
+      "q": "Quels badges peut-on débloquer ?",
+      "a": "Huit badges, rangés dans « Mes badges » sur ton profil : Premier panier (tes premiers points), Sniper (un écart exact), On Fire (5 bons pronos d'affilée), Patron de la semaine, MVP de la Night, Fondateur (ta première ligue créée), Team player (rejoindre la ligue d'un pote) et Pré-saison, réservé aux comptes créés avant le début de la saison 2026-27. Ils sont présentés dans <a href=\"/regles/#les-badges\">la liste des badges</a>."
+    },
+    {
+      "group": "Premium et achats",
+      "id": "q-faut-il-payer",
+      "q": "Faut-il payer pour jouer à Dunk League ?",
+      "a": "Non. L'appli se télécharge et se joue gratuitement : pronos, ligues privées, MVP League, bonus, badges et cosmétiques débloqués en jouant. Il n'y a jamais d'argent à déposer ni à récupérer. Premium et les achats intégrés sont facultatifs : ils ajoutent du confort ou du style, jamais de points. Ce que contient la version gratuite est décrit sur <a href=\"/application-pronostics-basket/\">la page de l'appli Dunk League</a>."
+    },
+    {
+      "group": "Premium et achats",
+      "id": "q-que-donne-premium",
+      "q": "Que donne l'abonnement Premium ?",
+      "a": "Quatre choses : zéro publicité, des ligues créées sans limite, des cosmétiques exclusifs, qui se règlent en DUNK, et des statistiques en plus sur la fiche de chaque match. La version gratuite garde tout le jeu : mêmes pronos, mêmes points, mêmes classements. Le tour complet de l'offre est dans <a href=\"/application-pronostics-basket/#premium\">Premium, ce qu'il change vraiment</a>."
+    },
+    {
+      "group": "Premium et achats",
+      "id": "q-achat-et-classement",
+      "q": "Un achat peut-il faire monter au classement ?",
+      "a": "Non. Le classement reste 100 % au mérite : aucun achat ne donne de points, ne modifie un prono verrouillé ni n'améliore ta place. Premium, packs de DUNK et cosmétiques ne touchent qu'au confort et au style. Un abonné et un joueur gratuit qui font les mêmes pronos ont exactement les mêmes points. Le verrouillage au coup d'envoi vaut pour tous, comme le rappellent <a href=\"/regles/#l-heure-limite-et-le-verrouillage\">les règles du verrouillage</a>."
+    },
+    {
+      "group": "Premium et achats",
+      "id": "q-formules-premium",
+      "q": "Quelles formules Premium existent ?",
+      "a": "Deux abonnements, Premium Mensuel et Premium Annuel, qui se renouvellent automatiquement tant que tu ne les résilies pas dans le store. Si tu veux seulement retirer la pub, il existe aussi un achat unique, « Zéro pub, à vie », qui garde la version gratuite sans publicité. Les prix s'affichent dans l'écran Premium et sur le store, selon ton pays. Pour restaurer ou résilier, passe par <a href=\"/support/#achats\">l'aide sur les achats</a>."
+    },
+    {
+      "group": "Premium et achats",
+      "id": "q-publicite-pendant-les-pronos",
+      "q": "La publicité gêne-t-elle pendant les pronos ?",
+      "a": "Non. La version gratuite affiche des bannières, mais jamais de publicité pendant que tu saisis un prono ni au lancement de l'appli. Un écran publicitaire peut apparaître au plus une fois par session, après la validation du dernier prono du jour. La vidéo bonus de la Boutique reste facultative. Premium ou l'achat « Zéro pub, à vie » retirent la publicité. Les données liées à la pub sont décrites dans <a href=\"/privacy/\">la politique de confidentialité</a>."
+    },
+    {
+      "group": "Compte et données",
+      "id": "q-creer-un-compte",
+      "q": "Que faut-il pour créer un compte ?",
+      "a": "Une adresse email et un mot de passe : touche « Créer un compte », puis ouvre le lien reçu par email pour confirmer ton adresse. Tu choisis ensuite un pseudo unique de 3 à 20 caractères (lettres sans accent, chiffres ou tiret bas) et, si tu veux, ton équipe de cœur, une étape facultative. Aucun nom réel n'est demandé. Les premiers pas sont dans <a href=\"/application-pronostics-basket/#installer-et-demarrer-en-3-etapes\">l'installation en 3 étapes</a>."
+    },
+    {
+      "group": "Compte et données",
+      "id": "q-qui-voit-mon-profil",
+      "q": "Qui peut voir mon profil de joueur ?",
+      "a": "Les joueurs avec qui tu partages une ligue. Comme tout le monde est inscrit d'office dans la MVP League, ça veut dire, en pratique, tous les joueurs de l'appli : ton profil s'ouvre depuis n'importe quel classement. Ils y voient tes points et ton rang de la semaine, du mois et de la saison, tes 10 derniers pronos et votre face-à-face. Ton pseudo apparaît aussi dans les classements de tes ligues : choisis-le en conséquence. Le détail de ce que l'appli conserve est dans <a href=\"/application-pronostics-basket/#tes-donnees-personnelles\">tes données dans l'appli</a>."
+    },
+    {
+      "group": "Compte et données",
+      "id": "q-supprimer-mon-compte",
+      "q": "Comment supprimer mon compte ?",
+      "a": "Dans l'appli : Profil, « Réglages », puis « Supprimer mon compte » ; ou Profil, « Confidentialité », puis « Supprimer mon compte et mes données ». Après confirmation, ton profil, tes pronos, tes DUNK et tes ligues sont effacés définitivement. Un abonnement Premium se résilie à part, dans le store. Sans accès à l'appli, suis <a href=\"/delete-account/\">la procédure de suppression du compte</a>."
+    },
+    {
+      "group": "Compte et données",
+      "id": "q-copie-de-mes-donnees",
+      "q": "Comment récupérer une copie de mes données ?",
+      "a": "Dans l'appli, ouvre Profil, puis « Confidentialité », rubrique « Tes droits », et touche « Exporter mes données ». Tu obtiens un fichier JSON avec les informations liées à ton compte, que tu peux garder ou transmettre : c'est ton droit à la portabilité, prévu par le RGPD. La demande peut aussi se faire par email, comme l'indique <a href=\"/privacy/\">notre page sur la confidentialité</a>."
+    },
+    {
+      "group": "Compte et données",
+      "id": "q-d-une-saison-a-l-autre",
+      "q": "Que garde mon compte d'une saison à l'autre ?",
+      "a": "Au coup d'envoi d'une saison, les classements et les statistiques de jeu repartent de zéro : tout le monde redémarre à égalité. Tes DUNK, tes cosmétiques, tes badges et tes ligues restent, donc pas besoin de recréer ta ligue ni de renvoyer le code à tes potes. Les dates de la saison en cours sont sur <a href=\"/saison/\">le calendrier de la saison</a>."
+    }
+  ]
+}
+-->
+<!-- TODO-VERIFIER : packs de DUNK en achat intégré (src/lib/purchases.ts l.39-41, shop.tsx l.265-287) : confirmer avec l'éditeur qu'ils sont réellement en vente sur l'App Store et Google Play ; sinon retirer la phrase de q-obtenir-des-dunk et « packs de DUNK » de q-achat-et-classement. -->
+<!-- TODO-VERIFIER : « prolongations comprises » (q-score-qui-compte) est déduit du score final total transmis par le fournisseur (fn sync-games l.113-119 et 286-293) et de l'exclusion des matchs nuls (0011 l.102) ; le code ne l'écrit pas en toutes lettres. -->
+<!-- TODO-VERIFIER : MVP de la Night et barème à 10 points supposent la migration 0028 et la version 1.0.4 en ligne avant le 30/11/2026 (0028 l.12-14 et 224-237). -->
+<!-- TODO-VERIFIER : avant chaque actualisation, revérifier que la fiche App Store FR de Mon Petit Prono ne propose toujours pas le basket, et mettre à jour la date de la réponse q-mon-petit-prono-basket. -->
+<!-- TODO-VERIFIER : « ouvre le lien reçu pour confirmer ton adresse » est déduit de l'écran « Vérifie tes emails » (sign-up.tsx). -->
+<h2 id="rubriques">Les cinq rubriques</h2>
+<p>Les questions sont rangées par thème. Va directement à celui qui t'intéresse :</p>
+<ul class="facts">
+  <li><a href="#le-jeu">Le jeu</a> : points, heure limite, matchs reportés, score retenu.</li>
+  <li><a href="#ligues">Ligues</a> : créer, rejoindre, classements, MVP League.</li>
+  <li><a href="#bonus-et-dunk">Bonus et DUNK</a> : MVP de la Night, patron de la semaine, cosmétiques, badges.</li>
+  <li><a href="#premium-et-achats">Premium et achats</a> : ce qui est gratuit, ce que change Premium, la publicité.</li>
+  <li><a href="#compte-et-donnees">Compte et données</a> : inscription, profil, export, suppression.</li>
+</ul>
+<p>Un seul principe vaut pour toutes les rubriques : un bon prono donne des points, et les points ne servent qu'au classement. Rien ne s'achète pour monter, et il n'y a jamais d'argent réel en jeu.</p>
+<p>Pas trouvé ta réponse ? Pour un souci de connexion, de notification ou d'achat, la page <a href="/support/">Aide et contact</a> donne les vérifications à faire et l'adresse de l'équipe. Pour le détail du jeu, le plus simple reste de lire <a href="/regles/">le règlement de Dunk League</a> en entier : cinq minutes suffisent.</p>

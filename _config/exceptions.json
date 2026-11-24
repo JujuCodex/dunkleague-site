@@ -1,0 +1,6 @@
+{
+  "_doc": "Exceptions relues à la main. Toute nouvelle entrée doit citer la section du plan qui la justifie.",
+  "slugsMarqueTierce": {
+    "/mpp-basket/": "Slug historique conservé tant que la Search Console y montre des impressions (plan, section 4.7). Le H1 et l'og:title restent sans la marque tierce."
+  }
+}
