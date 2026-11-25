@@ -1,0 +1,72 @@
+<!--meta
+{
+  "_sources": "Calcul de l'écart et paliers : dunk-league/supabase/migrations/0027 (compute_outcome : écart = valeur absolue de la différence des scores finaux, palier intermédiaire si l'écart choisi est à 5 points près du vrai) et 0028 (10 points pour l'écart exact dès les matchs du 30/11/2026). Sélecteur de l'appli : src/components/margin-stepper.tsx (écart de 1 à 60) et src/lib/pick-chain.ts (raccourcis 3, 6, 9, 12, 15). Chiffres de la saison : agrégat en lecture seule sur la table games de l'app, mêmes règles que site_snapshot (migration 0029) : saison 2026-27, matchs de stage regular (sync-games classe en regular tout match hors playoffs : NBA Cup comprise, finale incluse tant qu'elle n'est pas passée en stage other à la main), matchs terminés du 20/10 au 24/11/2026 (date US), écart nul écarté. Prolongations de 5 minutes et quart-temps de 12 minutes : règlement de la ligue.",
+  "title": "Écart de points en NBA : les chiffres de la saison",
+  "description": "Écart moyen, médiane, part des matchs finis à 5 points ou moins : l'écart de points en NBA sur toute la ligue, et comment le lire avant ton prono.",
+  "h1": "L'écart de points en NBA, <em>en chiffres</em>",
+  "kicker": "Guide · Saison 2026-27",
+  "crumb": "Écart de points",
+  "relatedLabel": "Écart de points",
+  "relatedBlurb": "Les chiffres de toute la ligue",
+  "intro": "L'<strong>écart de points</strong>, c'est la moitié de ton prono. Voici l'<strong>écart moyen</strong> des matchs NBA de la saison, sa médiane et sa répartition, sur toute la ligue, puis ce qui le fait bouger : les prolongations et les dernières minutes.",
+  "primaryQuery": ["écart de points", "écart moyen"],
+  "related": ["/regles/", "/regles/bonus/", "/heure-des-matchs/", "/application-pronostics-basket/", "/pronostics-basket-entre-amis/"],
+  "schema": ["Article"],
+  "ctaCampaign": "ecarts",
+  "gabarit": "guide",
+  "publishedOn": "2026-11-25",
+  "modifiedOn": "2026-11-25",
+  "faq": [
+    {
+      "q": "Pourquoi un écart choisi de 6 points ou plus couvre-t-il plus de cas ?",
+      "a": "Parce qu'un écart réel ne descend jamais sous 1 point. Avec un prono de 6, la fourchette de {{bareme.fourchette}} points près va de 1 à 11 : onze écarts possibles. Avec un prono de 2, elle ne va que de 1 à 7 : sept écarts. En dessous de 6, chaque point retiré à ton prono retire une valeur à ta fourchette."
+    },
+    {
+      "q": "Comment sont calculés les chiffres de cette page ?",
+      "a": "Sur tous les matchs terminés depuis le 20 octobre 2026, hors playoffs, NBA Cup comprise, à partir du score final de chaque match. Chaque match compte une fois, quelle que soit l'affiche. La date du calcul est indiquée sous le tableau."
+    },
+    {
+      "q": "Pourquoi cette page ne donne-t-elle aucun chiffre par équipe ?",
+      "a": "Parce qu'elle décrit la saison, sans rien prédire. Des écarts par équipe, à domicile ou à l'extérieur, serviraient à deviner le prochain résultat : ce n'est pas notre rôle. Dans Dunk League, ton prono reste le tien, et c'est tout l'intérêt de jouer entre potes."
+    }
+  ]
+}
+-->
+<h2>Ce que mesure l'écart</h2>
+<p>L'écart de points, c'est la différence entre les deux scores au coup de sifflet final. Un match fini à 112-104 a un écart de 8 points, quel que soit le vainqueur. Au basket, deviner le score exact relève du miracle : les deux équipes dépassent souvent les 100 points, et chaque possession change le total. L'écart, lui, reste à ta portée. C'est pour ça qu'un prono Dunk League se fait en deux temps, le vainqueur puis l'écart.</p>
+<p>Un écart vaut toujours au moins 1 point, puisqu'un match NBA ne se termine jamais à égalité. Dans l'appli, tu le choisis entre 1 et 60 points.</p>
+
+<h2>Les chiffres de la saison</h2>
+<p>Voici l'écart sur l'ensemble des matchs terminés depuis le 20 octobre 2026, hors playoffs et NBA Cup comprise, toute la ligue confondue. Il n'y a ici aucun détail par équipe, ni à domicile ni à l'extérieur : ces chiffres décrivent ce qui s'est passé, ils ne disent rien du prochain match.</p>
+<!-- Chiffres de la saison : marqueur auto:ecarts (données de l'appli, table site_snapshot, actualisées à chaque build). Sans données, le bloc reprend le relevé vérifié du 25/11/2026 de _data/figees.json (clé margins). La part des prolongations n'apparaît que si site_snapshot la fournit (aujourd'hui null : aucune colonne ne la porte). -->
+{{auto:ecarts}}
+
+<h2>Moyenne et médiane, deux lectures du même match</h2>
+<p>La moyenne additionne tous les écarts et divise par le nombre de matchs. Elle a un défaut : les gros écarts la tirent vers le haut. Un match plié de 40 points pèse autant que quatre matchs finis à 10. La médiane, elle, coupe la saison en deux moitiés : la moitié des matchs se sont terminés avec un écart égal ou inférieur, l'autre moitié avec un écart égal ou supérieur.</p>
+<p>Quand la moyenne dépasse nettement la médiane, c'est que quelques matchs très déséquilibrés gonflent le chiffre. Pour te faire une idée de l'écart d'un match ordinaire, la médiane parle plus. Et la répartition des écarts montre une chose simple : aucun écart ne domine vraiment. Les matchs serrés, les matchs moyens et les larges victoires se partagent la saison.</p>
+
+<h2>Pourquoi viser à {{bareme.fourchette}} points près</h2>
+<p>Dans Dunk League, trouver l'écart pile est la récompense maximale, mais il existe un palier juste en dessous : le bon vainqueur avec un écart trouvé à {{bareme.fourchette}} points près. C'est lui qui fait la différence sur une semaine, parce qu'il pardonne une fin de match agitée.</p>
+<p>Fais le calcul. Un prono de 8 points couvre tous les écarts réels de 3 à 13 : onze valeurs. Un prono de 3 points ne couvre que les écarts de 1 à 8, puisqu'un écart ne descend jamais sous 1 : huit valeurs seulement. Dès 6 points, ta fourchette est complète. Choisir un très petit écart revient donc à viser l'écart exact au prix d'une fourchette plus étroite. Ce n'est ni bien ni mal, c'est un choix à faire en connaissance de cause.</p>
+<!-- Exemples calculés pour une fourchette de 5 points (compute_outcome, 0027) : à revoir si bareme.fourchette change. -->
+<p>Sous le sélecteur d'écart, l'appli propose des raccourcis à 3, 6, 9, 12 et 15 points, puis tu ajustes d'un point à la fois si tu veux être plus précis.</p>
+
+<h2>Les prolongations</h2>
+<p>Un match NBA se joue en quatre quart-temps de 12 minutes. À égalité au bout de ces 48 minutes, les équipes repartent pour une prolongation de cinq minutes, puis une autre si l'égalité persiste, jusqu'à ce qu'une équipe passe devant au buzzer.</p>
+<p>Ça change la lecture de l'écart. Chaque prolongation démarre à égalité : l'écart final est donc entièrement construit pendant la dernière prolongation, en cinq minutes de jeu. Un match qui semblait parti pour un écart de 10 points peut ainsi finir à 3, après une remontée et une prolongation. Dans l'appli, c'est le score final qui compte, prolongations comprises : le détail est dans <a href="/regles/">les règles de Dunk League</a>.</p>
+<!-- TODO-VERIFIER : « prolongations comprises » est déduit du score final total transmis par le fournisseur (sync-games) et de compute_outcome (0027) ; le code ne l'écrit pas en toutes lettres (même réserve que /regles/). -->
+
+<h2>Les fins de match, là où l'écart bouge</h2>
+<p>Les deux dernières minutes d'un match serré ne ressemblent à rien d'autre. L'équipe menée commet des fautes volontaires pour arrêter le chronomètre et récupérer le ballon. L'équipe qui mène va alors aux lancers francs, un point par lancer réussi. En une minute, un écart de 3 points peut passer à 7, puis retomber à 4 sur un tir à trois points tenté en catastrophe.</p>
+<p>À l'inverse, quand le match est plié depuis longtemps, les entraîneurs font souvent entrer leurs remplaçants. L'écart peut encore grimper ou fondre dans ces dernières minutes sans enjeu. Retiens une règle : un écart se lit au coup de sifflet final, jamais à deux minutes de la fin. Et comme ton prono se verrouille au coup d'envoi, ce scénario se vit en direct ou se découvre au réveil, sans rien pouvoir changer.</p>
+
+<h2>Ce que cette page ne fera pas</h2>
+<p>Tu ne trouveras ici ni écart par équipe, ni bilan à domicile ou à l'extérieur, ni prono de notre part. Ces chiffres-là servent à deviner un résultat avant le match, et ce n'est pas le rôle d'un jeu entre potes. Les chiffres de cette page décrivent toute la ligue, après coup, pour comprendre à quoi ressemble un écart en NBA. Le reste, c'est ton intuition contre celle de tes amis.</p>
+
+<aside class="in-app"><h2>Et dans Dunk League ?</h2><p>Pour chaque match, tu choisis le vainqueur puis l'écart, avant le coup d'envoi. Le barème récompense la précision par paliers : {{bareme.phrases.exact}}, {{bareme.ecartProche}} points pour un écart trouvé à {{bareme.fourchette}} points près, et {{bareme.vainqueur}} points pour le bon vainqueur seul. Un mauvais vainqueur ne donne rien, même avec le bon écart : l'écart ne compte que si l'équipe choisie gagne. Chaque prono tombe dans un seul palier, le plus haut atteint. Sur une semaine de matchs, ces paliers intermédiaires s'additionnent vite au classement de ta ligue. Le détail des paliers est sur <a href="/regles/">le barème complet, palier par palier</a>, et l'appli est présentée écran par écran sur <a href="/application-pronostics-basket/">la page de l'appli de pronos</a>.</p></aside>
+
+<div class="cta"><p>Vainqueur, puis écart : deux minutes par soir pour tenter le compte juste. Installe l'appli et lance ta ligue.</p>
+{{badges}}
+</div>
+
+<p>Envie de savoir à quelle heure tombent ces matchs chez toi ? Tout est expliqué dans <a href="/heure-des-matchs/">notre guide sur l'horaire des matchs</a>. Et pour jouer avec tes potes, commence par <a href="/pronostics-basket-entre-amis/">créer ta ligue privée</a>.</p>

@@ -6,20 +6,26 @@
 //   node _scripts/build.mjs --prune    supprime aussi les pages générées dont la source a disparu
 //   node _scripts/build.mjs --hash "mot ou expression"   affiche l'empreinte à ajouter dans _config/lexique.json
 //   node _scripts/build.mjs --today=2026-12-01            date du jour forcée (tests)
+//   node _scripts/build.mjs --now=2026-11-25T16:00:00Z    instant forcé pour les blocs de données (tests)
+//   node _scripts/build.mjs --sample                      données FICTIVES de _data/snapshot.sample.json, sortie dans _preview/
+//   node _scripts/build.mjs --data=chemin.json            autre fichier de données (tests), sortie dans _preview/
 //
 // Sources : _src/pages/<chemin>.html (en-tête <!--meta {JSON} --> puis corps HTML).
 // Sortie : <slug>/index.html à la racine du dépôt (accueil = index.html), sitemap.xml, 404.html.
-// Rien n'est écrit s'il reste une erreur. Voir README.md, section « Générateur ».
+// Données : _data/snapshot.json (écrit par _scripts/fetch-snapshot.mjs), marqueurs {{auto:…}}.
+// Rien n'est écrit s'il reste une erreur. Voir README.md, sections « Générateur » et « Données de l'app ».
 
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import * as DONNEES from './donnees.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC_DIR = path.join(ROOT, '_src');
 const PAGES_DIR = path.join(SRC_DIR, 'pages');
 const CONFIG_DIR = path.join(ROOT, '_config');
+const DATA_DIR = path.join(ROOT, '_data');
 const STATE_FILE = path.join(CONFIG_DIR, 'build-state.json');
 const GEN_MARK = '<meta name="generator" content="dunkleague-build">';
 const CSS_MAX = 14 * 1024;
@@ -29,6 +35,11 @@ const argv = process.argv.slice(2);
 const FLAG = (n) => argv.includes(n);
 const todayArg = argv.find((a) => a.startsWith('--today='));
 const TODAY = todayArg ? todayArg.slice(8) : new Date().toISOString().slice(0, 10);
+// Instant de référence des blocs de données (nuit à venir, récap) : --now, sinon 16 h UTC le jour de --today, sinon maintenant.
+const nowArg = argv.find((a) => a.startsWith('--now='));
+const NOW = nowArg ? Date.parse(nowArg.slice(6)) : todayArg ? Date.parse(TODAY + 'T16:00:00Z') : Date.now();
+const dataArg = argv.find((a) => a.startsWith('--data='));
+const DATA_TEST = dataArg ? dataArg.slice(7) : FLAG('--sample') ? path.join('_data', 'snapshot.sample.json') : null;
 
 // ---------------------------------------------------------------- rapport
 const errors = [];
@@ -175,6 +186,80 @@ function reportLexique(where, fullText, bodyText, pagePath, { legacy = false } =
   }
 }
 
+// ---------------------------------------------------------------- données de l'app (vague 2)
+// Trois modes :
+//   live   : _data/snapshot.json valide (téléchargé par fetch-snapshot.mjs) ; sortie à la racine.
+//   apercu : --sample ou --data=… (données fictives ou de test) ; sortie dans _preview/, jamais à la racine.
+//   repli  : aucune donnée valide ; blocs de repli (chiffres figés vérifiés de _data/figees.json,
+//            /ce-soir/ sans programme). Jamais de page vide, jamais de chiffre inventé.
+const DONNEES_CONF = readJson(path.join(CONFIG_DIR, 'donnees.json')) || {};
+const FIGEES = fs.existsSync(path.join(DATA_DIR, 'figees.json')) ? readJson(path.join(DATA_DIR, 'figees.json')) : null;
+let SNAP = null;
+let DATA_MODE = 'repli';
+let DATA_FILE = null;
+{
+  const file = DATA_TEST ? path.resolve(ROOT, DATA_TEST) : path.join(DATA_DIR, 'snapshot.json');
+  const rel = path.relative(ROOT, file).replace(/\\/g, '/');
+  if (fs.existsSync(file)) {
+    const snap = readJson(file, rel);
+    const pb = snap ? DONNEES.validerSnapshot(snap) : ['illisible'];
+    if (pb.length) {
+      (DATA_TEST ? err : warn)(rel, `données refusées (${pb.slice(0, 5).join(' ; ')}${pb.length > 5 ? ` ; … ${pb.length - 5} autre(s)` : ''}) : blocs de repli`);
+    } else {
+      SNAP = snap;
+      DATA_MODE = DATA_TEST ? 'apercu' : 'live';
+      DATA_FILE = rel;
+    }
+  } else if (DATA_TEST) err(rel, 'fichier de données introuvable');
+}
+if (DATA_MODE === 'apercu') warn('données', `APERÇU avec ${DATA_FILE} (données fictives ou de test) : pages écrites dans _preview/, jamais à la racine du site`);
+if (DATA_MODE === 'repli') warn('données', `pas de _data/snapshot.json valide : blocs de repli (chiffres figés vérifiés, /ce-soir/ sans programme). Pour l'obtenir : node _scripts/fetch-snapshot.mjs ; pour un aperçu fictif : --sample`);
+if (SNAP) {
+  const ageH = (NOW - Date.parse(SNAP.generated_at)) / 3600e3;
+  const maxH = DONNEES_CONF.fraicheurMaxHeures || 36;
+  if (ageH > maxH) warn('données', `instantané généré il y a ${Math.round(ageH)} h (plus de ${maxH} h) : /ce-soir/ le signale aux visiteurs`);
+  if (ageH < -1) warn('données', `instantané daté du futur (${SNAP.generated_at})`);
+  const label = DONNEES_CONF.saison && DONNEES_CONF.saison.label;
+  if (label && SNAP.season.label !== label) warn('données', `saison « ${SNAP.season.label} » dans les données, « ${label} » dans _config/donnees.json`);
+  const vide = DONNEES.controleExportVide(SNAP, NOW, DONNEES_CONF);
+  if (vide) err('données', vide);
+  // Instantané périmé : ses nuits ne couvrent ni J ni J+1 (actualisation en panne). Pas bloquant : /ce-soir/
+  // affiche alors le message neutre « n'a pas pu être actualisé », jamais « pas de match ».
+  {
+    const J = DONNEES.dateNewYork(NOW);
+    const S = DONNEES_CONF.saison || {};
+    const couvre = (SNAP.nights || []).some((n) => n && (n.date === J || n.date === DONNEES.ajouterJours(J, 1)));
+    if (!couvre && S.debut && J >= S.debut && J <= S.finSaisonReguliere) warn('données', `l'instantané ne couvre ni le ${J} ni le lendemain (nuits du ${(SNAP.nights[0] || {}).date || '?'} au ${(SNAP.nights.at(-1) || {}).date || '?'}) : /ce-soir/ affiche le message « programme non actualisé »`);
+  }
+  if (BAREME.mvp && BAREME.mvp.minMatchs !== 5) warn('données', `nights_5plus compte les nuits d'au moins 5 matchs, mais le barème met le MVP de la Night à ${BAREME.mvp.minMatchs} : adapter le contrat`);
+}
+// Le payload est publié en partie : ses textes passent par le lexique (clés exclues).
+function scanDonnees(where, obj) {
+  const r = scanLexique(DONNEES.textesDuPayload(obj));
+  for (const f of [...r.bloq, ...r.capital]) err(where, `mot proscrit dans les données « ${f.shown} » (… ${f.ctx} …)`);
+  for (const f of r.marques) err(where, `nom de marque ou de sponsor dans les données « ${f.shown} »`);
+  for (const f of r.alerte) warn(where, `mot de la liste d'alerte dans les données « ${f.shown} »`);
+}
+if (SNAP) scanDonnees(DATA_FILE, SNAP);
+if (FIGEES) scanDonnees('_data/figees.json', FIGEES);
+if (DATA_FILE !== '_data/snapshot.sample.json' && fs.existsSync(path.join(DATA_DIR, 'snapshot.sample.json'))) {
+  const s = readJson(path.join(DATA_DIR, 'snapshot.sample.json'));
+  if (s) scanDonnees('_data/snapshot.sample.json', s);
+}
+const autoCtx = () => ({ snap: SNAP, mode: DATA_MODE, now: NOW, bareme: BAREME, donnees: DONNEES_CONF, figees: FIGEES, warn: (m) => warn('données', m) });
+// Remplace les marqueurs {{auto:nom}} du corps par leur bloc, encadré de <!--auto:start-->…<!--auto:end-->
+// (hors compte de mots et hors empreinte lastmod). Un marqueur produit un bloc : seul sur sa ligne.
+function expandAuto(html, where) {
+  if (!/\{\{\s*auto:/.test(html)) return html;
+  if (/<p[^>]*>(?:(?!<\/p>)[\s\S])*\{\{\s*auto:/.test(html)) err(where, '{{auto:…}} produit un bloc : le placer seul sur sa ligne, hors d\'un <p>');
+  const ctx = autoCtx();
+  return html.replace(/\{\{\s*auto:([a-z0-9-]+)\s*\}\}/g, (m, name) => {
+    const fn = DONNEES.MARQUEURS[name];
+    if (!fn) { err(where, `marqueur inconnu ${m} (disponibles : ${Object.keys(DONNEES.MARQUEURS).map((k) => `auto:${k}`).join(', ')})`); return ''; }
+    return `<!--auto:start-->${fn(ctx)}<!--auto:end-->`;
+  });
+}
+
 // ---------------------------------------------------------------- marqueurs
 function lookup(obj, keyPath) {
   return keyPath.split('.').reduce((o, k) => (o != null && typeof o === 'object' ? o[k] : undefined), obj);
@@ -246,7 +331,7 @@ function pathFromFile(file) {
 const outFileFor = (p) => (p === '/' ? 'index.html' : p.slice(1) + 'index.html');
 const absUrl = (p) => BASE + p;
 
-const KNOWN_FIELDS = new Set(['title', 'description', 'h1', 'kicker', 'intro', 'heroNote', 'heroMedia', 'disclaimerTop', 'path', 'parent', 'crumb', 'breadcrumbs', 'related', 'relatedLabel', 'relatedBlurb', 'primaryQuery', 'forbiddenInTitle', 'schema', 'ogTitle', 'ogDescription', 'ogImage', 'ogImageAlt', 'ogType', 'noindex', 'draft', 'inMenu', 'modifiedOn', 'publishedOn', 'faq', 'faqTitle', 'ctaCampaign', 'heroBadges', 'stickyCta', 'toc', 'gabarit', 'replacesLegacy', 'minWords']);
+const KNOWN_FIELDS = new Set(['title', 'description', 'h1', 'kicker', 'intro', 'heroNote', 'heroMedia', 'disclaimerTop', 'path', 'parent', 'crumb', 'breadcrumbs', 'related', 'relatedLabel', 'relatedBlurb', 'primaryQuery', 'forbiddenInTitle', 'schema', 'ogTitle', 'ogDescription', 'ogImage', 'ogImageAlt', 'ogType', 'noindex', 'draft', 'inMenu', 'modifiedOn', 'publishedOn', 'faq', 'faqTitle', 'ctaCampaign', 'heroBadges', 'stickyCta', 'toc', 'gabarit', 'replacesLegacy', 'minWords', 'preprod', 'introPour', 'dateFromData']);
 
 const sources = walk(PAGES_DIR).filter((f) => f.endsWith('.html'));
 for (const f of walk(PAGES_DIR)) if (!f.endsWith('.html') && !path.basename(f).startsWith('.')) warn(path.relative(ROOT, f), 'fichier ignoré (seuls les .html sont des pages)');
@@ -295,6 +380,14 @@ const legacyServed = new Map([...handOnDisk].filter(([p]) => !livePaths.has(p)))
 // Brouillons dont aucune version n'est servie (une page à la main en cours de réécriture reste, elle, servie et liée).
 const drafts = new Set(pages.filter((p) => p.meta.draft && !legacyServed.has(p.path)).map((p) => p.path));
 const draftSources = pages.filter((p) => p.meta.draft).map((p) => p.path);
+// Préproduction (plan, 5.3.8) : page générée et servie, mais noindex, hors sitemap, hors menu,
+// hors pied de page, hors pages liées et sans lien depuis les autres pages.
+const preprod = new Set(live.filter((p) => p.meta.preprod).map((p) => p.path));
+for (const p of live.filter((x) => x.meta.preprod)) {
+  if (p.meta.preprod !== true) err(p.where, 'preprod doit valoir true (ou être retiré)');
+  if (!p.meta.noindex) err(p.where, 'une page en préproduction doit porter "noindex": true');
+  if (p.meta.inMenu) err(p.where, 'une page en préproduction ne peut pas être dans le menu (inMenu)');
+}
 const isPublished = (p) => livePaths.has(p) || legacyServed.has(p);
 const labelOf = (p) => {
   const pg = live.find((x) => x.path === p);
@@ -321,6 +414,10 @@ function unwrapDraftLinks(html, where) {
     const target = href.replace(/^https:\/\/dunkleague\.app/, '').split('#')[0].split('?')[0];
     if (drafts.has(target)) {
       warn(where, `lien vers la page brouillon ${target} retiré (texte conservé)`);
+      return inner;
+    }
+    if (preprod.has(target)) {
+      warn(where, `lien vers la page en préproduction ${target} retiré (texte conservé)`);
       return inner;
     }
     return all;
@@ -419,6 +516,13 @@ ol.tips li{color:var(--muted)}ol.tips li strong{display:block;color:var(--text)}
 .sticky.on{display:flex}.sticky .btn-dl{margin:0}
 @media(max-width:759px){body:has(.sticky.on){padding-bottom:84px}}
 @media(min-width:760px){.sticky.on{display:none}}
+.pills{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px!important;padding:0!important}
+.pill{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:3px 12px;font-size:.88rem;color:var(--muted);margin:0!important}.pill.on{border-color:var(--gold);color:var(--gold);font-weight:700}
+tr.off td{color:var(--muted)}
+.histo{margin:16px 0 20px}.histo svg{display:block;width:100%;height:auto}.histo .bar{fill:var(--gold)}.histo .axe{stroke:var(--border)}
+.histo text{fill:var(--muted);font-size:19px;text-anchor:middle}.histo .val{fill:var(--text);font-weight:700}.histo figcaption{color:var(--muted);font-size:.85rem;margin-top:8px}
+.tonight{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:24px 0}.tonight h2{margin:0 0 4px;font-size:1.25rem}
+.tonight-l{list-style:none;display:grid;gap:6px;margin:12px 0}.tonight-l b{display:inline-block;min-width:4.2em;color:var(--gold)}.tonight p:last-child{margin:0}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}`;
 if (Buffer.byteLength(CSS) > CSS_MAX) err('gabarit', `CSS en ligne de ${Buffer.byteLength(CSS)} octets (max ${CSS_MAX})`);
 
@@ -433,7 +537,7 @@ function dlButton(c, cls = 'btn-dl') {
 function renderMenu(current) {
   const items = [];
   for (const m of SITE.menu || []) {
-    if (drafts.has(m.path)) { continue; }
+    if (drafts.has(m.path) || preprod.has(m.path)) { continue; }
     if (!isPublished(m.path)) continue;
     items.push(`<a href="${m.path}"${m.path === current ? ' aria-current="page"' : ''}>${esc(m.label)}</a>`);
   }
@@ -454,7 +558,7 @@ function renderFooter() {
   const cols = (SITE.footer || []).map((col) => {
     const lis = col.links.map((l) => {
       if (l.url) return `<li><a href="${escAttr(l.url)}" rel="noopener">${esc(l.label)}</a></li>`;
-      if (!isPublished(l.path)) return '';
+      if (!isPublished(l.path) || preprod.has(l.path)) return '';
       return `<li><a href="${l.path}">${esc(l.label)}</a></li>`;
     }).filter(Boolean);
     if (!lis.length) return '';
@@ -527,9 +631,18 @@ function minimalEntities(graph) {
   if (!has(ID_APP) && JSON.stringify(graph).includes(`"${ID_APP}"`)) out.push({ '@type': 'MobileApplication', '@id': ID_APP, name: SITE.name, applicationCategory: 'GameApplication', operatingSystem: 'iOS, Android' });
   return out;
 }
+// L'éditeur, complet : accueil et page « À propos » (avec le contact). Même @id partout.
+function orgEntity({ contact = false } = {}) {
+  const o = { '@type': 'Organization', '@id': ID_ORG, name: SITE.name, url: BASE + '/', logo: orgLogo(), sameAs: [SITE.instagram, SITE.appStoreUrl, SITE.playUrl] };
+  if (contact && SITE.contactEmail) {
+    o.email = SITE.contactEmail;
+    o.contactPoint = { '@type': 'ContactPoint', contactType: 'customer support', email: SITE.contactEmail, availableLanguage: 'fr' };
+  }
+  return o;
+}
 function homeEntities() {
   return [
-    { '@type': 'Organization', '@id': ID_ORG, name: SITE.name, url: BASE + '/', logo: orgLogo(), sameAs: [SITE.instagram, SITE.appStoreUrl, SITE.playUrl] },
+    orgEntity(),
     { '@type': 'WebSite', '@id': ID_WEBSITE, url: BASE + '/', name: SITE.name, inLanguage: SITE.inLanguage, publisher: { '@id': ID_ORG } },
     { '@type': 'MobileApplication', '@id': ID_APP, name: SITE.name, applicationCategory: 'GameApplication', operatingSystem: 'iOS, Android', inLanguage: SITE.inLanguage, url: BASE + '/', installUrl: SITE.appStoreUrl, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, publisher: { '@id': ID_ORG }, sameAs: [SITE.appStoreUrl, SITE.playUrl] },
   ];
@@ -542,19 +655,30 @@ function buildGraph(pg, ctx) {
     graph.push({ '@type': 'BreadcrumbList', '@id': url + '#breadcrumb', itemListElement: ctx.crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: absUrl(c.path) })) });
   }
   const list = Array.isArray(pg.meta.schema) ? pg.meta.schema : pg.meta.schema ? [pg.meta.schema] : [];
+  // Temps forts : quand la page déclare un SportsEvent, l'Article parle de l'événement (about) et cite l'appli
+  // (mentions), pour que l'événement ne reste pas isolé dans le @graph.
+  const eventEntry = list.find((e) => e && typeof e === 'object' && [].concat(e['@type']).includes('SportsEvent') && e['@id']);
+  const eventId = eventEntry ? eventEntry['@id'] : null;
+  // Page « À propos » : l'éditeur est l'entité principale ; le #org complet (sameAs, contact) y est déclaré,
+  // avec le même @id que sur l'accueil.
+  const isAbout = list.some((e) => [].concat(typeof e === 'string' ? e : e && e['@type']).includes('AboutPage'));
+  if (isAbout && pg.path !== '/') graph.push(orgEntity({ contact: true }));
   for (const entry of list) {
     const node = typeof entry === 'string' ? { '@type': entry } : JSON.parse(JSON.stringify(entry));
     const t = node['@type'];
     if (!t && !node['@id']) { err(pg.where, 'entrée schema sans @type ni @id'); continue; }
     const types = Array.isArray(t) ? t : [t];
     if (types.some((x) => ARTICLE_TYPES.has(x))) {
-      const def = { '@id': url + '#article', headline: visibleText(ctx.h1).slice(0, 110), description: ctx.description, inLanguage: SITE.inLanguage, datePublished: pg.meta.publishedOn || pg.meta.modifiedOn, dateModified: pg.meta.modifiedOn, mainEntityOfPage: { '@id': url }, image: ctx.ogImage, author: { '@id': ID_ORG }, publisher: { '@id': ID_ORG }, about: { '@id': ID_APP } };
+      const def = { '@id': url + '#article', headline: visibleText(ctx.h1).slice(0, 110), description: ctx.description, inLanguage: SITE.inLanguage, datePublished: pg.meta.publishedOn || pg.meta.modifiedOn, dateModified: pg.meta.modifiedOn, mainEntityOfPage: { '@id': url }, image: ctx.ogImage, author: { '@id': ID_ORG }, publisher: { '@id': ID_ORG }, about: { '@id': eventId || ID_APP } };
+      if (eventId) def.mentions = { '@id': ID_APP };
       for (const k in def) if (node[k] === undefined) node[k] = def[k];
       if (node.dateModified !== pg.meta.modifiedOn) err(pg.where, `Article.dateModified (${node.dateModified}) différent de modifiedOn (${pg.meta.modifiedOn})`);
+      if (!pg.meta.publishedOn && !pg.meta.noindex) warn(pg.where, 'Article sans publishedOn : datePublished suivrait modifiedOn à chaque actualisation (ajouter "publishedOn", date de la première publication)');
     }
     if (types.some((x) => PAGE_TYPES.has(x))) {
-      const def = { '@id': `${url}#${String(types[0]).toLowerCase()}`, url, name: ctx.title, description: ctx.description, inLanguage: SITE.inLanguage, isPartOf: { '@id': ID_WEBSITE }, about: { '@id': ID_APP }, dateModified: pg.meta.modifiedOn };
+      const def = { '@id': `${url}#${String(types[0]).toLowerCase()}`, url, name: ctx.title, description: ctx.description, inLanguage: SITE.inLanguage, isPartOf: { '@id': ID_WEBSITE }, about: { '@id': ID_APP }, dateModified: ctx.dateModified || pg.meta.modifiedOn };
       if (ctx.crumbs.length > 1) def.breadcrumb = { '@id': url + '#breadcrumb' };
+      if (types.includes('AboutPage')) def.mainEntity = { '@id': ID_ORG };
       for (const k in def) if (node[k] === undefined) node[k] = def[k];
     }
     if (types.includes('FAQPage') && !node.mainEntity) {
@@ -673,7 +797,14 @@ function renderPage(pg) {
   if (/<(?!\/?em>|br\s*\/?>)/i.test(h1)) err(W, 'H1 : seules les balises <em> et <br> sont admises');
 
   if (/<p[^>]*>(?:(?!<\/p>)[\s\S])*\{\{\s*badges\s*\}\}/.test(pg.body)) err(W, '{{badges}} produit un bloc : le placer seul sur sa ligne, hors d\'un <p>');
-  const resolvedBody = R(pg.body);
+  if (/\{\{\s*auto:/.test(pg.raw.slice(0, pg.raw.length - pg.body.length))) err(W, 'les marqueurs {{auto:…}} ne s\'emploient que dans le corps, jamais dans l\'en-tête');
+  if (M.introPour !== undefined) {
+    const moisFr = DONNEES.heureFr(NOW).iso.slice(0, 7);
+    const liste = [].concat(M.introPour);
+    if (liste.some((x) => !/^\d{4}-\d{2}$/.test(x))) err(W, 'introPour : liste de mois AAAA-MM');
+    else if (!liste.includes(moisFr)) warn(W, `intro écrite pour ${liste.join(', ')} : à réécrire pour ${moisFr} (temps fort et contexte du mois), puis mettre à jour introPour et modifiedOn`);
+  }
+  const resolvedBody = R(expandAuto(pg.body, W));
   let body = resolvedBody;
   body = unwrapDraftLinks(body, W);
   const introHtml = intro ? (/^\s*</.test(intro) ? intro : `<p>${intro}</p>`) : '';
@@ -706,6 +837,7 @@ function renderPage(pg) {
   const relOk = [];
   for (const r of related) {
     if (drafts.has(r)) { warn(W, `page liée ${r} en brouillon : retirée du bloc`); continue; }
+    if (preprod.has(r)) { warn(W, `page liée ${r} en préproduction : retirée du bloc`); continue; }
     if (!isPublished(r)) { err(W, `page liée ${r} inexistante`); continue; }
     if (r === pg.path) { err(W, 'la page se cite elle-même dans related'); continue; }
     relOk.push(r);
@@ -758,13 +890,27 @@ function renderPage(pg) {
     }
   }
 
-  const ctx = { title, description, h1, faq, crumbs, ogImage };
+  // Page dont le contenu suit les données (/ce-soir/, "dateFromData": true) : la date visible « Actualisé le »
+  // et WebPage.dateModified sont celles de l'instantané, jamais une date figée (plan, 5.3.6). Le sitemap garde
+  // modifiedOn (empreinte du texte écrit à la main).
+  const dataDate = M.dateFromData && SNAP ? SNAP.generated_at : null;
+  const ctx = { title, description, h1, faq, crumbs, ogImage, dateModified: dataDate };
   const { graph, json } = buildGraph(pg, ctx);
+  const updatedHtml = dataDate
+    ? `<p class="updated">Actualisé le <time datetime="${escAttr(dataDate)}">${dateShort(DONNEES.heureFr(dataDate).iso)}</time></p>`
+    : `<p class="updated">Actualisé le <time datetime="${M.modifiedOn}">${isIsoDate(M.modifiedOn) ? dateShort(M.modifiedOn) : ''}</time></p>`;
 
   const crumbsHtml = pg.path === '/' ? '' : `<nav class="crumbs" aria-label="Fil d'Ariane"><ol>${crumbs.map((c, i) => (i === crumbs.length - 1 ? `<li aria-current="page">${esc(c.name)}</li>` : `<li><a href="${c.path}">${esc(c.name)}</a></li>`)).join('')}</ol></nav>`;
   const heroBadges = M.heroBadges === false ? '' : badgesHtml(M.ctaCampaign);
   const sticky = M.stickyCta ? `<div class="sticky" id="sticky"><span>Tes pronos de la nuit, gratuitement</span>${dlButton(M.ctaCampaign)}</div>` : '';
   const disclaimer = M.disclaimerTop ? `<p class="disclaimer">${esc(SITE.disclaimerShort || '')}</p>` : '';
+  // Encart « Cette nuit » de l'accueil (plan, 7, vague 2), activé par site.json "homeTonight". Hors empreinte lastmod.
+  let tonightHtml = '';
+  if (pg.path === '/' && SITE.homeTonight === true) {
+    const lien = isPublished('/ce-soir/') && !preprod.has('/ce-soir/') ? '/ce-soir/' : null;
+    if (!lien) warn(W, 'homeTonight activé alors que /ce-soir/ est en préproduction ou absente : encart sans lien vers le programme complet');
+    tonightHtml = DONNEES.blocCetteNuit(autoCtx(), { lien, nb: DONNEES_CONF.accueilNbMatchs || 3 });
+  }
 
   const html = `${headHtml({
     title, description, canonical: url,
@@ -782,13 +928,13 @@ ${kicker ? `<p class="kicker">${esc(visibleText(kicker))}</p>\n` : ''}<h1>${h1}<
 ${disclaimer}${heroNote ? `<p class="hero-note">${heroNote}</p>` : ''}${introHtml ? `<div class="intro">${introHtml}</div>` : ''}
 ${heroBadges}${M.heroMedia ? `<div class="hero-media">${R(M.heroMedia)}</div>` : ''}
 </header>
-${relatedHtml}
+${tonightHtml}${relatedHtml}
 ${tocHtml}
 <article class="content">
 ${stripComments(body).trim()}
 </article>
 ${faqHtml}
-<p class="updated">Actualisé le <time datetime="${M.modifiedOn}">${isIsoDate(M.modifiedOn) ? dateShort(M.modifiedOn) : ''}</time></p>
+${updatedHtml}
 </div>
 ${renderReassure()}
 ${renderDownload(M.ctaCampaign)}
@@ -805,7 +951,7 @@ ${sticky}<script>${JS}</script>
 
 function render404() {
   const c = '404';
-  const links = ((SITE.page404 && SITE.page404.links) || ['/']).filter(isPublished).map((p) => `<li><a href="${p}">${esc(p === '/' ? 'Accueil' : labelOf(p))}</a></li>`).join('');
+  const links = ((SITE.page404 && SITE.page404.links) || ['/']).filter((p) => isPublished(p) && !preprod.has(p)).map((p) => `<li><a href="${p}">${esc(p === '/' ? 'Accueil' : labelOf(p))}</a></li>`).join('');
   const title = 'Page introuvable — Dunk League';
   const description = 'Cette page n\'existe pas ou a changé d\'adresse. Retrouve le jeu de pronos basket Dunk League depuis l\'accueil.';
   return `${headHtml({ title, description, canonical: null, robots: 'noindex,follow', og: null, jsonld: null })}
@@ -928,10 +1074,12 @@ for (const o of outs) {
     if (last.includes('.')) { if (!fs.existsSync(path.join(ROOT, target.slice(1)))) err(W, `lien vers un fichier absent ${target}`); continue; }
     if (!target.endsWith('/')) { err(W, `lien interne sans barre finale ${target}`); continue; }
     if (drafts.has(target)) { err(W, `lien vers la page brouillon ${target}`); continue; }
+    if (preprod.has(target) && target !== o.pg.path) { err(W, `lien vers la page en préproduction ${target}`); continue; }
     if (!isPublished(target)) { err(W, `lien interne cassé ${target}`); continue; }
     if (hash && byPath.has(target) && !ids(byPath.get(target).html).has(hash)) warn(W, `ancre #${hash} absente de ${target}`);
   }
-  for (const m of o.body.matchAll(/<a\b[^>]*href="(\/[^"#?]*)[^"]*"[^>]*>([\s\S]*?)<\/a>/gi)) {
+  // Ancres du corps et des réponses de FAQ (plan, 2 : jamais la même ancre exacte plus de deux fois sur le site)
+  for (const m of (o.body + ' ' + o.faq.map((q) => q.a).join(' ')).matchAll(/<a\b[^>]*href="(\/[^"#?]*)[^"]*"[^>]*>([\s\S]*?)<\/a>/gi)) {
     const k = norm(visibleText(m[2]));
     if (!k) continue;
     const e = anchorUse.get(k) || [];
@@ -958,7 +1106,7 @@ for (const o of outs) {
   if (!M.primaryQuery && o.indexable) warn(W, 'primaryQuery absente');
   // Menu
   const inSiteMenu = (SITE.menu || []).some((m) => m.path === o.pg.path);
-  if (M.inMenu !== undefined && Boolean(M.inMenu) !== inSiteMenu) warn(W, `inMenu=${M.inMenu} mais le menu de _config/site.json ${inSiteMenu ? 'contient' : 'ne contient pas'} cette page`);
+  if (M.inMenu !== undefined && Boolean(M.inMenu) !== inSiteMenu && !preprod.has(o.pg.path)) warn(W, `inMenu=${M.inMenu} mais le menu de _config/site.json ${inSiteMenu ? 'contient' : 'ne contient pas'} cette page`);
   // Lexique
   reportLexique(W + ' (sortie)', decode(o.html), o.bodyVisible, o.pg.path);
 }
@@ -993,11 +1141,14 @@ for (const o of outs) {
 }
 
 // Menu
-for (const m of SITE.menu || []) if (!isPublished(m.path)) warn('menu', `${m.path} non publiée : absente du menu`);
+for (const m of SITE.menu || []) {
+  if (!isPublished(m.path)) warn('menu', `${m.path} non publiée : absente du menu`);
+  else if (preprod.has(m.path)) warn('menu', `${m.path} en préproduction : absente du menu, du pied de page et du sitemap (retirer "preprod" pour l'ouvrir)`);
+}
 
 // Lexique des sources, de la config, des scripts et des fichiers texte publiés
 const SCAN_EXT = /\.(html|md|json|txt|xml|mjs|js|css|yml|yaml)$/i;
-const scanDirs = [SRC_DIR, CONFIG_DIR, path.join(ROOT, '_scripts')];
+const scanDirs = [SRC_DIR, CONFIG_DIR, path.join(ROOT, '_scripts'), path.join(ROOT, '.github')];
 for (const f of scanDirs.flatMap((d) => walk(d)).filter((f) => SCAN_EXT.test(f))) {
   if (path.basename(f) === 'lexique.json' || f === STATE_FILE) continue;
   const raw = fs.readFileSync(f, 'utf8');
@@ -1020,7 +1171,7 @@ reportLexique('404.html (sortie)', decode(page404), null, '/404.html');
 
 // robots.txt
 const robotsTxt = fs.existsSync(path.join(ROOT, 'robots.txt')) ? fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8') : '';
-for (const need of ['Allow: /', 'Disallow: /_src/', 'Disallow: /_config/', 'Disallow: /_scripts/', `Sitemap: ${BASE}/sitemap.xml`]) {
+for (const need of ['Allow: /', 'Disallow: /_src/', 'Disallow: /_config/', 'Disallow: /_scripts/', 'Disallow: /_data/', `Sitemap: ${BASE}/sitemap.xml`]) {
   if (!robotsTxt.includes(need)) warn('robots.txt', `ligne manquante « ${need} »`);
 }
 for (const p of [...LEGACY.values()].filter((l) => !l.indexable).map((l) => l.path)) if (new RegExp(`Disallow:\\s*${p}\\s*$`, 'm').test(robotsTxt)) err('robots.txt', `${p} ne doit jamais être bloquée (noindex suffit)`);
@@ -1073,21 +1224,26 @@ if (errors.length) {
   process.exit(1);
 }
 const written = [];
+// En aperçu (données fictives ou de test), tout part dans _preview/ : rien ne touche la racine servie.
+const OUT_ROOT = DATA_MODE === 'apercu' ? path.join(ROOT, '_preview') : ROOT;
 const writeIfChanged = (rel, content) => {
-  const f = path.join(ROOT, rel);
+  const f = path.join(OUT_ROOT, rel);
   if (fs.existsSync(f) && fs.readFileSync(f, 'utf8') === content) return;
   fs.mkdirSync(path.dirname(f), { recursive: true });
   fs.writeFileSync(f, content);
-  written.push(rel);
+  written.push(path.relative(ROOT, f).replace(/\\/g, '/'));
 };
 if (!FLAG('--check')) {
   for (const o of outs) writeIfChanged(outFileFor(o.pg.path), o.html);
   writeIfChanged('404.html', page404);
   writeIfChanged('sitemap.xml', sitemap);
-  if (JSON.stringify(prevState) !== JSON.stringify(nextState)) writeIfChanged(path.relative(ROOT, STATE_FILE), JSON.stringify(nextState, null, 2) + '\n');
-  if (FLAG('--prune')) for (const p of orphans) { fs.rmSync(path.join(ROOT, outFileFor(p))); written.push(outFileFor(p) + ' (supprimé)'); }
+  if (DATA_MODE !== 'apercu') {
+    if (JSON.stringify(prevState) !== JSON.stringify(nextState)) writeIfChanged(path.relative(ROOT, STATE_FILE), JSON.stringify(nextState, null, 2) + '\n');
+    if (FLAG('--prune')) for (const p of orphans) { fs.rmSync(path.join(ROOT, outFileFor(p))); written.push(outFileFor(p) + ' (supprimé)'); }
+  }
 }
-console.log(`\n${line}\nOK : ${outs.length} page(s) générée(s), ${draftSources.length} brouillon(s), ${legacyServed.size} page(s) à la main conservée(s), ${smEntries.length} URL dans le sitemap, ${warnings.length} avertissement(s).`);
+console.log(`\n${line}\nOK : ${outs.length} page(s) générée(s), ${draftSources.length} brouillon(s), ${preprod.size} en préproduction, ${legacyServed.size} page(s) à la main conservée(s), ${smEntries.length} URL dans le sitemap, ${warnings.length} avertissement(s).`);
+console.log(`Données : ${DATA_MODE === 'live' ? `réelles (${DATA_FILE}, générées le ${SNAP.generated_at})` : DATA_MODE === 'apercu' ? `APERÇU ${DATA_FILE} → _preview/` : 'aucune, blocs de repli'}.`);
 if (FLAG('--check')) console.log('Mode --check : aucun fichier écrit.');
 else console.log(written.length ? 'Écrits : ' + written.join(', ') : 'Aucun fichier modifié.');
 console.log('');

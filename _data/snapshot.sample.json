@@ -1,0 +1,783 @@
+{
+  "_doc": "DONNÉES FICTIVES pour le développement local (node _scripts/build.mjs --sample). Affiches, horaires, scores et chiffres inventés ; équipes réelles en texte seulement. Jamais publiées : avec --sample, le build écrit dans _preview/, jamais à la racine.",
+  "version": 1,
+  "generated_at": "2026-11-25T16:00:00Z",
+  "nights": [
+    {
+      "date": "2026-11-23",
+      "games": [
+        {
+          "tip_off": "2026-11-24T00:30:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "BOS",
+            "city": "Boston",
+            "name": "Celtics"
+          },
+          "away": {
+            "abbr": "CHA",
+            "city": "Charlotte",
+            "name": "Hornets"
+          },
+          "home_score": 118,
+          "away_score": 104,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-24T00:30:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "NYK",
+            "city": "New York",
+            "name": "Knicks"
+          },
+          "away": {
+            "abbr": "ORL",
+            "city": "Orlando",
+            "name": "Magic"
+          },
+          "home_score": 109,
+          "away_score": 112,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-24T01:00:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "MIL",
+            "city": "Milwaukee",
+            "name": "Bucks"
+          },
+          "away": {
+            "abbr": "DET",
+            "city": "Detroit",
+            "name": "Pistons"
+          },
+          "home_score": 121,
+          "away_score": 113,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-24T02:00:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "DEN",
+            "city": "Denver",
+            "name": "Nuggets"
+          },
+          "away": {
+            "abbr": "SAC",
+            "city": "Sacramento",
+            "name": "Kings"
+          },
+          "home_score": 127,
+          "away_score": 115,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-24T02:00:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "PHX",
+            "city": "Phoenix",
+            "name": "Suns"
+          },
+          "away": {
+            "abbr": "UTA",
+            "city": "Utah",
+            "name": "Jazz"
+          },
+          "home_score": 103,
+          "away_score": 98,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-24T03:30:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "LAL",
+            "city": "Los Angeles",
+            "name": "Lakers"
+          },
+          "away": {
+            "abbr": "MEM",
+            "city": "Memphis",
+            "name": "Grizzlies"
+          },
+          "home_score": 114,
+          "away_score": 122,
+          "overtime": false
+        }
+      ]
+    },
+    {
+      "date": "2026-11-24",
+      "games": [
+        {
+          "tip_off": "2026-11-25T00:00:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "CLE",
+            "city": "Cleveland",
+            "name": "Cavaliers"
+          },
+          "away": {
+            "abbr": "WAS",
+            "city": "Washington",
+            "name": "Wizards"
+          },
+          "home_score": 125,
+          "away_score": 101,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-25T00:30:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "PHI",
+            "city": "Philadelphia",
+            "name": "76ers"
+          },
+          "away": {
+            "abbr": "TOR",
+            "city": "Toronto",
+            "name": "Raptors"
+          },
+          "home_score": 108,
+          "away_score": 106,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-25T00:30:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "MIA",
+            "city": "Miami",
+            "name": "Heat"
+          },
+          "away": {
+            "abbr": "ATL",
+            "city": "Atlanta",
+            "name": "Hawks"
+          },
+          "home_score": 117,
+          "away_score": 120,
+          "overtime": true
+        },
+        {
+          "tip_off": "2026-11-25T01:00:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "CHI",
+            "city": "Chicago",
+            "name": "Bulls"
+          },
+          "away": {
+            "abbr": "BKN",
+            "city": "Brooklyn",
+            "name": "Nets"
+          },
+          "home_score": 99,
+          "away_score": 111,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-25T01:00:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "OKC",
+            "city": "Oklahoma City",
+            "name": "Thunder"
+          },
+          "away": {
+            "abbr": "NOP",
+            "city": "New Orleans",
+            "name": "Pelicans"
+          },
+          "home_score": 130,
+          "away_score": 102,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-25T01:00:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "MIN",
+            "city": "Minnesota",
+            "name": "Timberwolves"
+          },
+          "away": {
+            "abbr": "DAL",
+            "city": "Dallas",
+            "name": "Mavericks"
+          },
+          "home_score": 112,
+          "away_score": 109,
+          "overtime": false
+        },
+        {
+          "tip_off": "2026-11-25T03:00:00Z",
+          "status": "final",
+          "stage": "regular",
+          "home": {
+            "abbr": "GSW",
+            "city": "Golden State",
+            "name": "Warriors"
+          },
+          "away": {
+            "abbr": "POR",
+            "city": "Portland",
+            "name": "Trail Blazers"
+          },
+          "home_score": 119,
+          "away_score": 115,
+          "overtime": false
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "games": [
+        {
+          "tip_off": "2026-11-26T00:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "IND",
+            "city": "Indiana",
+            "name": "Pacers"
+          },
+          "away": {
+            "abbr": "BOS",
+            "city": "Boston",
+            "name": "Celtics"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-26T00:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "ORL",
+            "city": "Orlando",
+            "name": "Magic"
+          },
+          "away": {
+            "abbr": "CHA",
+            "city": "Charlotte",
+            "name": "Hornets"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-26T00:30:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "DET",
+            "city": "Detroit",
+            "name": "Pistons"
+          },
+          "away": {
+            "abbr": "NYK",
+            "city": "New York",
+            "name": "Knicks"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-26T01:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "HOU",
+            "city": "Houston",
+            "name": "Rockets"
+          },
+          "away": {
+            "abbr": "MEM",
+            "city": "Memphis",
+            "name": "Grizzlies"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-26T01:30:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "SAS",
+            "city": "San Antonio",
+            "name": "Spurs"
+          },
+          "away": {
+            "abbr": "LAC",
+            "city": "Los Angeles",
+            "name": "Clippers"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-26T02:00:00Z",
+          "status": "postponed",
+          "stage": "regular",
+          "home": {
+            "abbr": "UTA",
+            "city": "Utah",
+            "name": "Jazz"
+          },
+          "away": {
+            "abbr": "DEN",
+            "city": "Denver",
+            "name": "Nuggets"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-26T03:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "SAC",
+            "city": "Sacramento",
+            "name": "Kings"
+          },
+          "away": {
+            "abbr": "PHX",
+            "city": "Phoenix",
+            "name": "Suns"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-26T03:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "LAL",
+            "city": "Los Angeles",
+            "name": "Lakers"
+          },
+          "away": {
+            "abbr": "GSW",
+            "city": "Golden State",
+            "name": "Warriors"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "games": []
+    },
+    {
+      "date": "2026-11-27",
+      "games": [
+        {
+          "tip_off": "2026-11-28T00:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "ATL",
+            "city": "Atlanta",
+            "name": "Hawks"
+          },
+          "away": {
+            "abbr": "CLE",
+            "city": "Cleveland",
+            "name": "Cavaliers"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-28T00:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "WAS",
+            "city": "Washington",
+            "name": "Wizards"
+          },
+          "away": {
+            "abbr": "PHI",
+            "city": "Philadelphia",
+            "name": "76ers"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-28T00:30:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "TOR",
+            "city": "Toronto",
+            "name": "Raptors"
+          },
+          "away": {
+            "abbr": "MIA",
+            "city": "Miami",
+            "name": "Heat"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-28T00:30:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "BKN",
+            "city": "Brooklyn",
+            "name": "Nets"
+          },
+          "away": {
+            "abbr": "MIL",
+            "city": "Milwaukee",
+            "name": "Bucks"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-28T01:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "CHI",
+            "city": "Chicago",
+            "name": "Bulls"
+          },
+          "away": {
+            "abbr": "IND",
+            "city": "Indiana",
+            "name": "Pacers"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-28T01:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "NOP",
+            "city": "New Orleans",
+            "name": "Pelicans"
+          },
+          "away": {
+            "abbr": "OKC",
+            "city": "Oklahoma City",
+            "name": "Thunder"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-28T01:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "DAL",
+            "city": "Dallas",
+            "name": "Mavericks"
+          },
+          "away": {
+            "abbr": "MIN",
+            "city": "Minnesota",
+            "name": "Timberwolves"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-28T03:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "POR",
+            "city": "Portland",
+            "name": "Trail Blazers"
+          },
+          "away": {
+            "abbr": "SAS",
+            "city": "San Antonio",
+            "name": "Spurs"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-28T03:30:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "LAC",
+            "city": "Los Angeles",
+            "name": "Clippers"
+          },
+          "away": {
+            "abbr": "HOU",
+            "city": "Houston",
+            "name": "Rockets"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        }
+      ]
+    },
+    {
+      "date": "2026-11-28",
+      "games": [
+        {
+          "tip_off": "2026-11-28T20:30:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "NYK",
+            "city": "New York",
+            "name": "Knicks"
+          },
+          "away": {
+            "abbr": "BOS",
+            "city": "Boston",
+            "name": "Celtics"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-29T00:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "CHA",
+            "city": "Charlotte",
+            "name": "Hornets"
+          },
+          "away": {
+            "abbr": "DET",
+            "city": "Detroit",
+            "name": "Pistons"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-29T01:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "MEM",
+            "city": "Memphis",
+            "name": "Grizzlies"
+          },
+          "away": {
+            "abbr": "LAL",
+            "city": "Los Angeles",
+            "name": "Lakers"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-29T02:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "DEN",
+            "city": "Denver",
+            "name": "Nuggets"
+          },
+          "away": {
+            "abbr": "UTA",
+            "city": "Utah",
+            "name": "Jazz"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-29T02:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "PHX",
+            "city": "Phoenix",
+            "name": "Suns"
+          },
+          "away": {
+            "abbr": "GSW",
+            "city": "Golden State",
+            "name": "Warriors"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        },
+        {
+          "tip_off": "2026-11-29T03:00:00Z",
+          "status": "scheduled",
+          "stage": "regular",
+          "home": {
+            "abbr": "SAC",
+            "city": "Sacramento",
+            "name": "Kings"
+          },
+          "away": {
+            "abbr": "ORL",
+            "city": "Orlando",
+            "name": "Magic"
+          },
+          "home_score": null,
+          "away_score": null,
+          "overtime": null
+        }
+      ]
+    }
+  ],
+  "community": [
+    {
+      "game_date": "2026-11-24",
+      "games_over_threshold": [
+        {
+          "home_abbr": "OKC",
+          "away_abbr": "NOP",
+          "home_pct": 85,
+          "exact_pct": 5
+        },
+        {
+          "home_abbr": "MIA",
+          "away_abbr": "ATL",
+          "home_pct": 60,
+          "exact_pct": 0
+        }
+      ]
+    }
+  ],
+  "season": {
+    "label": "2026-27",
+    "margins": {
+      "games": 276,
+      "mean": 12.4,
+      "median": 10,
+      "within5_pct": 30,
+      "overtime_pct": 6,
+      "histogram": [
+        {
+          "label": "1-3",
+          "count": 41
+        },
+        {
+          "label": "4-6",
+          "count": 47
+        },
+        {
+          "label": "7-10",
+          "count": 56
+        },
+        {
+          "label": "11-15",
+          "count": 58
+        },
+        {
+          "label": "16-20",
+          "count": 37
+        },
+        {
+          "label": "21+",
+          "count": 37
+        }
+      ]
+    },
+    "nights_by_month": [
+      {
+        "month": "2026-10",
+        "nights": 12,
+        "nights_5plus": 8,
+        "games": 79
+      },
+      {
+        "month": "2026-11",
+        "nights": 23,
+        "nights_5plus": 18,
+        "games": 197
+      }
+    ],
+    "tipoff_fr": [
+      {
+        "label": "avant minuit",
+        "count": 17
+      },
+      {
+        "label": "0 h - 1 h",
+        "count": 26
+      },
+      {
+        "label": "1 h - 2 h",
+        "count": 95
+      },
+      {
+        "label": "2 h - 3 h",
+        "count": 72
+      },
+      {
+        "label": "3 h - 4 h",
+        "count": 33
+      },
+      {
+        "label": "4 h - 5 h",
+        "count": 31
+      },
+      {
+        "label": "5 h et après",
+        "count": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "_doc": "Réglages des blocs de données (marqueurs {{auto:…}}), lus par _scripts/build.mjs. saison : dates vérifiées sur pr.nba.com et nba.com/news/key-dates (voir _sources de /saison/) ; sert au contrôle « export vide un jour où le calendrier annonce des matchs ». fraicheurMaxHeures : au-delà, /ce-soir/ dit que les données n'ont pas pu être actualisées (plan, 5.3.6). seuilCommunaute : minimum de pronos par match terminé pour publier un bilan (plan, 5.2), déjà appliqué en SQL et revérifié au build.",
+  "saison": {
+    "label": "2026-27",
+    "debut": "2026-10-20",
+    "finSaisonReguliere": "2027-04-11",
+    "pauses": [
+      { "du": "2027-02-19", "au": "2027-02-24", "motif": "pause du All-Star, aucun match de saison régulière" }
+    ]
+  },
+  "fraicheurMaxHeures": 36,
+  "seuilCommunaute": 30,
+  "accueilNbMatchs": 3
+}

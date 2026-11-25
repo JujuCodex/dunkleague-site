@@ -1,6 +1,6 @@
 <!--meta
 {
-  "_sources": "Faits vérifiés dans dunk-league (lecture seule) : MVP de la Night = mig 0028 award_night_mvps l.494-588 et spec l.91-122, scoring.ts NIGHT_MVP_FROM et NIGHT_MVP_MIN_GAMES ; patron de la semaine = mig 0028 award_weekly_champions l.426-486, vue weekly_points l.389-416, fn weekly-rewards ; rank() et ex aequo = 0028 l.194-196 ; jamais retiré après correction = 0027 l.56-72, 0028 l.114-116 ; notifications = fn _shared/push.ts l.69-74. Section « nuits d'au moins 5 matchs par mois » omise faute de source fiable (vague 2).",
+  "_sources": "Faits vérifiés dans dunk-league (lecture seule) : MVP de la Night = mig 0028 award_night_mvps l.494-588 et spec l.91-122, scoring.ts NIGHT_MVP_FROM et NIGHT_MVP_MIN_GAMES ; patron de la semaine = mig 0028 award_weekly_champions l.426-486, vue weekly_points l.389-416, fn weekly-rewards ; rank() et ex aequo = 0028 l.194-196 ; jamais retiré après correction = 0027 l.56-72, 0028 l.114-116 ; notifications = fn _shared/push.ts l.69-74. Nuits d'au moins 5 matchs par mois : marqueur auto:nuits-5-par-mois (season.nights_by_month de _data/snapshot.json, repli sur les chiffres vérifiés de _data/figees.json).",
   "title": "MVP de la Night et patron de la semaine : les bonus",
   "description": "+{{bareme.mvp.points}} pts si tu trouves tous les vainqueurs d'une nuit d'au moins {{bareme.mvp.minMatchs}} matchs (dès le {{bareme.mvp.depuis|court}}), +{{bareme.patron.points}} pts pour le patron de la semaine : les bonus expliqués.",
   "h1": "MVP de la Night et patron de la semaine, <em>les deux bonus</em>",
@@ -11,11 +11,12 @@
   "intro": "En plus des points de chaque prono, deux bonus font bouger les classements : le <strong>MVP de la Night</strong>, pour une nuit sans faute, et le <strong>patron de la semaine</strong>, pour le premier de ta ligue. Voici leurs conditions exactes, les égalités et un exemple sur une semaine.",
   "primaryQuery": ["MVP de la Night", "patron de la semaine"],
   "forbiddenInTitle": ["barème"],
-  "related": ["/regles/", "/pronostics-basket-entre-amis/", "/saison/", "/application-pronostics-basket/", "/questions/"],
+  "related": ["/regles/", "/pronostics-basket-entre-amis/", "/saison/", "/saison/all-star/", "/application-pronostics-basket/", "/questions/"],
   "schema": ["Article"],
   "ctaCampaign": "bonus",
   "gabarit": "guide",
-  "modifiedOn": "2026-11-24",
+  "publishedOn": "2026-11-24",
+  "modifiedOn": "2026-11-25",
   "faq": [
     {
       "q": "Un match reporté empêche-t-il d'être MVP de la Night ?",
@@ -93,6 +94,9 @@
 <h2>Les bonus au fil de la saison</h2>
 <p>Les deux bonus valent pour toute la saison, playoffs compris dans les règles actuelles. Le MVP de la Night suppose une nuit d'au moins {{bareme.mvp.minMatchs}} matchs : selon le calendrier, certaines nuits n'en comptent pas assez, et n'ont donc pas de MVP. Pour repérer les grandes soirées et les temps forts, garde un œil sur <a href="/saison/">les dates clés de la saison</a>.</p>
 <p>Le patron de la semaine, lui, suppose une ligue vivante. Trois joueurs actifs suffisent, mais plus la ligue est grande, plus le titre se mérite. Pour réunir ton groupe, tout est expliqué dans le guide <a href="/pronostics-basket-entre-amis/">des pronos NBA entre amis</a>.</p>
+<h3>Les nuits d'au moins {{bareme.mvp.minMatchs}} matchs, mois par mois</h3>
+<p>Pour te faire une idée du nombre de nuits où un MVP peut tomber, voici, mois par mois, les nuits déjà jouées qui ont compté au moins {{bareme.mvp.minMatchs}} matchs. Le bonus n'existe qu'à partir des nuits du {{bareme.mvp.depuis}} : les grosses nuits d'avant n'ont pas eu de MVP.</p>
+{{auto:nuits-5-par-mois}}
 
 <aside class="in-app"><h2>Et dans Dunk League ?</h2><p>Tes titres s'affichent dans ton profil, bloc « Ma saison », avec les cases « Nuits MVP » et « Titres patron », et les badges dans « Mes badges ». Chaque matin, l'écran « Recap de la nuit » te dit si tu as été MVP, et le lundi, le « Recap de la semaine » fait le bilan de ta ligue, avec le bouton « Partager ma semaine » pour chambrer tes potes. Tous ces bilans restent dans « Mes bilans », avec les onglets Nuits et Semaines. Dans la fiche de ta ligue, la bascule « Cette semaine » / « Saison » montre qui est en route pour le titre. Tu règles les notifications du matin et du lundi dans Réglages, section Notifications.</p></aside>
 <p class="muted">Une question qui ne porte pas sur les bonus ? Direction <a href="/questions/">les questions fréquentes</a>.</p>

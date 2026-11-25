@@ -3,5 +3,6 @@ Allow: /
 Disallow: /_src/
 Disallow: /_config/
 Disallow: /_scripts/
+Disallow: /_data/
 
 Sitemap: https://dunkleague.app/sitemap.xml

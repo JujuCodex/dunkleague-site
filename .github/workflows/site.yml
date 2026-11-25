@@ -1,0 +1,107 @@
+# Construit et publie dunkleague.app sur GitHub Pages (plan SEO, 5.3).
+#
+# 1. télécharge l'instantané des données de l'app (table site_snapshot, clé anon) ;
+# 2. génère le site (node _scripts/build.mjs) : une erreur de build arrête tout, rien n'est déployé ;
+# 3. assemble _site/ sans les dossiers de travail, puis le déploie.
+#
+# Le workflow ne commite RIEN. Secrets à créer par le propriétaire (Settings > Secrets and variables >
+# Actions > Secrets) : SUPABASE_URL et SUPABASE_ANON_KEY. Sans eux, le build tourne avec ses blocs de repli.
+#
+# Le déploiement ne part que lorsque la variable de dépôt PAGES_DEPUIS_ACTIONS vaut « oui »
+# (Settings > Secrets and variables > Actions > Variables), à créer APRÈS avoir basculé la source de
+# GitHub Pages sur « GitHub Actions » (voir README.md, « Publication par GitHub Actions »). Avant, le site
+# reste servi depuis la branche main et ce workflow ne fait que vérifier le build.
+#
+# Horaires en UTC (heure française d'hiver : 8 h 30 récap, 17 h programme, 23 h reports, lundi 9 h 30
+# statistiques de la semaine ; une heure de plus en été). GitHub peut les retarder de 10 à 60 minutes, et
+# désactive les workflows planifiés d'un dépôt public après 60 jours sans activité (voir README.md).
+
+name: Site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '30 7 * * *'
+    - cron: '0 16 * * *'
+    - cron: '0 22 * * *'
+    - cron: '30 8 * * 1'
+
+# Permissions minimales : le job build (secrets Supabase, scripts du dépôt, actions tierces) ne lit que le
+# dépôt ; seul le job deploy reçoit pages: write et id-token: write (jeton OIDC de publication).
+permissions:
+  contents: read
+
+# Un seul build et un seul déploiement à la fois ; un déploiement en cours n'est jamais interrompu.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          # Aucune étape n'a besoin du GITHUB_TOKEN après la récupération : on ne le laisse pas dans .git/config.
+          persist-credentials: false
+
+      # Node 24 (LTS) : Node 20 n'a plus de correctifs de sécurité depuis le 30/04/2026, et les builds et tests
+      # locaux tournent sous Node 24.
+      - name: Installer Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # Dernier instantané valide des exécutions précédentes : si Supabase ne répond pas, le build
+      # repart de lui plutôt que des blocs de repli.
+      - name: Restaurer le dernier instantané
+        uses: actions/cache/restore@v4
+        with:
+          path: _data/snapshot.json
+          key: snapshot-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            snapshot-
+
+      - name: Télécharger les données de l'app
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: node _scripts/fetch-snapshot.mjs
+
+      - name: Garder l'instantané pour la prochaine exécution
+        if: ${{ hashFiles('_data/snapshot.json') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: _data/snapshot.json
+          key: snapshot-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Générer le site
+        run: node _scripts/build.mjs
+
+      - name: Assembler _site
+        run: node _scripts/assemble-site.mjs
+
+      - name: Envoyer _site à GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    if: ${{ vars.PAGES_DEPUIS_ACTIONS == 'oui' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Déployer
+        id: deployment
+        uses: actions/deploy-pages@v4

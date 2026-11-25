@@ -1,6 +1,6 @@
 <!--meta
 {
-  "_sources": "Calendrier 2026-27 : pr.nba.com/2026-27-nba-regular-season-schedule/ et nba.com/news/key-dates (consultés le 24/11/2026). Bercy et Manchester : communiqué Spurs-Pelicans de pr.nba.com du 20/05/2026 ; heure de Bercy 14 h à l'Est (pr.nba.com), soit 20 h en France (insidebasket.com et un agenda culturel en ligne). Nuits d'au moins 5 matchs : agrégat en lecture seule sur la table games de l'app (20/10 au 23/11/2026, hors reportés et annulés). Changements d'heure : time.is, livescience.com.",
+  "_sources": "Calendrier 2026-27 : pr.nba.com/2026-27-nba-regular-season-schedule/ et nba.com/news/key-dates (consultés le 24/11/2026). Bercy et Manchester : communiqué Spurs-Pelicans de pr.nba.com du 20/05/2026 ; heure de Bercy 14 h à l'Est (pr.nba.com), soit 20 h en France (insidebasket.com et un agenda culturel en ligne). Nuits d'au moins 5 matchs : marqueur auto:nuits-par-mois (season.nights_by_month de _data/snapshot.json, repli sur les chiffres vérifiés de _data/figees.json) ; la phrase sur les plus petites et la plus grosse nuit vient de l'agrégat en lecture seule sur la table games de l'app (20/10 au 23/11/2026, hors reportés et annulés). Changements d'heure : time.is, livescience.com.",
   "title": "Saison NBA 2026-27 : les dates clés en heure française",
   "description": "Saison régulière, NBA Cup, match de Bercy, Noël, All-Star, play-in et playoffs : toutes les dates clés de la saison 2026-27, en heure française.",
   "h1": "La saison 2026-27, <em>temps fort par temps fort</em>",
@@ -10,7 +10,7 @@
   "relatedBlurb": "Toutes les dates clés",
   "intro": "Voici la <strong>saison NBA 2026-27</strong> et ses <strong>dates clés</strong>, de la NBA Cup au mois de juin, avec chaque horaire converti en heure française. Les dates américaines sont rappelées, parce qu'un match du mardi soir là-bas se joue dans la nuit du mardi au mercredi chez toi.",
   "primaryQuery": ["saison NBA 2026-27", "dates clés"],
-  "related": ["/saison/bercy/", "/heure-des-matchs/", "/regles/bonus/", "/pronostics-basket-entre-amis/", "/regles/"],
+  "related": ["/saison/bercy/", "/saison/all-star/", "/heure-des-matchs/", "/regles/bonus/", "/pronostics-basket-entre-amis/", "/regles/"],
   "schema": [
     "CollectionPage",
     {
@@ -33,7 +33,7 @@
   "gabarit": "temps-fort",
   "ogImage": "/og-saison.jpg",
   "ogImageAlt": "Dunk League, les temps forts de la saison 2026-27 en heure française",
-  "modifiedOn": "2026-11-24",
+  "modifiedOn": "2026-11-25",
   "faq": [
     {
       "q": "Quand se termine la saison régulière 2026-27 ?",
@@ -105,24 +105,15 @@
 <h2>Les temps forts, un par un</h2>
 <div class="cards">
 <div class="card"><h3>Spurs-Pelicans à Bercy</h3><p>Le jeudi 14 janvier 2027 à 20 h, un match de saison régulière à l'Accor Arena, puis la revanche à Manchester trois jours plus tard. <a href="/saison/bercy/">Heure, diffusion et défi entre potes</a>.</p></div>
-<div class="card"><h3>Le week-end All-Star</h3><p>Du vendredi 19 au dimanche 21 février 2027 à Phoenix, avec le concours de dunks. Aucun match de saison régulière du 19 au 24 février : profites-en pour souffler.</p></div>
+<div class="card"><h3>Le week-end All-Star</h3><p>Du vendredi 19 au dimanche 21 février 2027 à Phoenix, avec le concours de dunks. Aucun match de saison régulière du 19 au 24 février : profites-en pour souffler. <a href="/saison/all-star/">Programme du week-end et effet sur ta ligue</a>.</p></div>
 <div class="card"><h3>La dernière journée</h3><p>Le dimanche 11 avril 2027, les 30 équipes jouent le même soir, à minuit et à 2 h 30 en France. C'est la dernière nuit à pronostiquer avant le play-in.</p></div>
 <div class="card"><h3>Play-in et playoffs</h3><p>Le play-in du 13 au 16 avril désigne les 7e et 8e de chaque conférence. Les playoffs démarrent le 17 avril, puis les Finales en juin.</p></div>
 </div>
 
 <h2>Les nuits d'au moins cinq matchs</h2>
 <p>Dans Dunk League, une nuit d'au moins {{bareme.mvp.minMatchs}} matchs, c'est une nuit où le bonus MVP de la Night est en jeu (à partir des nuits du {{bareme.mvp.depuis}}). Pour donner un ordre de grandeur, voici ces nuits depuis le début de la saison, mois par mois, à partir du calendrier de l'appli.</p>
-<!--auto:start-->
-<div class="table"><table>
-<thead><tr><th>Mois</th><th>Nuits avec des matchs</th><th>Nuits d'au moins 5 matchs</th></tr></thead>
-<tbody>
-<tr><td>Octobre 2026 (à partir du 20)</td><td>12</td><td class="pts">8</td></tr>
-<tr><td>Novembre 2026 (jusqu'au 23)</td><td>22</td><td class="pts">18</td></tr>
-</tbody>
-</table></div>
-<p class="muted">Calcul au 24/11/2026, hors matchs reportés et annulés.</p>
-<!--auto:end-->
-<p>Sur cette période, les plus petites nuits n'ont compté que 2 matchs, et la plus grosse en a compté 15 : les 30 équipes sur le terrain le même soir. Une nuit sur quatre environ reste sous la barre des 5 matchs.</p>
+{{auto:nuits-par-mois}}
+<p>Sur les premières semaines de la saison, du 20 octobre au 23 novembre, les plus petites nuits n'ont compté que 2 matchs, et la plus grosse en a compté 15 : les 30 équipes sur le terrain le même soir. Une nuit sur quatre environ reste sous la barre des 5 matchs.</p>
 
 <h2>Où en est-on ?</h2>
 <p>Au 24 novembre 2026, la saison régulière entre dans son deuxième mois et la phase de groupes de la NBA Cup vit sa dernière semaine. Prochaine étape : les quarts de finale du 4 et 5 décembre, puis Noël. Pour savoir à quelle heure tombent les matchs les autres soirs, et pourquoi la plupart démarrent entre 1 h et 3 h du matin, lis <a href="/heure-des-matchs/">notre guide du décalage horaire</a>.</p>

@@ -1,23 +1,47 @@
 {
+  "/a-propos/": {
+    "empreinte": "6e390f652d3b9b2cd0463b49f6b3e4153ee9d490b840acc9e14811b41bedf1e0",
+    "modifiedOn": "2026-11-25"
+  },
   "/application-pronostics-basket/": {
     "empreinte": "b1b2aeb83cf07bf6456b14f3a422d43cab7801ae1cec2719aa2838077f689ebb",
     "modifiedOn": "2026-11-24"
+  },
+  "/ce-soir/": {
+    "empreinte": "f13a2b70e3f7461a8d5a04caae25a8212808114071bb5ec4e228ef79c4046ed4",
+    "modifiedOn": "2026-11-25"
   },
   "/charte/": {
     "empreinte": "0718ddcda744fcd85b1c8672189ed35d2bb4fe65293bcbadb0113b9704786b80",
     "modifiedOn": "2026-11-24"
   },
+  "/concours-pronostics-basket/": {
+    "empreinte": "aa5b67eda32c8cd53ee11ce06e9a5f50df733307b3d0fd2351b9edc823a50e40",
+    "modifiedOn": "2026-11-25"
+  },
   "/conditions/": {
     "empreinte": "6be53aa927478859d06a71bb42d44bbb42333b33abe5d2e2e844c436a58f16e0",
     "modifiedOn": "2026-11-24"
   },
+  "/ecart-de-points/": {
+    "empreinte": "fd64827af5bcde5418839b4f6dda958ff5f8e194d1ebc7cb622031fe187714b7",
+    "modifiedOn": "2026-11-25"
+  },
+  "/fantasy-nba/": {
+    "empreinte": "252dc35dece84c86fb98e90f50d76ed2ccee8609b47ded8aaf01bd143ce7c38c",
+    "modifiedOn": "2026-11-25"
+  },
   "/heure-des-matchs/": {
-    "empreinte": "eef91e19ddbaab71926a41e91606634e6fe2959759983021a6cd5370b354a623",
-    "modifiedOn": "2026-11-24"
+    "empreinte": "ce6d33da1386df4e13cfcea5f6f0ef79c919d2da1052172423b162ff762ebfd8",
+    "modifiedOn": "2026-11-25"
   },
   "/": {
-    "empreinte": "4445770213783024e3dfd809594419fa4c830bc556b401f6dcb5448d3cd2efe3",
-    "modifiedOn": "2026-11-24"
+    "empreinte": "e12344e8e2aa33c5a60ac067d004c4a5e0802b3e42baed3facbd1f44e6b67445",
+    "modifiedOn": "2026-11-25"
+  },
+  "/lien/": {
+    "empreinte": "8a5e75611c5a4a38d3157eae16b1bb73d3b25ea05af9c2ba683d848544a3b6f6",
+    "modifiedOn": "2026-11-25"
   },
   "/mentions-legales/": {
     "empreinte": "445bca2c9dc22eeb3f6be8d02560a27cffa703305595144dd63bd7a9002815d3",
@@ -26,6 +50,10 @@
   "/mpp-basket/": {
     "empreinte": "449ec0e3edb816f7240c6947355608b04e05213fbfda645eea0800e96011815c",
     "modifiedOn": "2026-11-24"
+  },
+  "/presse/": {
+    "empreinte": "56fac0b34e067be25550b3a8a60e703cd391bb42465c9dc7388f5bd6c78d00dd",
+    "modifiedOn": "2026-11-25"
   },
   "/pronostics-basket-entre-amis/": {
     "empreinte": "45e5083f75dc54a145fab3c6b0ba0d04ed76d3be53535d4e1f75508d5dad47a2",
@@ -36,20 +64,24 @@
     "modifiedOn": "2026-11-24"
   },
   "/regles/bonus/": {
-    "empreinte": "dac00c4511947ccbe2c699e4122398cf98834e67ade44d1ccebc4928c43a0f56",
-    "modifiedOn": "2026-11-24"
+    "empreinte": "3f286dfa11374df05533137042036a5d0255bb374a58f36ee4dc675506c51e73",
+    "modifiedOn": "2026-11-25"
   },
   "/regles/": {
-    "empreinte": "e7f1de07a72e5112ba17fbb79c4da718a31dbaf16fa20d9f2eb301947f591fd8",
-    "modifiedOn": "2026-11-24"
+    "empreinte": "43224902bcb382048bc8b1812ed44536bb6073b6f9457bb01220297a769916e6",
+    "modifiedOn": "2026-11-25"
+  },
+  "/saison/all-star/": {
+    "empreinte": "de9c5dbdd550c81170708db5469c69343640e156de6fe789f2a39544aa77b67a",
+    "modifiedOn": "2026-11-25"
   },
   "/saison/bercy/": {
     "empreinte": "bb8e6e59c5eba3ecd4b8d3b4b815596bbfcb2c77afe62595d6875c081ef998ff",
     "modifiedOn": "2026-11-24"
   },
   "/saison/": {
-    "empreinte": "aab2e0b48ee887a73fe4c4e64e7ccd38a50b184e8a87940bad37cfe7a8fa9657",
-    "modifiedOn": "2026-11-24"
+    "empreinte": "d43d5eb3533a48b19383fde768a905db3c90fc749a95c50a8ebbd1dd581293ef",
+    "modifiedOn": "2026-11-25"
   },
   "/support/": {
     "empreinte": "01b6b4d2b778f64610de7e9a670c7dbe5bd1ebbefc6d42c2806ab2efbbfc30ac",

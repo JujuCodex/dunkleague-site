@@ -1,0 +1,7 @@
+# Instantané téléchargé par _scripts/fetch-snapshot.mjs (jamais commité)
+_data/snapshot.json
+_data/snapshot.json.tmp
+# Aperçu du build avec des données fictives ou de test (--sample, --data=)
+_preview/
+# Dossier assemblé pour GitHub Pages (CI)
+_site/

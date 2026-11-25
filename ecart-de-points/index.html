@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Écart de points en NBA : les chiffres de la saison</title>
+<meta name="description" content="Écart moyen, médiane, part des matchs finis à 5 points ou moins : l'écart de points en NBA sur toute la ligue, et comment le lire avant ton prono.">
+<link rel="canonical" href="https://dunkleague.app/ecart-de-points/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0c0e12">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-itunes-app" content="app-id=6801577074">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dunk League">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Écart de points en NBA : les chiffres de la saison">
+<meta property="og:description" content="Écart moyen, médiane, part des matchs finis à 5 points ou moins : l'écart de points en NBA sur toute la ligue, et comment le lire avant ton prono.">
+<meta property="og:url" content="https://dunkleague.app/ecart-de-points/">
+<meta property="og:image" content="https://dunkleague.app/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dunk League, pronos basket entre potes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Écart de points en NBA : les chiffres de la saison">
+<meta name="twitter:description" content="Écart moyen, médiane, part des matchs finis à 5 points ou moins : l'écart de points en NBA sur toute la ligue, et comment le lire avant ton prono.">
+<meta name="twitter:image" content="https://dunkleague.app/og-default.jpg">
+<meta name="generator" content="dunkleague-build">
+<style>:root{--bg:#0c0e12;--card:#15181e;--border:#232833;--text:#f4f5f7;--muted:#98a0ac;--brand:#ff6b1a;--gold:#f5b94b;--gold2:#ffd27a;--ink:#171205;color-scheme:dark}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:1.0625rem}
+a{color:var(--gold)}a:hover{color:var(--gold2)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+img{max-width:100%;height:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--ink);padding:8px 14px;border-radius:8px;z-index:30}.skip:focus{left:8px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(12,14,18,.94);border-bottom:1px solid var(--border)}
+.bar-in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px}
+.brand{display:flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;font-weight:800;font-size:1.1rem;letter-spacing:-.3px}
+.brand picture{display:flex}.brand img{width:44px;height:30px}.brand em{font-style:normal;color:var(--gold)}
+.menu{order:3;width:100%;display:flex;flex-wrap:wrap;gap:2px 18px;font-size:.95rem}
+.menu a{color:var(--muted);text-decoration:none;padding:2px 0}.menu a:hover,.menu a[aria-current]{color:var(--text)}
+.btn-dl{margin-left:auto;background:var(--gold);color:var(--ink);font-weight:700;text-decoration:none;padding:8px 18px;border-radius:999px;font-size:.95rem;white-space:nowrap}
+.btn-dl:hover{background:var(--gold2);color:var(--ink)}
+@media(min-width:760px){.menu{order:0;width:auto;margin-left:8px}}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.crumbs{margin:20px 0 0;font-size:.85rem;color:var(--muted)}
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap}.crumbs li+li::before{content:"›";margin:0 8px}
+.crumbs a{color:var(--gold);text-decoration:none}
+.hero{text-align:center;padding:28px 0 8px}
+.kicker{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+h1{font-size:clamp(1.75rem,5.2vw,2.5rem);line-height:1.15;letter-spacing:-.5px;margin-bottom:14px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--gold)}
+.intro{color:var(--muted);max-width:36em;margin:0 auto;font-size:1.08rem}.intro p{margin:0 0 10px}.intro strong{color:var(--text)}
+.hero-note,.disclaimer{color:var(--muted);font-size:.82rem;max-width:40em;margin:12px auto}
+.hero-media{margin-top:24px}
+.stores{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:22px 0 6px}
+.store{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--text);text-decoration:none;font-weight:600;font-size:.98rem}
+.store:hover{color:var(--gold2);border-color:var(--gold)}
+.store.img{padding:0;border:0;background:none;min-width:0;height:auto}.store.img img{display:block;width:auto}
+.related{margin:28px 0 8px}
+.related-t{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.related ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.related a{display:block;height:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;color:var(--text);text-decoration:none;font-weight:600;font-size:.95rem}
+.related a span{display:block;color:var(--muted);font-weight:400;font-size:.85rem;margin-top:2px}.related a:hover{border-color:var(--gold)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin:24px 0}
+.toc p{font-weight:700;margin-bottom:6px}.toc ol{padding-left:20px;color:var(--muted);display:grid;gap:4px}.toc a{color:var(--text);text-decoration:none}
+h2{font-size:1.45rem;line-height:1.3;margin:44px 0 14px;scroll-margin-top:90px}
+h3{font-size:1.08rem;line-height:1.35;margin:24px 0 8px;scroll-margin-top:90px}
+p{margin:0 0 14px}
+.content ul,.content ol{padding-left:22px;margin:0 0 16px}.content li{margin-bottom:6px}
+.muted{color:var(--muted)}strong{color:var(--text)}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:18px 0 22px!important;padding:0!important}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;margin:0!important}
+.stat b{display:block;font-size:2.2rem;line-height:1.1;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.stat span{display:block;color:var(--muted);font-size:.9rem;margin-top:4px}
+.table{overflow-x:auto;margin:16px 0 18px;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}table.wide{min-width:520px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--card);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}td.pts{font-weight:800;color:var(--gold);white-space:nowrap}
+.note{background:var(--card);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+.note.info{border-left-color:var(--brand)}.note p{color:var(--muted)}.note p:last-child{margin:0}
+.example{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin:14px 0}
+.example p:last-child,.example ul:last-child{margin-bottom:0}.example li{color:var(--muted)}
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:12px;margin:16px 0!important;padding:0!important}
+ol.steps>li{counter-increment:s;position:relative;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px 16px 64px;margin:0}
+ol.steps>li::before{content:counter(s);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800}
+ol.steps h3{margin:2px 0 4px}ol.steps p{color:var(--muted);margin:0;font-size:.97rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0 20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px}.card p{color:var(--muted);font-size:.95rem;margin:0 0 8px}.card p:last-child{margin:0}
+ul.facts{list-style:none;padding:0!important}ul.facts li{padding-left:22px;position:relative;color:var(--muted)}
+ul.facts li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+ol.tips li{color:var(--muted)}ol.tips li strong{display:block;color:var(--text)}
+.shots{display:flex;gap:14px;overflow-x:auto;padding:4px 0 12px;margin:16px 0;scroll-snap-type:x mandatory}
+.shots figure{flex:0 0 auto;width:min(220px,62vw);scroll-snap-align:start}
+.shots img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--border)}
+.shots figcaption{color:var(--muted);font-size:.85rem;margin-top:6px;text-align:center}
+.in-app{background:linear-gradient(135deg,rgba(245,185,75,.1),rgba(255,107,26,.06));border:1px solid rgba(245,185,75,.35);border-radius:16px;padding:20px 22px;margin:36px 0}
+.in-app h2{margin:0 0 10px;font-size:1.25rem}.in-app p:last-child{margin:0}
+.cta{text-align:center;margin:32px 0}.cta p{color:var(--muted)}
+.faq h3{margin-top:22px}.faq .a p{color:var(--muted)}
+.updated{color:var(--muted);font-size:.85rem;margin:36px 0 0}
+.reassure{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--card);margin-top:40px}
+.reassure ul{list-style:none;max-width:1080px;margin:0 auto;padding:14px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;font-size:.9rem;color:var(--muted)}
+.reassure li+li::before{content:"·";margin:0 10px;color:var(--gold)}
+.dl{text-align:center;padding:44px 16px 36px}.dl h2{margin:0 0 6px}.dl p{color:var(--muted)}
+.foot{border-top:1px solid var(--border);padding:36px 16px 44px;color:var(--muted);font-size:.9rem}
+.foot-in{max-width:1080px;margin:0 auto}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+@media(min-width:760px){.cols{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.foot-t{color:var(--text);font-weight:700;margin-bottom:8px}.foot ul{list-style:none}.foot li{margin-bottom:6px}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--gold)}
+.legal{margin-top:28px;font-size:.8rem;line-height:1.55}.foot-meta{margin-top:10px;font-size:.8rem}
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:25;display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px 12px 10px 16px;font-size:.92rem}
+.sticky.on{display:flex}.sticky .btn-dl{margin:0}
+@media(max-width:759px){body:has(.sticky.on){padding-bottom:84px}}
+@media(min-width:760px){.sticky.on{display:none}}
+.pills{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px!important;padding:0!important}
+.pill{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:3px 12px;font-size:.88rem;color:var(--muted);margin:0!important}.pill.on{border-color:var(--gold);color:var(--gold);font-weight:700}
+tr.off td{color:var(--muted)}
+.histo{margin:16px 0 20px}.histo svg{display:block;width:100%;height:auto}.histo .bar{fill:var(--gold)}.histo .axe{stroke:var(--border)}
+.histo text{fill:var(--muted);font-size:19px;text-anchor:middle}.histo .val{fill:var(--text);font-weight:700}.histo figcaption{color:var(--muted);font-size:.85rem;margin-top:8px}
+.tonight{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:24px 0}.tonight h2{margin:0 0 4px;font-size:1.25rem}
+.tonight-l{list-style:none;display:grid;gap:6px;margin:12px 0}.tonight-l b{display:inline-block;min-width:4.2em;color:var(--gold)}.tonight p:last-child{margin:0}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https://dunkleague.app/ecart-de-points/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://dunkleague.app/"},{"@type":"ListItem","position":2,"name":"Écart de points","item":"https://dunkleague.app/ecart-de-points/"}]},{"@type":"Article","@id":"https://dunkleague.app/ecart-de-points/#article","headline":"L'écart de points en NBA, en chiffres","description":"Écart moyen, médiane, part des matchs finis à 5 points ou moins : l'écart de points en NBA sur toute la ligue, et comment le lire avant ton prono.","inLanguage":"fr-FR","datePublished":"2026-11-25","dateModified":"2026-11-25","mainEntityOfPage":{"@id":"https://dunkleague.app/ecart-de-points/"},"image":"https://dunkleague.app/og-default.jpg","author":{"@id":"https://dunkleague.app/#org"},"publisher":{"@id":"https://dunkleague.app/#org"},"about":{"@id":"https://dunkleague.app/#app"}},{"@type":"Organization","@id":"https://dunkleague.app/#org","name":"Dunk League","url":"https://dunkleague.app/","logo":{"@type":"ImageObject","url":"https://dunkleague.app/logo-mark.png","width":640,"height":434}},{"@type":"WebSite","@id":"https://dunkleague.app/#website","url":"https://dunkleague.app/","name":"Dunk League"},{"@type":"MobileApplication","@id":"https://dunkleague.app/#app","name":"Dunk League","applicationCategory":"GameApplication","operatingSystem":"iOS, Android"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="bar"><div class="bar-in">
+<a class="brand" href="/"><picture><source type="image/avif" srcset="/logo-mark-88.avif"><source type="image/webp" srcset="/logo-mark-88.webp"><img src="/logo-mark-88.png" alt="" width="44" height="30" decoding="async"></picture><span>Dunk <em>League</em></span></a>
+<nav class="menu" aria-label="Menu principal"><a href="/regles/">Le jeu</a><a href="/pronostics-basket-entre-amis/">Entre amis</a><a href="/saison/">Saison</a><a href="/questions/">Questions</a></nav>
+<a class="btn-dl" href="#telecharger" data-dl data-ios="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=ecarts&amp;mt=8" data-android="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Decarts">Télécharger</a>
+</div></header>
+<main id="contenu">
+<div class="wrap">
+<nav class="crumbs" aria-label="Fil d'Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Écart de points</li></ol></nav>
+<header class="hero">
+<p class="kicker">Guide · Saison 2026-27</p>
+<h1>L'écart de points en NBA, <em>en chiffres</em></h1>
+<div class="intro"><p>L'<strong>écart de points</strong>, c'est la moitié de ton prono. Voici l'<strong>écart moyen</strong> des matchs NBA de la saison, sa médiane et sa répartition, sur toute la ligue, puis ce qui le fait bouger : les prolongations et les dernières minutes.</p></div>
+<div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=ecarts&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Decarts" data-store="android" rel="noopener">Voir sur Google Play</a></div>
+</header>
+<nav class="related" aria-label="Pages liées"><p class="related-t">Pages liées</p><ul><li><a href="/regles/">Règles et barème<span>Points, heure limite, cas particuliers</span></a></li><li><a href="/regles/bonus/">Les deux bonus<span>MVP de la Night et patron de la semaine</span></a></li><li><a href="/heure-des-matchs/">Heure des matchs<span>Décalage horaire et créneaux</span></a></li><li><a href="/application-pronostics-basket/">L'appli<span>Chaque onglet, les notifications, DUNK et Premium</span></a></li><li><a href="/pronostics-basket-entre-amis/">Entre amis<span>Crée ta ligue privée et invite ta bande</span></a></li></ul></nav>
+<nav class="toc" aria-label="Sommaire"><p>Au programme</p><ol><li><a href="#ce-que-mesure-l-ecart">Ce que mesure l'écart</a></li><li><a href="#les-chiffres-de-la-saison">Les chiffres de la saison</a></li><li><a href="#moyenne-et-mediane-deux-lectures-du-meme-match">Moyenne et médiane, deux lectures du même match</a></li><li><a href="#pourquoi-viser-a-5-points-pres">Pourquoi viser à 5 points près</a></li><li><a href="#les-prolongations">Les prolongations</a></li><li><a href="#les-fins-de-match-la-ou-l-ecart-bouge">Les fins de match, là où l'écart bouge</a></li><li><a href="#ce-que-cette-page-ne-fera-pas">Ce que cette page ne fera pas</a></li><li><a href="#et-dans-dunk-league">Et dans Dunk League ?</a></li></ol></nav>
+<article class="content">
+<h2 id="ce-que-mesure-l-ecart">Ce que mesure l'écart</h2>
+<p>L'écart de points, c'est la différence entre les deux scores au coup de sifflet final. Un match fini à 112-104 a un écart de 8 points, quel que soit le vainqueur. Au basket, deviner le score exact relève du miracle : les deux équipes dépassent souvent les 100 points, et chaque possession change le total. L'écart, lui, reste à ta portée. C'est pour ça qu'un prono Dunk League se fait en deux temps, le vainqueur puis l'écart.</p>
+<p>Un écart vaut toujours au moins 1 point, puisqu'un match NBA ne se termine jamais à égalité. Dans l'appli, tu le choisis entre 1 et 60 points.</p>
+
+<h2 id="les-chiffres-de-la-saison">Les chiffres de la saison</h2>
+<p>Voici l'écart sur l'ensemble des matchs terminés depuis le 20 octobre 2026, hors playoffs et NBA Cup comprise, toute la ligue confondue. Il n'y a ici aucun détail par équipe, ni à domicile ni à l'extérieur : ces chiffres décrivent ce qui s'est passé, ils ne disent rien du prochain match.</p>
+
+<ul class="stats"><li class="stat"><b>13</b><span>points d'écart en moyenne</span></li><li class="stat"><b>10</b><span>points d'écart médian</span></li><li class="stat"><b>22&nbsp;%</b><span>des matchs décidés à 5 points ou moins</span></li></ul>
+<figure class="histo">
+<svg viewBox="0 0 600 250" role="img" aria-labelledby="histo-1-t histo-1-d"><title id="histo-1-t">Répartition des matchs par écart de points final, saison 2026-27</title><desc id="histo-1-d">1 à 3 points : 26 matchs ; 4 à 6 points : 45 matchs ; 7 à 10 points : 62 matchs ; 11 à 15 points : 49 matchs ; 16 à 20 points : 28 matchs ; 21 points ou plus : 51 matchs.</desc><line class="axe" x1="10" y1="216" x2="590" y2="216"></line><rect class="bar" x="26" y="137" width="64" height="79" rx="4"></rect><text class="val" x="58" y="129">26</text><text x="58" y="238">1 à 3</text><rect class="bar" x="123" y="80" width="64" height="136" rx="4"></rect><text class="val" x="155" y="72">45</text><text x="155" y="238">4 à 6</text><rect class="bar" x="220" y="28" width="64" height="188" rx="4"></rect><text class="val" x="252" y="20">62</text><text x="252" y="238">7 à 10</text><rect class="bar" x="316" y="67" width="64" height="149" rx="4"></rect><text class="val" x="348" y="59">49</text><text x="348" y="238">11 à 15</text><rect class="bar" x="413" y="131" width="64" height="85" rx="4"></rect><text class="val" x="445" y="123">28</text><text x="445" y="238">16 à 20</text><rect class="bar" x="510" y="61" width="64" height="155" rx="4"></rect><text class="val" x="542" y="53">51</text><text x="542" y="238">21 et plus</text></svg>
+<figcaption>Écart de points final, en nombre de matchs. Relevé du 25/11/2026 : 261 matchs terminés du 20 octobre au 24 novembre 2026 (dates américaines), hors playoffs, toute la ligue.</figcaption>
+</figure>
+
+<h2 id="moyenne-et-mediane-deux-lectures-du-meme-match">Moyenne et médiane, deux lectures du même match</h2>
+<p>La moyenne additionne tous les écarts et divise par le nombre de matchs. Elle a un défaut : les gros écarts la tirent vers le haut. Un match plié de 40 points pèse autant que quatre matchs finis à 10. La médiane, elle, coupe la saison en deux moitiés : la moitié des matchs se sont terminés avec un écart égal ou inférieur, l'autre moitié avec un écart égal ou supérieur.</p>
+<p>Quand la moyenne dépasse nettement la médiane, c'est que quelques matchs très déséquilibrés gonflent le chiffre. Pour te faire une idée de l'écart d'un match ordinaire, la médiane parle plus. Et la répartition des écarts montre une chose simple : aucun écart ne domine vraiment. Les matchs serrés, les matchs moyens et les larges victoires se partagent la saison.</p>
+
+<h2 id="pourquoi-viser-a-5-points-pres">Pourquoi viser à 5 points près</h2>
+<p>Dans Dunk League, trouver l'écart pile est la récompense maximale, mais il existe un palier juste en dessous : le bon vainqueur avec un écart trouvé à 5 points près. C'est lui qui fait la différence sur une semaine, parce qu'il pardonne une fin de match agitée.</p>
+<p>Fais le calcul. Un prono de 8 points couvre tous les écarts réels de 3 à 13 : onze valeurs. Un prono de 3 points ne couvre que les écarts de 1 à 8, puisqu'un écart ne descend jamais sous 1 : huit valeurs seulement. Dès 6 points, ta fourchette est complète. Choisir un très petit écart revient donc à viser l'écart exact au prix d'une fourchette plus étroite. Ce n'est ni bien ni mal, c'est un choix à faire en connaissance de cause.</p>
+
+<p>Sous le sélecteur d'écart, l'appli propose des raccourcis à 3, 6, 9, 12 et 15 points, puis tu ajustes d'un point à la fois si tu veux être plus précis.</p>
+
+<h2 id="les-prolongations">Les prolongations</h2>
+<p>Un match NBA se joue en quatre quart-temps de 12 minutes. À égalité au bout de ces 48 minutes, les équipes repartent pour une prolongation de cinq minutes, puis une autre si l'égalité persiste, jusqu'à ce qu'une équipe passe devant au buzzer.</p>
+<p>Ça change la lecture de l'écart. Chaque prolongation démarre à égalité : l'écart final est donc entièrement construit pendant la dernière prolongation, en cinq minutes de jeu. Un match qui semblait parti pour un écart de 10 points peut ainsi finir à 3, après une remontée et une prolongation. Dans l'appli, c'est le score final qui compte, prolongations comprises : le détail est dans <a href="/regles/">les règles de Dunk League</a>.</p>
+
+
+<h2 id="les-fins-de-match-la-ou-l-ecart-bouge">Les fins de match, là où l'écart bouge</h2>
+<p>Les deux dernières minutes d'un match serré ne ressemblent à rien d'autre. L'équipe menée commet des fautes volontaires pour arrêter le chronomètre et récupérer le ballon. L'équipe qui mène va alors aux lancers francs, un point par lancer réussi. En une minute, un écart de 3 points peut passer à 7, puis retomber à 4 sur un tir à trois points tenté en catastrophe.</p>
+<p>À l'inverse, quand le match est plié depuis longtemps, les entraîneurs font souvent entrer leurs remplaçants. L'écart peut encore grimper ou fondre dans ces dernières minutes sans enjeu. Retiens une règle : un écart se lit au coup de sifflet final, jamais à deux minutes de la fin. Et comme ton prono se verrouille au coup d'envoi, ce scénario se vit en direct ou se découvre au réveil, sans rien pouvoir changer.</p>
+
+<h2 id="ce-que-cette-page-ne-fera-pas">Ce que cette page ne fera pas</h2>
+<p>Tu ne trouveras ici ni écart par équipe, ni bilan à domicile ou à l'extérieur, ni prono de notre part. Ces chiffres-là servent à deviner un résultat avant le match, et ce n'est pas le rôle d'un jeu entre potes. Les chiffres de cette page décrivent toute la ligue, après coup, pour comprendre à quoi ressemble un écart en NBA. Le reste, c'est ton intuition contre celle de tes amis.</p>
+
+<aside class="in-app"><h2 id="et-dans-dunk-league">Et dans Dunk League ?</h2><p>Pour chaque match, tu choisis le vainqueur puis l'écart, avant le coup d'envoi. Le barème récompense la précision par paliers : 10 points pour le bon vainqueur avec l'écart exact (8 points pour les matchs joués avant le 30 novembre 2026), 5 points pour un écart trouvé à 5 points près, et 3 points pour le bon vainqueur seul. Un mauvais vainqueur ne donne rien, même avec le bon écart : l'écart ne compte que si l'équipe choisie gagne. Chaque prono tombe dans un seul palier, le plus haut atteint. Sur une semaine de matchs, ces paliers intermédiaires s'additionnent vite au classement de ta ligue. Le détail des paliers est sur <a href="/regles/">le barème complet, palier par palier</a>, et l'appli est présentée écran par écran sur <a href="/application-pronostics-basket/">la page de l'appli de pronos</a>.</p></aside>
+
+<div class="cta"><p>Vainqueur, puis écart : deux minutes par soir pour tenter le compte juste. Installe l'appli et lance ta ligue.</p>
+<div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=ecarts&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Decarts" data-store="android" rel="noopener">Voir sur Google Play</a></div>
+</div>
+
+<p>Envie de savoir à quelle heure tombent ces matchs chez toi ? Tout est expliqué dans <a href="/heure-des-matchs/">notre guide sur l'horaire des matchs</a>. Et pour jouer avec tes potes, commence par <a href="/pronostics-basket-entre-amis/">créer ta ligue privée</a>.</p>
+</article>
+<section class="faq" aria-labelledby="questions"><h2 id="questions">Questions</h2><div class="qa"><h3 id="q-pourquoi-un-ecart-choisi-de-6-points-ou-plus">Pourquoi un écart choisi de 6 points ou plus couvre-t-il plus de cas ?</h3><div class="a"><p>Parce qu'un écart réel ne descend jamais sous 1 point. Avec un prono de 6, la fourchette de 5 points près va de 1 à 11 : onze écarts possibles. Avec un prono de 2, elle ne va que de 1 à 7 : sept écarts. En dessous de 6, chaque point retiré à ton prono retire une valeur à ta fourchette.</p></div></div><div class="qa"><h3 id="q-comment-sont-calcules-les-chiffres-de-cette-page">Comment sont calculés les chiffres de cette page ?</h3><div class="a"><p>Sur tous les matchs terminés depuis le 20 octobre 2026, hors playoffs, NBA Cup comprise, à partir du score final de chaque match. Chaque match compte une fois, quelle que soit l'affiche. La date du calcul est indiquée sous le tableau.</p></div></div><div class="qa"><h3 id="q-pourquoi-cette-page-ne-donne-t-elle-aucun-chiffre">Pourquoi cette page ne donne-t-elle aucun chiffre par équipe ?</h3><div class="a"><p>Parce qu'elle décrit la saison, sans rien prédire. Des écarts par équipe, à domicile ou à l'extérieur, serviraient à deviner le prochain résultat : ce n'est pas notre rôle. Dans Dunk League, ton prono reste le tien, et c'est tout l'intérêt de jouer entre potes.</p></div></div></section>
+<p class="updated">Actualisé le <time datetime="2026-11-25">25/11/2026</time></p>
+</div>
+<section class="reassure" aria-label="En bref"><ul><li>Les points ne servent qu'au classement</li><li>Gratuit à jouer, sans argent réel en jeu</li><li>iPhone et Android</li><li>2 minutes par soir</li></ul></section>
+<section class="dl" id="telecharger" aria-labelledby="telecharger-t"><h2 id="telecharger-t">Télécharge Dunk League</h2><p>Gratuit à jouer sur iPhone et Android, sans argent réel en jeu.</p><div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=ecarts&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Decarts" data-store="android" rel="noopener">Voir sur Google Play</a></div></section>
+</main>
+<footer class="foot"><div class="foot-in">
+<div class="cols">
+<div><p class="foot-t">Le jeu</p><ul><li><a href="/regles/">Règles</a></li><li><a href="/regles/bonus/">Bonus</a></li><li><a href="/questions/">Questions</a></li><li><a href="/application-pronostics-basket/">Appli</a></li></ul></div>
+<div><p class="foot-t">Jouer</p><ul><li><a href="/pronostics-basket-entre-amis/">Entre amis</a></li><li><a href="/concours-pronostics-basket/">Concours</a></li><li><a href="/saison/">Saison</a></li></ul></div>
+<div><p class="foot-t">Comprendre</p><ul><li><a href="/heure-des-matchs/">Heure des matchs</a></li><li><a href="/ecart-de-points/">Écart de points</a></li><li><a href="/fantasy-nba/">Fantasy ou pronos</a></li><li><a href="/mpp-basket/">Pronos foot ou basket</a></li></ul></div>
+<div><p class="foot-t">Dunk League</p><ul><li><a href="/a-propos/">À propos</a></li><li><a href="/presse/">Presse</a></li><li><a href="/support/">Aide</a></li><li><a href="/charte/">Charte</a></li><li><a href="/conditions/">Conditions</a></li><li><a href="/privacy/">Confidentialité</a></li><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/delete-account/">Supprimer mon compte</a></li><li><a href="https://www.instagram.com/dunk_league_pronos" rel="noopener">Instagram</a></li></ul></div>
+</div>
+<p class="legal">Dunk League est une application indépendante, non affiliée à la NBA, à ses équipes ni à ses partenaires. Les noms de compétitions et d'équipes sont cités à titre d'information et appartiennent à leurs titulaires. Pronos entre potes : les points ne servent qu'au classement. Apple et le logo Apple sont des marques d'Apple Inc. App Store est une marque de service d'Apple Inc. Google Play et le logo Google Play sont des marques de Google LLC.</p>
+<p class="foot-meta">© 2026 Dunk League · <a href="mailto:contact@dunkleague.app">Contact</a></p>
+</div></footer>
+<script>(function(){var u=navigator.userAgent||"",d=document,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),an=/Android/i.test(u);d.querySelectorAll("[data-dl]").forEach(function(a){var h=ios?a.getAttribute("data-ios"):an?a.getAttribute("data-android"):null;if(h)a.setAttribute("href",h)});var s=d.getElementById("sticky");if(s&&!ios){var f=function(){var m=d.documentElement;if((m.scrollTop+innerHeight)/m.scrollHeight>.5){s.classList.add("on");removeEventListener("scroll",f)}};addEventListener("scroll",f,{passive:true})}})();</script>
+</body>
+</html>

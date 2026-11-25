@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concours de pronos NBA au bureau, sans tableur</title>
+<meta name="description" content="Organise un concours de pronos NBA entre collègues, au club ou en famille : une ligue, un code, un classement calculé tout seul. Gratuit, pour la gloire.">
+<link rel="canonical" href="https://dunkleague.app/concours-pronostics-basket/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0c0e12">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-itunes-app" content="app-id=6801577074">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dunk League">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Concours de pronos NBA au bureau, sans tableur">
+<meta property="og:description" content="Organise un concours de pronos NBA entre collègues, au club ou en famille : une ligue, un code, un classement calculé tout seul. Gratuit, pour la gloire.">
+<meta property="og:url" content="https://dunkleague.app/concours-pronostics-basket/">
+<meta property="og:image" content="https://dunkleague.app/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dunk League, pronos basket entre potes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Concours de pronos NBA au bureau, sans tableur">
+<meta name="twitter:description" content="Organise un concours de pronos NBA entre collègues, au club ou en famille : une ligue, un code, un classement calculé tout seul. Gratuit, pour la gloire.">
+<meta name="twitter:image" content="https://dunkleague.app/og-default.jpg">
+<meta name="generator" content="dunkleague-build">
+<style>:root{--bg:#0c0e12;--card:#15181e;--border:#232833;--text:#f4f5f7;--muted:#98a0ac;--brand:#ff6b1a;--gold:#f5b94b;--gold2:#ffd27a;--ink:#171205;color-scheme:dark}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:1.0625rem}
+a{color:var(--gold)}a:hover{color:var(--gold2)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+img{max-width:100%;height:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--ink);padding:8px 14px;border-radius:8px;z-index:30}.skip:focus{left:8px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(12,14,18,.94);border-bottom:1px solid var(--border)}
+.bar-in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px}
+.brand{display:flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;font-weight:800;font-size:1.1rem;letter-spacing:-.3px}
+.brand picture{display:flex}.brand img{width:44px;height:30px}.brand em{font-style:normal;color:var(--gold)}
+.menu{order:3;width:100%;display:flex;flex-wrap:wrap;gap:2px 18px;font-size:.95rem}
+.menu a{color:var(--muted);text-decoration:none;padding:2px 0}.menu a:hover,.menu a[aria-current]{color:var(--text)}
+.btn-dl{margin-left:auto;background:var(--gold);color:var(--ink);font-weight:700;text-decoration:none;padding:8px 18px;border-radius:999px;font-size:.95rem;white-space:nowrap}
+.btn-dl:hover{background:var(--gold2);color:var(--ink)}
+@media(min-width:760px){.menu{order:0;width:auto;margin-left:8px}}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.crumbs{margin:20px 0 0;font-size:.85rem;color:var(--muted)}
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap}.crumbs li+li::before{content:"›";margin:0 8px}
+.crumbs a{color:var(--gold);text-decoration:none}
+.hero{text-align:center;padding:28px 0 8px}
+.kicker{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+h1{font-size:clamp(1.75rem,5.2vw,2.5rem);line-height:1.15;letter-spacing:-.5px;margin-bottom:14px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--gold)}
+.intro{color:var(--muted);max-width:36em;margin:0 auto;font-size:1.08rem}.intro p{margin:0 0 10px}.intro strong{color:var(--text)}
+.hero-note,.disclaimer{color:var(--muted);font-size:.82rem;max-width:40em;margin:12px auto}
+.hero-media{margin-top:24px}
+.stores{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:22px 0 6px}
+.store{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--text);text-decoration:none;font-weight:600;font-size:.98rem}
+.store:hover{color:var(--gold2);border-color:var(--gold)}
+.store.img{padding:0;border:0;background:none;min-width:0;height:auto}.store.img img{display:block;width:auto}
+.related{margin:28px 0 8px}
+.related-t{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.related ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.related a{display:block;height:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;color:var(--text);text-decoration:none;font-weight:600;font-size:.95rem}
+.related a span{display:block;color:var(--muted);font-weight:400;font-size:.85rem;margin-top:2px}.related a:hover{border-color:var(--gold)}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin:24px 0}
+.toc p{font-weight:700;margin-bottom:6px}.toc ol{padding-left:20px;color:var(--muted);display:grid;gap:4px}.toc a{color:var(--text);text-decoration:none}
+h2{font-size:1.45rem;line-height:1.3;margin:44px 0 14px;scroll-margin-top:90px}
+h3{font-size:1.08rem;line-height:1.35;margin:24px 0 8px;scroll-margin-top:90px}
+p{margin:0 0 14px}
+.content ul,.content ol{padding-left:22px;margin:0 0 16px}.content li{margin-bottom:6px}
+.muted{color:var(--muted)}strong{color:var(--text)}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:18px 0 22px!important;padding:0!important}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;margin:0!important}
+.stat b{display:block;font-size:2.2rem;line-height:1.1;font-weight:800;color:var(--gold);letter-spacing:-1px}
+.stat span{display:block;color:var(--muted);font-size:.9rem;margin-top:4px}
+.table{overflow-x:auto;margin:16px 0 18px;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}table.wide{min-width:520px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--card);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}td.pts{font-weight:800;color:var(--gold);white-space:nowrap}
+.note{background:var(--card);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+.note.info{border-left-color:var(--brand)}.note p{color:var(--muted)}.note p:last-child{margin:0}
+.example{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin:14px 0}
+.example p:last-child,.example ul:last-child{margin-bottom:0}.example li{color:var(--muted)}
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:12px;margin:16px 0!important;padding:0!important}
+ol.steps>li{counter-increment:s;position:relative;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px 16px 64px;margin:0}
+ol.steps>li::before{content:counter(s);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800}
+ol.steps h3{margin:2px 0 4px}ol.steps p{color:var(--muted);margin:0;font-size:.97rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0 20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px}.card p{color:var(--muted);font-size:.95rem;margin:0 0 8px}.card p:last-child{margin:0}
+ul.facts{list-style:none;padding:0!important}ul.facts li{padding-left:22px;position:relative;color:var(--muted)}
+ul.facts li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+ol.tips li{color:var(--muted)}ol.tips li strong{display:block;color:var(--text)}
+.shots{display:flex;gap:14px;overflow-x:auto;padding:4px 0 12px;margin:16px 0;scroll-snap-type:x mandatory}
+.shots figure{flex:0 0 auto;width:min(220px,62vw);scroll-snap-align:start}
+.shots img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--border)}
+.shots figcaption{color:var(--muted);font-size:.85rem;margin-top:6px;text-align:center}
+.in-app{background:linear-gradient(135deg,rgba(245,185,75,.1),rgba(255,107,26,.06));border:1px solid rgba(245,185,75,.35);border-radius:16px;padding:20px 22px;margin:36px 0}
+.in-app h2{margin:0 0 10px;font-size:1.25rem}.in-app p:last-child{margin:0}
+.cta{text-align:center;margin:32px 0}.cta p{color:var(--muted)}
+.faq h3{margin-top:22px}.faq .a p{color:var(--muted)}
+.updated{color:var(--muted);font-size:.85rem;margin:36px 0 0}
+.reassure{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--card);margin-top:40px}
+.reassure ul{list-style:none;max-width:1080px;margin:0 auto;padding:14px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;font-size:.9rem;color:var(--muted)}
+.reassure li+li::before{content:"·";margin:0 10px;color:var(--gold)}
+.dl{text-align:center;padding:44px 16px 36px}.dl h2{margin:0 0 6px}.dl p{color:var(--muted)}
+.foot{border-top:1px solid var(--border);padding:36px 16px 44px;color:var(--muted);font-size:.9rem}
+.foot-in{max-width:1080px;margin:0 auto}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+@media(min-width:760px){.cols{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.foot-t{color:var(--text);font-weight:700;margin-bottom:8px}.foot ul{list-style:none}.foot li{margin-bottom:6px}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--gold)}
+.legal{margin-top:28px;font-size:.8rem;line-height:1.55}.foot-meta{margin-top:10px;font-size:.8rem}
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:25;display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px 12px 10px 16px;font-size:.92rem}
+.sticky.on{display:flex}.sticky .btn-dl{margin:0}
+@media(max-width:759px){body:has(.sticky.on){padding-bottom:84px}}
+@media(min-width:760px){.sticky.on{display:none}}
+.pills{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px!important;padding:0!important}
+.pill{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:3px 12px;font-size:.88rem;color:var(--muted);margin:0!important}.pill.on{border-color:var(--gold);color:var(--gold);font-weight:700}
+tr.off td{color:var(--muted)}
+.histo{margin:16px 0 20px}.histo svg{display:block;width:100%;height:auto}.histo .bar{fill:var(--gold)}.histo .axe{stroke:var(--border)}
+.histo text{fill:var(--muted);font-size:19px;text-anchor:middle}.histo .val{fill:var(--text);font-weight:700}.histo figcaption{color:var(--muted);font-size:.85rem;margin-top:8px}
+.tonight{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:24px 0}.tonight h2{margin:0 0 4px;font-size:1.25rem}
+.tonight-l{list-style:none;display:grid;gap:6px;margin:12px 0}.tonight-l b{display:inline-block;min-width:4.2em;color:var(--gold)}.tonight p:last-child{margin:0}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https://dunkleague.app/concours-pronostics-basket/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://dunkleague.app/"},{"@type":"ListItem","position":2,"name":"Concours","item":"https://dunkleague.app/concours-pronostics-basket/"}]},{"@type":"Article","@id":"https://dunkleague.app/concours-pronostics-basket/#article","headline":"Un concours de pronos NBA, au bureau, au club ou en famille","description":"Organise un concours de pronos NBA entre collègues, au club ou en famille : une ligue, un code, un classement calculé tout seul. Gratuit, pour la gloire.","inLanguage":"fr-FR","datePublished":"2026-11-25","dateModified":"2026-11-25","mainEntityOfPage":{"@id":"https://dunkleague.app/concours-pronostics-basket/"},"image":"https://dunkleague.app/og-default.jpg","author":{"@id":"https://dunkleague.app/#org"},"publisher":{"@id":"https://dunkleague.app/#org"},"about":{"@id":"https://dunkleague.app/#app"}},{"@type":"Organization","@id":"https://dunkleague.app/#org","name":"Dunk League","url":"https://dunkleague.app/","logo":{"@type":"ImageObject","url":"https://dunkleague.app/logo-mark.png","width":640,"height":434}},{"@type":"WebSite","@id":"https://dunkleague.app/#website","url":"https://dunkleague.app/","name":"Dunk League"},{"@type":"MobileApplication","@id":"https://dunkleague.app/#app","name":"Dunk League","applicationCategory":"GameApplication","operatingSystem":"iOS, Android"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="bar"><div class="bar-in">
+<a class="brand" href="/"><picture><source type="image/avif" srcset="/logo-mark-88.avif"><source type="image/webp" srcset="/logo-mark-88.webp"><img src="/logo-mark-88.png" alt="" width="44" height="30" decoding="async"></picture><span>Dunk <em>League</em></span></a>
+<nav class="menu" aria-label="Menu principal"><a href="/regles/">Le jeu</a><a href="/pronostics-basket-entre-amis/">Entre amis</a><a href="/saison/">Saison</a><a href="/questions/">Questions</a></nav>
+<a class="btn-dl" href="#telecharger" data-dl data-ios="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=concours&amp;mt=8" data-android="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dconcours">Télécharger</a>
+</div></header>
+<main id="contenu">
+<div class="wrap">
+<nav class="crumbs" aria-label="Fil d'Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Concours</li></ol></nav>
+<header class="hero">
+<p class="kicker">Concours · le guide de l'organisateur</p>
+<h1>Un concours de pronos NBA, <em>au bureau, au club ou en famille</em></h1>
+<div class="intro"><p>Un <strong>concours de pronos</strong> NBA, c'est souvent un tableur partagé, des messages envoyés à minuit et un organisateur qui recompte les points le matin. Voici comment lancer des <strong>pronos entre collègues</strong>, entre licenciés du club ou entre cousins, avec un classement qui se met à jour tout seul, et sans aucun lot à la clé.</p></div>
+<div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=concours&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dconcours" data-store="android" rel="noopener">Voir sur Google Play</a></div>
+</header>
+<nav class="related" aria-label="Pages liées"><p class="related-t">Pages liées</p><ul><li><a href="/pronostics-basket-entre-amis/">Entre amis<span>Crée ta ligue privée et invite ta bande</span></a></li><li><a href="/regles/">Règles et barème<span>Points, heure limite, cas particuliers</span></a></li><li><a href="/regles/bonus/">Les deux bonus<span>MVP de la Night et patron de la semaine</span></a></li><li><a href="/heure-des-matchs/">Heure des matchs<span>Décalage horaire et créneaux</span></a></li><li><a href="/application-pronostics-basket/">L'appli<span>Chaque onglet, les notifications, DUNK et Premium</span></a></li><li><a href="/fantasy-nba/">Fantasy ou pronos<span>Deux façons de jouer la saison, et les options gratuites</span></a></li></ul></nav>
+<nav class="toc" aria-label="Sommaire"><p>Au programme</p><ol><li><a href="#pourquoi-lacher-le-tableur">Pourquoi lâcher le tableur</a></li><li><a href="#lancer-le-concours-en-4-etapes">Lancer le concours en 4 étapes</a></li><li><a href="#au-bureau-quelques-regles-de-bon-sens">Au bureau : quelques règles de bon sens</a></li><li><a href="#plus-de-20-participants-une-ligue-par-equipe">Plus de 20 participants : une ligue par équipe</a></li><li><a href="#demarrer-en-cours-de-saison-quel-classement-suivre">Démarrer en cours de saison : quel classement suivre</a></li><li><a href="#au-club-et-en-famille-adapter-le-format">Au club et en famille : adapter le format</a></li><li><a href="#pour-la-gloire-pas-de-lot-et-c-est-voulu">Pour la gloire : pas de lot, et c'est voulu</a></li><li><a href="#et-dans-dunk-league">Et dans Dunk League ?</a></li></ol></nav>
+<article class="content">
+<h2 id="pourquoi-lacher-le-tableur">Pourquoi lâcher le tableur</h2>
+<p>Le concours au tableur, tout le monde l'a connu. Il tient deux semaines, puis l'organisateur s'épuise. Avec la NBA, c'est encore plus dur : les matchs se jouent surtout pendant la nuit, heure française, et personne ne veut recevoir des pronos à 1 h du matin ni recopier des scores au réveil.</p>
+<ul class="facts">
+<li><strong>Les horaires</strong> : qui a envoyé son prono avant le coup d'envoi, et qui l'a envoyé après avoir vu le premier quart-temps ? Dans un tableur, impossible de trancher.</li>
+<li><strong>La saisie</strong> : il faut reporter les scores de chaque match, chaque matin, sans erreur de ligne.</li>
+<li><strong>Les calculs</strong> : un barème à plusieurs paliers, c'est une formule fragile, et la moindre erreur déclenche une réclamation.</li>
+<li><strong>Les retardataires</strong> : on relance à la main ceux qui ont oublié, au risque de lasser tout le monde.</li>
+</ul>
+<p>Dans une ligue Dunk League, ces quatre corvées disparaissent. Chaque prono se verrouille au coup d'envoi de son match, pour tout le monde en même temps. Les points tombent quand le match est terminé, et le classement de la ligue est recalculé après chaque match. Si un score final est corrigé, les points le sont aussi. L'organisateur redevient un joueur comme les autres.</p>
+
+<h2 id="lancer-le-concours-en-4-etapes">Lancer le concours en 4 étapes</h2>
+<ol class="steps">
+<li><h3>Désigne un organisateur</h3><p>Une seule personne crée la ligue. En version gratuite, chacun peut créer une ligue et en rejoindre autant qu'il veut. Si tu as déjà créé la ligue de ta bande, confie la création de celle du bureau à un collègue qui n'en a pas encore créé : Premium permet d'en créer plusieurs.</p></li>
+<li><h3>Crée la ligue et choisis un nom</h3><p>Dans l'onglet Ligues, « Créer une ligue » : un nom de 3 à 40 caractères, un emblème parmi 8 emojis, et l'appli affiche un code d'invitation de 6 caractères.</p></li>
+<li><h3>Diffuse le code là où le groupe se parle</h3><p>Le bouton « Partager 📤 » ouvre le menu de partage du téléphone : messagerie de l'équipe, groupe du club, conversation de la famille. Chaque participant installe l'appli, touche « Rejoindre avec un code » et tape le code.</p></li>
+<li><h3>Fixe une date de départ un lundi</h3><p>Le classement « Cette semaine » court du lundi au dimanche. Démarrer un lundi donne à tout le monde la même ligne de départ pour la première semaine.</p></li>
+</ol>
+<p>Le barème est le même pour tous et n'a pas besoin d'être réexpliqué : 10 points pour l'écart exact (8 points pour les matchs joués avant le 30 novembre 2026), 5 points pour l'écart à 5 points près, 3 points pour le bon vainqueur, 0 point pour un mauvais vainqueur. Pour le détail et les cas particuliers, envoie au groupe le lien vers <a href="/regles/">le barème expliqué pas à pas</a>.</p>
+
+<h2 id="au-bureau-quelques-regles-de-bon-sens">Au bureau : quelques règles de bon sens</h2>
+<p>Un concours entre collègues doit rester un plaisir, pas une obligation de plus. Trois principes à poser dès le message de lancement :</p>
+<ol class="tips">
+<li><strong>Participation libre.</strong> Personne n'est relancé par son manager, et celui qui ne joue pas n'a rien à justifier.</li>
+<li><strong>Aucun argent, aucune collecte.</strong> Pas de participation à verser ni de lot acheté en commun : on joue pour le titre et pour la discussion du lundi.</li>
+<li><strong>Le temps de chacun.</strong> Les pronos se font en deux minutes, le soir, depuis son téléphone. Si la bande n'a rien pronostiqué de la journée, l'appli envoie un rappel vers 20 h : inutile de spammer la messagerie de l'équipe.</li>
+</ol>
+<p>Pour la discrétion, chacun joue sous un pseudo, jamais sous son nom complet, et les pronos des autres restent cachés jusqu'au coup d'envoi. Personne ne peut recopier le choix du collègue le mieux classé.</p>
+
+<h2 id="plus-de-20-participants-une-ligue-par-equipe">Plus de 20 participants : une ligue par équipe</h2>
+<p>Une ligue privée accueille 20 membres au maximum. Pour un plateau entier, une association sportive ou une grande famille, la solution la plus simple est de créer une ligue par groupe naturel : un service, un étage, une catégorie du club, une branche de la famille. Chaque ligue a son classement et, chaque lundi, son patron.</p>
+<p>Soyons francs : l'appli ne propose pas de classement qui réunirait plusieurs ligues privées. Le seul classement commun est celui de la MVP League, qui réunit tous les joueurs de l'appli, bien au-delà de votre groupe. Le lundi, un simple message suffit alors : chaque ligue annonce son patron, et l'on garde la rivalité entre services pour la machine à café.</p>
+
+<h2 id="demarrer-en-cours-de-saison-quel-classement-suivre">Démarrer en cours de saison : quel classement suivre</h2>
+<p>C'est le piège qui guette tout concours lancé en décembre ou en janvier. Le classement « Saison » d'une ligue reprend tous les points de chaque membre depuis le début de la saison, y compris ceux qu'il a marqués avant d'entrer dans la ligue. Le collègue qui joue depuis octobre part donc avec une avance que le nouveau venu ne rattrapera pas.</p>
+<p>Pour un concours qui démarre en route, fais du classement « Cette semaine » la référence. Il repart de zéro chaque lundi, il place tout le monde à égalité, et il désigne chaque semaine un <a href="/regles/bonus/">patron de la semaine</a> dans toute ligue d'au moins 3 joueurs actifs. Au bout d'un mois ou d'une saison, le vrai champion du concours est celui qui a porté la couronne le plus souvent : un décompte que tout le monde peut faire de tête.</p>
+
+<h2 id="au-club-et-en-famille-adapter-le-format">Au club et en famille : adapter le format</h2>
+<p>Au club, le concours de pronos fait le lien entre les équipes, des seniors aux parents des plus jeunes. Il faut avoir au moins 13 ans pour créer un compte, et l'accord d'un parent entre 13 et 15 ans : pour les plus jeunes licenciés, le concours se joue donc avec les parents, ou se réserve aux catégories plus âgées.</p>
+<p>En famille, la mécanique tient en une phrase : sur chaque match, on choisit qui gagne, puis de combien. Pas besoin de connaître les effectifs par cœur pour s'amuser, et le grand-oncle qui ne regarde que les résumés peut très bien finir devant le neveu incollable. Les matchs tombant surtout la nuit, chacun pronostique le soir et découvre le résultat au petit-déjeuner : pour comprendre ces horaires, le guide sur <a href="/heure-des-matchs/">l'heure des matchs vue de France</a> répond à tout.</p>
+
+<h2 id="pour-la-gloire-pas-de-lot-et-c-est-voulu">Pour la gloire : pas de lot, et c'est voulu</h2>
+<p>Un concours de pronos dans Dunk League n'a ni lot ni dotation. Promettre un lot change la nature du concours : il faut un règlement, des conditions de participation, quelqu'un pour remettre le lot, et plus personne ne joue tout à fait pour s'amuser. On garde donc ce qui fait vivre un groupe : un titre qui change de main chaque lundi, des badges, et le droit de le rappeler à tout le monde jusqu'à la semaine suivante.</p>
+
+<aside class="in-app"><h2 id="et-dans-dunk-league">Et dans Dunk League ?</h2><p>Un prono par match compte dans toutes tes ligues à la fois : celle du bureau, celle du club et celle de ta bande, sans rien saisir deux fois. Sur la fiche de la ligue, la bascule « Cette semaine » / « Saison » affiche les deux classements, recalculés après chaque match. Le lundi matin, le premier de la semaine reçoit le badge 👑 et 25 points au classement de la saison, et les nuits d'au moins 5 matchs, celui qui trouve tous les vainqueurs devient <a href="/regles/bonus/#mvp-de-la-night">MVP de la Night</a> (à partir des nuits du 30 novembre 2026). Aucun achat ne donne de points : au bureau comme ailleurs, le classement reste au mérite.</p></aside>
+
+<div class="cta"><p><strong>Lance le concours lundi.</strong> Crée la ligue, envoie le code au groupe, et laisse l'appli compter les points.</p>
+<div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=concours&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dconcours" data-store="android" rel="noopener">Voir sur Google Play</a></div>
+</div>
+<p class="muted">Tu organises plutôt une ligue avec ta bande de toujours ? Les idées de noms et de gages sont sur <a href="/pronostics-basket-entre-amis/">la page des ligues privées</a>.</p>
+</article>
+<section class="faq" aria-labelledby="questions"><h2 id="questions">Questions</h2><div class="qa"><h3 id="q-peut-on-offrir-un-lot-au-vainqueur-d-un-concours">Peut-on offrir un lot au vainqueur d'un concours de pronos ?</h3><div class="a"><p>Dunk League ne prévoit ni lot ni dotation : un concours s'y joue pour la gloire. Un concours qui promet des lots est une autre organisation, avec un règlement, des conditions de participation et la remise des lots à gérer. Le plus simple, au bureau comme au club, est de garder ce que l'appli donne déjà : le titre de patron de la semaine, les badges et la place sur le podium.</p></div></div><div class="qa"><h3 id="q-les-participants-doivent-ils-s-inscrire-sous-leur">Les participants doivent-ils s'inscrire sous leur vrai nom ?</h3><div class="a"><p>Non. Le compte se crée avec une adresse email, et chacun joue sous un pseudo de 3 à 20 caractères. Ce pseudo apparaît dans les classements de toutes ses ligues, y compris la MVP League qui réunit tous les joueurs : mieux vaut un surnom que les collègues reconnaîtront qu'un nom et un prénom complets.</p></div></div><div class="qa"><h3 id="q-comment-annoncer-le-classement-de-la-semaine-au">Comment annoncer le classement de la semaine au reste de l'équipe ?</h3><div class="a"><p>Chaque joueur peut ouvrir son récap de la semaine et toucher « 📤 Partager ma semaine », qui prépare une image de son bilan à envoyer sur la messagerie du groupe. Pour le classement complet, une capture de la fiche de la ligue, sur l'onglet « Cette semaine », suffit le lundi matin, juste après l'annonce du patron.</p></div></div><div class="qa"><h3 id="q-combien-de-temps-faut-il-pour-lancer-le-concours">Combien de temps faut-il pour lancer le concours ?</h3><div class="a"><p>Quelques minutes pour l'organisateur : créer la ligue, choisir son nom et son emblème, puis envoyer le code. Chaque participant met ensuite le temps d'installer l'appli, de créer son compte et de taper le code. Le plus long reste de trouver un nom de ligue qui fera rire tout le monde.</p></div></div></section>
+<p class="updated">Actualisé le <time datetime="2026-11-25">25/11/2026</time></p>
+</div>
+<section class="reassure" aria-label="En bref"><ul><li>Les points ne servent qu'au classement</li><li>Gratuit à jouer, sans argent réel en jeu</li><li>iPhone et Android</li><li>2 minutes par soir</li></ul></section>
+<section class="dl" id="telecharger" aria-labelledby="telecharger-t"><h2 id="telecharger-t">Télécharge Dunk League</h2><p>Gratuit à jouer sur iPhone et Android, sans argent réel en jeu.</p><div class="stores"><a class="store" href="https://apps.apple.com/fr/app/dunk-league-jeu-de-pronos/id6801577074?ct=concours&amp;mt=8" data-store="ios" rel="noopener">Voir sur l'App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.dunkleague.app&amp;hl=fr&amp;referrer=utm_source%3Dsite%26utm_campaign%3Dconcours" data-store="android" rel="noopener">Voir sur Google Play</a></div></section>
+</main>
+<footer class="foot"><div class="foot-in">
+<div class="cols">
+<div><p class="foot-t">Le jeu</p><ul><li><a href="/regles/">Règles</a></li><li><a href="/regles/bonus/">Bonus</a></li><li><a href="/questions/">Questions</a></li><li><a href="/application-pronostics-basket/">Appli</a></li></ul></div>
+<div><p class="foot-t">Jouer</p><ul><li><a href="/pronostics-basket-entre-amis/">Entre amis</a></li><li><a href="/concours-pronostics-basket/">Concours</a></li><li><a href="/saison/">Saison</a></li></ul></div>
+<div><p class="foot-t">Comprendre</p><ul><li><a href="/heure-des-matchs/">Heure des matchs</a></li><li><a href="/ecart-de-points/">Écart de points</a></li><li><a href="/fantasy-nba/">Fantasy ou pronos</a></li><li><a href="/mpp-basket/">Pronos foot ou basket</a></li></ul></div>
+<div><p class="foot-t">Dunk League</p><ul><li><a href="/a-propos/">À propos</a></li><li><a href="/presse/">Presse</a></li><li><a href="/support/">Aide</a></li><li><a href="/charte/">Charte</a></li><li><a href="/conditions/">Conditions</a></li><li><a href="/privacy/">Confidentialité</a></li><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/delete-account/">Supprimer mon compte</a></li><li><a href="https://www.instagram.com/dunk_league_pronos" rel="noopener">Instagram</a></li></ul></div>
+</div>
+<p class="legal">Dunk League est une application indépendante, non affiliée à la NBA, à ses équipes ni à ses partenaires. Les noms de compétitions et d'équipes sont cités à titre d'information et appartiennent à leurs titulaires. Pronos entre potes : les points ne servent qu'au classement. Apple et le logo Apple sont des marques d'Apple Inc. App Store est une marque de service d'Apple Inc. Google Play et le logo Google Play sont des marques de Google LLC.</p>
+<p class="foot-meta">© 2026 Dunk League · <a href="mailto:contact@dunkleague.app">Contact</a></p>
+</div></footer>
+<script>(function(){var u=navigator.userAgent||"",d=document,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),an=/Android/i.test(u);d.querySelectorAll("[data-dl]").forEach(function(a){var h=ios?a.getAttribute("data-ios"):an?a.getAttribute("data-android"):null;if(h)a.setAttribute("href",h)});var s=d.getElementById("sticky");if(s&&!ios){var f=function(){var m=d.documentElement;if((m.scrollTop+innerHeight)/m.scrollHeight>.5){s.classList.add("on");removeEventListener("scroll",f)}};addEventListener("scroll",f,{passive:true})}})();</script>
+</body>
+</html>

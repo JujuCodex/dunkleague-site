@@ -1,0 +1,100 @@
+<!--meta
+{
+  "_source": "Plan SEO, sections 3, 2 bis et 6 bis (concours sans lot ni dotation, pour la gloire). Faits relevés dans le code de l'app (dunk-league, lecture seule) : voir le commentaire de source dans le corps.",
+  "title": "Concours de pronos NBA au bureau, sans tableur",
+  "description": "Organise un concours de pronos NBA entre collègues, au club ou en famille : une ligue, un code, un classement calculé tout seul. Gratuit, pour la gloire.",
+  "h1": "Un concours de pronos NBA, <em>au bureau, au club ou en famille</em>",
+  "kicker": "Concours · le guide de l'organisateur",
+  "crumb": "Concours",
+  "relatedLabel": "Concours de pronos",
+  "relatedBlurb": "Au bureau, au club ou en famille, sans tableur",
+  "intro": "Un <strong>concours de pronos</strong> NBA, c'est souvent un tableur partagé, des messages envoyés à minuit et un organisateur qui recompte les points le matin. Voici comment lancer des <strong>pronos entre collègues</strong>, entre licenciés du club ou entre cousins, avec un classement qui se met à jour tout seul, et sans aucun lot à la clé.",
+  "primaryQuery": ["concours de pronos", "pronos entre collègues"],
+  "forbiddenInTitle": ["entre amis", "application"],
+  "related": ["/pronostics-basket-entre-amis/", "/regles/", "/regles/bonus/", "/heure-des-matchs/", "/application-pronostics-basket/", "/fantasy-nba/"],
+  "schema": ["Article"],
+  "ctaCampaign": "concours",
+  "gabarit": "guide",
+  "minWords": 600,
+  "publishedOn": "2026-11-25",
+  "modifiedOn": "2026-11-25",
+  "faq": [
+    {
+      "q": "Peut-on offrir un lot au vainqueur d'un concours de pronos ?",
+      "a": "Dunk League ne prévoit ni lot ni dotation : un concours s'y joue pour la gloire. Un concours qui promet des lots est une autre organisation, avec un règlement, des conditions de participation et la remise des lots à gérer. Le plus simple, au bureau comme au club, est de garder ce que l'appli donne déjà : le titre de patron de la semaine, les badges et la place sur le podium."
+    },
+    {
+      "q": "Les participants doivent-ils s'inscrire sous leur vrai nom ?",
+      "a": "Non. Le compte se crée avec une adresse email, et chacun joue sous un pseudo de 3 à 20 caractères. Ce pseudo apparaît dans les classements de toutes ses ligues, y compris la MVP League qui réunit tous les joueurs : mieux vaut un surnom que les collègues reconnaîtront qu'un nom et un prénom complets."
+    },
+    {
+      "q": "Comment annoncer le classement de la semaine au reste de l'équipe ?",
+      "a": "Chaque joueur peut ouvrir son récap de la semaine et toucher « 📤 Partager ma semaine », qui prépare une image de son bilan à envoyer sur la messagerie du groupe. Pour le classement complet, une capture de la fiche de la ligue, sur l'onglet « Cette semaine », suffit le lundi matin, juste après l'annonce du patron."
+    },
+    {
+      "q": "Combien de temps faut-il pour lancer le concours ?",
+      "a": "Quelques minutes pour l'organisateur : créer la ligue, choisir son nom et son emblème, puis envoyer le code. Chaque participant met ensuite le temps d'installer l'appli, de créer son compte et de taper le code. Le plus long reste de trouver un nom de ligue qui fera rire tout le monde."
+    }
+  ]
+}
+-->
+<!-- Faits vérifiés dans dunk-league (lecture seule) :
+     - 20 membres par ligue privée (mig 0001:90 max_members default 20 ; refus « league_full » dans join_league, 0014:104-106)
+     - 1 ligue créée en version gratuite, rejoindre sans limite (0014:53-86) ; plusieurs ligues créées avec Premium (FAQ /questions/)
+     - classement « Saison » d'une ligue = user_points.total_points de chaque membre, quelle que soit sa date d'arrivée dans la ligue (get_league_standings, 0027:772-872) ; « Cette semaine » = weekly_points du lundi au dimanche
+     - recalcul des points si un score final est corrigé (resettle_changed_games, 0027:392)
+     - patron de la semaine : rang 1, au moins 3 joueurs actifs, plusieurs patrons en cas d'égalité (0025, 0028:426-486)
+     - pronos des autres visibles au coup d'envoi (0001:551-556) ; verrouillage par match
+     - bouton « 📤 Partager ma semaine » (recap/week.tsx:145, version 1.0.4 : en ligne sur l'App Store depuis le 20/11/2026 d'après itunes.apple.com/lookup?id=6801577074, lu le 25/11/2026 ; TODO-VERIFIER : publication de la 1.0.4 sur Google Play, non confirmée, avant de garder la FAQ « Comment annoncer le classement » telle quelle pour Android) ; « Partager 📤 » du code d'invitation (league/[id].tsx:77)
+     - âge minimum 13 ans, accord parental de 13 à 15 ans (/conditions/, validé par l'éditeur le 24/11/2026)
+     - pseudo 3 à 20 caractères, aucun nom réel demandé (FAQ /questions/ q-creer-un-compte)
+     - rappel du soir à 20 h si rien n'est pronostiqué (page /heure-des-matchs/) -->
+<h2>Pourquoi lâcher le tableur</h2>
+<p>Le concours au tableur, tout le monde l'a connu. Il tient deux semaines, puis l'organisateur s'épuise. Avec la NBA, c'est encore plus dur : les matchs se jouent surtout pendant la nuit, heure française, et personne ne veut recevoir des pronos à 1 h du matin ni recopier des scores au réveil.</p>
+<ul class="facts">
+<li><strong>Les horaires</strong> : qui a envoyé son prono avant le coup d'envoi, et qui l'a envoyé après avoir vu le premier quart-temps ? Dans un tableur, impossible de trancher.</li>
+<li><strong>La saisie</strong> : il faut reporter les scores de chaque match, chaque matin, sans erreur de ligne.</li>
+<li><strong>Les calculs</strong> : un barème à plusieurs paliers, c'est une formule fragile, et la moindre erreur déclenche une réclamation.</li>
+<li><strong>Les retardataires</strong> : on relance à la main ceux qui ont oublié, au risque de lasser tout le monde.</li>
+</ul>
+<p>Dans une ligue Dunk League, ces quatre corvées disparaissent. Chaque prono se verrouille au coup d'envoi de son match, pour tout le monde en même temps. Les points tombent quand le match est terminé, et le classement de la ligue est recalculé après chaque match. Si un score final est corrigé, les points le sont aussi. L'organisateur redevient un joueur comme les autres.</p>
+
+<h2>Lancer le concours en 4 étapes</h2>
+<ol class="steps">
+<li><h3>Désigne un organisateur</h3><p>Une seule personne crée la ligue. En version gratuite, chacun peut créer une ligue et en rejoindre autant qu'il veut. Si tu as déjà créé la ligue de ta bande, confie la création de celle du bureau à un collègue qui n'en a pas encore créé : Premium permet d'en créer plusieurs.</p></li>
+<li><h3>Crée la ligue et choisis un nom</h3><p>Dans l'onglet Ligues, « Créer une ligue » : un nom de 3 à 40 caractères, un emblème parmi 8 emojis, et l'appli affiche un code d'invitation de 6 caractères.</p></li>
+<li><h3>Diffuse le code là où le groupe se parle</h3><p>Le bouton « Partager 📤 » ouvre le menu de partage du téléphone : messagerie de l'équipe, groupe du club, conversation de la famille. Chaque participant installe l'appli, touche « Rejoindre avec un code » et tape le code.</p></li>
+<li><h3>Fixe une date de départ un lundi</h3><p>Le classement « Cette semaine » court du lundi au dimanche. Démarrer un lundi donne à tout le monde la même ligne de départ pour la première semaine.</p></li>
+</ol>
+<p>Le barème est le même pour tous et n'a pas besoin d'être réexpliqué : {{bareme.phrases.resume}}. Pour le détail et les cas particuliers, envoie au groupe le lien vers <a href="/regles/">le barème expliqué pas à pas</a>.</p>
+
+<h2>Au bureau : quelques règles de bon sens</h2>
+<p>Un concours entre collègues doit rester un plaisir, pas une obligation de plus. Trois principes à poser dès le message de lancement :</p>
+<ol class="tips">
+<li><strong>Participation libre.</strong> Personne n'est relancé par son manager, et celui qui ne joue pas n'a rien à justifier.</li>
+<li><strong>Aucun argent, aucune collecte.</strong> Pas de participation à verser ni de lot acheté en commun : on joue pour le titre et pour la discussion du lundi.</li>
+<li><strong>Le temps de chacun.</strong> Les pronos se font en deux minutes, le soir, depuis son téléphone. Si la bande n'a rien pronostiqué de la journée, l'appli envoie un rappel vers 20 h : inutile de spammer la messagerie de l'équipe.</li>
+</ol>
+<p>Pour la discrétion, chacun joue sous un pseudo, jamais sous son nom complet, et les pronos des autres restent cachés jusqu'au coup d'envoi. Personne ne peut recopier le choix du collègue le mieux classé.</p>
+
+<h2>Plus de 20 participants : une ligue par équipe</h2>
+<p>Une ligue privée accueille 20 membres au maximum. Pour un plateau entier, une association sportive ou une grande famille, la solution la plus simple est de créer une ligue par groupe naturel : un service, un étage, une catégorie du club, une branche de la famille. Chaque ligue a son classement et, chaque lundi, son patron.</p>
+<p>Soyons francs : l'appli ne propose pas de classement qui réunirait plusieurs ligues privées. Le seul classement commun est celui de la MVP League, qui réunit tous les joueurs de l'appli, bien au-delà de votre groupe. Le lundi, un simple message suffit alors : chaque ligue annonce son patron, et l'on garde la rivalité entre services pour la machine à café.</p>
+
+<h2>Démarrer en cours de saison : quel classement suivre</h2>
+<p>C'est le piège qui guette tout concours lancé en décembre ou en janvier. Le classement « Saison » d'une ligue reprend tous les points de chaque membre depuis le début de la saison, y compris ceux qu'il a marqués avant d'entrer dans la ligue. Le collègue qui joue depuis octobre part donc avec une avance que le nouveau venu ne rattrapera pas.</p>
+<p>Pour un concours qui démarre en route, fais du classement « Cette semaine » la référence. Il repart de zéro chaque lundi, il place tout le monde à égalité, et il désigne chaque semaine un <a href="/regles/bonus/">patron de la semaine</a> dans toute ligue d'au moins {{bareme.patron.minJoueursActifs}} joueurs actifs. Au bout d'un mois ou d'une saison, le vrai champion du concours est celui qui a porté la couronne le plus souvent : un décompte que tout le monde peut faire de tête.</p>
+
+<h2>Au club et en famille : adapter le format</h2>
+<p>Au club, le concours de pronos fait le lien entre les équipes, des seniors aux parents des plus jeunes. Il faut avoir au moins 13 ans pour créer un compte, et l'accord d'un parent entre 13 et 15 ans : pour les plus jeunes licenciés, le concours se joue donc avec les parents, ou se réserve aux catégories plus âgées.</p>
+<p>En famille, la mécanique tient en une phrase : sur chaque match, on choisit qui gagne, puis de combien. Pas besoin de connaître les effectifs par cœur pour s'amuser, et le grand-oncle qui ne regarde que les résumés peut très bien finir devant le neveu incollable. Les matchs tombant surtout la nuit, chacun pronostique le soir et découvre le résultat au petit-déjeuner : pour comprendre ces horaires, le guide sur <a href="/heure-des-matchs/">l'heure des matchs vue de France</a> répond à tout.</p>
+
+<h2>Pour la gloire : pas de lot, et c'est voulu</h2>
+<p>Un concours de pronos dans Dunk League n'a ni lot ni dotation. Promettre un lot change la nature du concours : il faut un règlement, des conditions de participation, quelqu'un pour remettre le lot, et plus personne ne joue tout à fait pour s'amuser. On garde donc ce qui fait vivre un groupe : un titre qui change de main chaque lundi, des badges, et le droit de le rappeler à tout le monde jusqu'à la semaine suivante.</p>
+
+<aside class="in-app"><h2>Et dans Dunk League ?</h2><p>Un prono par match compte dans toutes tes ligues à la fois : celle du bureau, celle du club et celle de ta bande, sans rien saisir deux fois. Sur la fiche de la ligue, la bascule « Cette semaine » / « Saison » affiche les deux classements, recalculés après chaque match. Le lundi matin, le premier de la semaine reçoit le badge 👑 et {{bareme.patron.points}} points au classement de la saison, et les nuits d'au moins {{bareme.mvp.minMatchs}} matchs, celui qui trouve tous les vainqueurs devient <a href="/regles/bonus/#mvp-de-la-night">MVP de la Night</a> (à partir des nuits du {{bareme.mvp.depuis}}). Aucun achat ne donne de points : au bureau comme ailleurs, le classement reste au mérite.</p></aside>
+
+<div class="cta"><p><strong>Lance le concours lundi.</strong> Crée la ligue, envoie le code au groupe, et laisse l'appli compter les points.</p>
+{{badges}}
+</div>
+<p class="muted">Tu organises plutôt une ligue avec ta bande de toujours ? Les idées de noms et de gages sont sur <a href="/pronostics-basket-entre-amis/">la page des ligues privées</a>.</p>

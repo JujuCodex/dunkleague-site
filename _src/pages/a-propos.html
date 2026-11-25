@@ -1,0 +1,89 @@
+<!--meta
+{
+  "_source": "Plan SEO, sections 2, 3 (ligne /a-propos/) et 7 (vague 2). Faits vérifiés : voir le commentaire en tête du corps.",
+  "title": "À propos de Dunk League, appli de pronos basket française",
+  "description": "Qui fait Dunk League, l'appli de pronos basket gratuite et sans argent réel : l'éditeur, nos principes, l'origine des données de matchs et les dates clés.",
+  "h1": "À propos de <em>Dunk League</em>",
+  "kicker": "Qui sommes-nous",
+  "crumb": "À propos",
+  "relatedLabel": "À propos",
+  "relatedBlurb": "L'éditeur, les principes et l'origine des données",
+  "intro": "Dunk League est une appli française de pronos sur les matchs de basket américain, à jouer entre potes, gratuitement et sans argent réel. <strong>À propos de Dunk League</strong> : qui l'édite, les principes qui la guident, d'où viennent les scores et comment l'appli est arrivée sur ton téléphone.",
+  "primaryQuery": ["à propos de Dunk League", "qui fait Dunk League"],
+  "forbiddenInTitle": ["presse"],
+  "related": ["/application-pronostics-basket/", "/regles/", "/presse/", "/mentions-legales/", "/support/"],
+  "schema": ["AboutPage"],
+  "ctaCampaign": "a-propos",
+  "gabarit": "a-propos",
+  "modifiedOn": "2026-11-25",
+  "faq": [
+    {
+      "q": "Dunk League est-elle liée à une ligue ou à une équipe de basket ?",
+      "a": "Non. Dunk League est une application indépendante, sans lien avec la ligue nord-américaine, avec ses équipes ou avec ses partenaires. Les noms d'équipes apparaissent dans l'appli et sur le site à titre d'information, pour que tu saches sur quel match tu pronostiques, et appartiennent à leurs titulaires."
+    },
+    {
+      "q": "Pourquoi Dunk League ne publie-t-elle aucun prono ?",
+      "a": "Parce que le jeu, c'est ton avis contre celui de tes potes. Si l'appli ou le site disaient qui va gagner, tout le monde finirait par recopier le même choix et le classement perdrait son sel. Nous publions des horaires, des dates et les règles du jeu, jamais d'avis sur l'issue d'un match."
+    },
+    {
+      "q": "Qui fournit les calendriers et les scores des matchs ?",
+      "a": "Un fournisseur de données sportives, balldontlie, dont Dunk League utilise l'API comme client. L'appli récupère automatiquement le programme et les scores finaux, puis calcule les points sur ses propres serveurs. Ce fournisseur n'a aucun rôle dans le jeu, et Dunk League n'a aucun partenariat avec lui."
+    }
+  ]
+}
+-->
+<!-- Faits vérifiés (25/11/2026) :
+     - éditeur : Julien Fournier, personne physique, cf. _src/pages/mentions-legales.html ; aucune biographie publiée volontairement.
+     - premier commit du dépôt de l'app : 11/07/2026 (git log dunk-league, « Initial commit ») ; site dunkleague.app en ligne le 13/07/2026 (git log dunkleague-site).
+     - logo actuel (monogramme D + ballon doré) : 25/07/2026 (git log des deux dépôts).
+     - bêta iPhone ouverte par lien public TestFlight : 15/08/2026 (git log dunkleague-site) ; test fermé Google Play pendant l'été (journal, 25/07 « v7 soumise en test fermé »).
+     - premier match de la saison 2026-27 : 20/10/2026 (mig 0022, page /saison/).
+     - App Store : en ligne le 28/10/2026 (commit site « l'app est sur l'App Store » du 28/10/2026, mémoire projet : lookup iTunes OK, version 1.0 build 12).
+     - Google Play : version de production publiée le 19/10/2026 d'après les notes de projet ; liens Google Play sur l'accueil du site le 26/10/2026. Écrit ici « octobre 2026 ».
+     - 16/11/2026 : fin du point de consolation et patron de la semaine à +25 pts au classement (mig 0027, v_no_consolation_from et v_bonus_from = 2026-11-16). Le patron de la semaine lui-même existe depuis juillet (award_weekly_champions, 0002 ; prime en DUNK et badge weekly_champ) : ne pas écrire qu'il « arrive » le 16/11.
+     - version 1.0.4 (recaps nuit et semaine à partager, profil joueur, enchaînement des pronos ; commit cd16755 du 18/11/2026) : en ligne sur l'App Store depuis le 20/11/2026 (itunes.apple.com/lookup?id=6801577074, champ currentVersionReleaseDate, lu le 25/11/2026).
+     TODO-VERIFIER : publication de la 1.0.4 sur Google Play (le dépôt ne montre qu'un import dans la Play Console) ; une fois confirmée, écrire « sur iPhone et Android » au lieu de « Sur iPhone ».
+     - 30/11/2026 : écart exact à 10 pts et MVP de la Night (mig 0028, _config/bareme.json).
+     - données de matchs : balldontlie (supabase/functions/sync-games/index.ts:2-3). Conditions de balldontlie lues le 25/11/2026 (balldontlie.io/terms) : usage commercial permis, aucune attribution exigée, aucune interdiction de citer le fournisseur ; interdit de laisser entendre que les données sont celles de la ligue ou que balldontlie approuve le produit. D'où la formulation « fournisseur de données sportives, client de son API, aucun partenariat ».
+     - points calculés sur le serveur, aucune écriture client sur les scores ou les points (règle anti pay-to-win, RLS) ; scores corrigés après coup re-réglés (resettle_changed_games, mig 0027).
+     - hébergement des données : Supabase, région eu-central-2 = Zurich (cf. /mentions-legales/ et /privacy/).
+     - Instagram : @dunk_league_pronos (_config/site.json).
+     - packs de DUNK payants : src/lib/purchases.ts (dunk_pack_500/1500/5000) : ne jamais écrire que les DUNK ne s'achètent pas.
+     TODO-VERIFIER : date exacte de la publication sur Google Play (19/10/2026 selon les notes de projet) avant de l'écrire au jour près.
+-->
+<h2>Qui fait Dunk League</h2>
+<p>Dunk League est éditée par <strong>Julien Fournier</strong>, éditeur indépendant installé en France. C'est le même nom que celui affiché comme vendeur sur l'App Store et sur Google Play. Il n'y a derrière l'appli ni groupe de médias, ni site de conseils, ni marque de sport : un éditeur, une appli et une communauté de joueurs qui pronostiquent entre eux. Les coordonnées complètes de l'éditeur, l'hébergeur du site et le directeur de la publication sont réunis dans <a href="/mentions-legales/">nos mentions légales</a>.</p>
+<p>Le cahier des charges de départ, en juillet 2026, tenait en trois mots : gratuite, sociale, sans argent réel. C'est toujours la ligne de l'appli. Elle est entièrement en français, et pensée pour des joueurs qui vivent avec le décalage horaire : on pronostique le soir, les matchs se jouent pendant la nuit, et on découvre ses points au réveil.</p>
+
+<h2>Nos principes</h2>
+<ul class="facts">
+<li><strong>Gratuit pour jouer.</strong> Toute la saison se joue sans payer : pronos, ligues privées, classements, bonus et badges. La version gratuite affiche de la publicité. Premium, facultatif, ajoute du confort (zéro pub, plus de ligues créées, des statistiques sur la fiche d'un match) mais jamais un point.</li>
+<li><strong>Sans argent réel.</strong> Rien à déposer, rien à encaisser. Un bon prono donne des points, qui ne servent qu'au classement. Les DUNK, la monnaie virtuelle de l'appli, se débloquent en jouant ou s'obtiennent par des packs en achat intégré, et ne servent qu'aux cosmétiques : ils ne se convertissent jamais en argent et ne donnent aucun avantage au classement.</li>
+<li><strong>Pas de prono maison.</strong> Ni l'appli ni ce site ne disent qui va gagner un match. Nous publions des horaires, des dates et des règles, et c'est tout : l'avis sur le match, c'est le tien.</li>
+<li><strong>Des données hébergées en Suisse.</strong> Les comptes, les pronos, les ligues et les classements sont stockés chez Supabase, dans sa région de Zurich. Ce site, lui, ne demande aucun compte et ne dépose aucun cookie publicitaire. Le détail est sur <a href="/privacy/">la politique de confidentialité</a>.</li>
+</ul>
+<p>Ces principes se retrouvent dans <a href="/regles/">le barème et les règles du jeu</a>, qui sont les mêmes pour tout le monde, Premium ou pas.</p>
+
+<h2>D'où viennent les données de matchs</h2>
+<p>Le calendrier et les scores finaux viennent d'un fournisseur de données sportives, balldontlie, dont Dunk League utilise l'API. L'appli récupère le programme des matchs et leurs résultats automatiquement, sans saisie à la main. Les points sont ensuite calculés sur nos serveurs, jamais sur ton téléphone : aucun joueur ne peut modifier un score, un prono verrouillé ou un classement.</p>
+<p>Quand un score est corrigé après coup, les points du match sont recalculés. Pour savoir quel score compte, et ce que deviennent les matchs reportés, la page <a href="/regles/">règles</a> détaille chaque cas.</p>
+
+<h2>Les dates clés de l'appli</h2>
+<div class="table"><table>
+<thead><tr><th>Date</th><th>Étape</th></tr></thead>
+<tbody>
+<tr><td>11 juillet 2026</td><td>Début du développement de l'appli</td></tr>
+<tr><td>13 juillet 2026</td><td>Ouverture du site dunkleague.app</td></tr>
+<tr><td>25 juillet 2026</td><td>Logo actuel : le monogramme D et son ballon doré</td></tr>
+<tr><td>Été 2026</td><td>Bêta sur Android, puis sur iPhone à partir du 15 août</td></tr>
+<tr><td>Octobre 2026</td><td>Sortie sur Google Play</td></tr>
+<tr><td>20 octobre 2026</td><td>Premier match de la saison 2026-27 dans l'appli</td></tr>
+<tr><td>28 octobre 2026</td><td>Sortie sur l'App Store</td></tr>
+<tr><td>16 novembre 2026</td><td>Le patron de la semaine vaut désormais +{{bareme.patron.points}} points au classement, fin du point de consolation</td></tr>
+<tr><td>{{bareme.dateChangement}}</td><td>Écart exact à {{bareme.exact}} points et arrivée du MVP de la Night</td></tr>
+</tbody>
+</table></div>
+<p>Depuis la sortie, l'appli évolue régulièrement. Sur iPhone, la version du 20 novembre 2026 a ajouté les recaps de la nuit et de la semaine à partager, le profil des joueurs et l'enchaînement des pronos. Les deux bonus sont expliqués sur <a href="/regles/bonus/">la page MVP de la Night et patron de la semaine</a>.</p>
+
+<h2>Nous suivre et nous écrire</h2>
+<p>Dunk League publie ses nouveautés sur Instagram : <a href="{{site.instagram}}" rel="noopener">@dunk_league_pronos</a>. Pour une question sur ton compte ou un achat, passe par <a href="/support/">la page d'aide</a>. Pour tout le reste, une idée, une remarque ou une demande de journaliste, écris à <a href="mailto:{{site.contactEmail}}">{{site.contactEmail}}</a>. Les journalistes trouveront aussi les faits clés et le logo sur <a href="/presse/">l'espace presse</a>.</p>

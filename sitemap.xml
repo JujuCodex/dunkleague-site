@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://dunkleague.app/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://dunkleague.app/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://dunkleague.app/a-propos/</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://dunkleague.app/application-pronostics-basket/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://dunkleague.app/heure-des-matchs/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://dunkleague.app/concours-pronostics-basket/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://dunkleague.app/ecart-de-points/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://dunkleague.app/fantasy-nba/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://dunkleague.app/heure-des-matchs/</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://dunkleague.app/mpp-basket/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://dunkleague.app/presse/</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://dunkleague.app/pronostics-basket-entre-amis/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://dunkleague.app/questions/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://dunkleague.app/regles/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://dunkleague.app/regles/bonus/</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://dunkleague.app/saison/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://dunkleague.app/regles/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://dunkleague.app/regles/bonus/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://dunkleague.app/saison/</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://dunkleague.app/saison/all-star/</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://dunkleague.app/saison/bercy/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://dunkleague.app/support/</loc><lastmod>2026-11-24</lastmod></url>
 </urlset>

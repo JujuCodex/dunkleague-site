@@ -15,6 +15,7 @@
   "contactEmail": "contact@dunkleague.app",
   "copyright": "© 2026 Dunk League",
   "defaultOgImage": "/og-default.jpg",
+  "homeTonight": false,
   "logo": {
     "_doc": "src/webp/avif : logo de l'en-tête, 88×60 (affiché en 44×30). schemaSrc : grand logo pour Organization.logo dans le JSON-LD.",
     "src": "/logo-mark-88.png",

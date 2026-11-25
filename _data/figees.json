@@ -1,0 +1,90 @@
+{
+  "_doc": "Chiffres de repli, vérifiés à la main en vague 1, affichés par les marqueurs {{auto:heures}}, {{auto:nuits-par-mois}}, {{auto:nuits-5-par-mois}} et {{auto:ecarts}} quand aucun instantané réel (_data/snapshot.json) n'est disponible. Source : agrégats en lecture seule sur la table games de l'app (258 matchs du 20/10 au 23/11/2026, date US), repris des tableaux publiés le 24/11/2026 sur /heure-des-matchs/ et /saison/. Ne jamais y mettre un chiffre non vérifié. margins : relevé du 25/11/2026 publié jusque-là à la main sur /ecart-de-points/ (261 matchs terminés de stage regular du 20/10 au 24/11/2026, date US, écart nul écarté, mêmes règles que site_snapshot).",
+  "tipoff": {
+    "legende": "Matchs du 20/10 au 23/11/2026, hors matchs annulés. Parts arrondies.",
+    "rows": [
+      {
+        "label": "avant minuit",
+        "count": 16
+      },
+      {
+        "label": "0 h - 1 h",
+        "count": 25
+      },
+      {
+        "label": "1 h - 2 h",
+        "count": 89
+      },
+      {
+        "label": "2 h - 3 h",
+        "count": 67
+      },
+      {
+        "label": "3 h - 4 h",
+        "count": 30
+      },
+      {
+        "label": "4 h - 5 h",
+        "count": 29
+      },
+      {
+        "label": "5 h et après",
+        "count": 2
+      }
+    ]
+  },
+  "nightsByMonth": {
+    "legende": "Calcul au 24/11/2026, hors matchs reportés et annulés.",
+    "rows": [
+      {
+        "month": "2026-10",
+        "libelle": "Octobre 2026 (à partir du 20)",
+        "nights": 12,
+        "nights_5plus": 8,
+        "games": null
+      },
+      {
+        "month": "2026-11",
+        "libelle": "Novembre 2026 (jusqu'au 23)",
+        "nights": 22,
+        "nights_5plus": 18,
+        "games": null
+      }
+    ]
+  },
+  "margins": {
+    "legende": "Relevé du 25/11/2026 : 261 matchs terminés du 20 octobre au 24 novembre 2026 (dates américaines), hors playoffs, toute la ligue.",
+    "label": "2026-27",
+    "games": 261,
+    "mean": 13.0,
+    "median": 10,
+    "within5_pct": 22,
+    "overtime_pct": null,
+    "histogram": [
+      {
+        "label": "1-3",
+        "count": 26
+      },
+      {
+        "label": "4-6",
+        "count": 45
+      },
+      {
+        "label": "7-10",
+        "count": 62
+      },
+      {
+        "label": "11-15",
+        "count": 49
+      },
+      {
+        "label": "16-20",
+        "count": 28
+      },
+      {
+        "label": "21+",
+        "count": 51
+      }
+    ]
+  }
+}

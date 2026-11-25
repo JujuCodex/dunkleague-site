@@ -1,6 +1,6 @@
 <!--meta
 {
-  "_sources": "Changements d'heure : États-Unis, 1er dimanche de novembre (1/11/2026) et 2e dimanche de mars (14/03/2027) ; Europe, dernier dimanche d'octobre (25/10/2026) et de mars (28/03/2027) (time.is, livescience.com, almanac.com). Répartition des coups d'envoi : requête d'agrégat en lecture seule sur la table games de l'app, 258 matchs du 20/10 au 23/11/2026 (date US), hors matchs annulés. Horaires de Noël, du lundi 18 janvier, de Bercy et de Manchester : pr.nba.com (annonce du calendrier 2026-27) et nba.com/news/key-dates.",
+  "_sources": "Changements d'heure : États-Unis, 1er dimanche de novembre (1/11/2026) et 2e dimanche de mars (14/03/2027) ; Europe, dernier dimanche d'octobre (25/10/2026) et de mars (28/03/2027) (time.is, livescience.com, almanac.com). Répartition des coups d'envoi : marqueur auto:heures (répartition horaire de season dans _data/snapshot.json, repli sur _data/figees.json) ; chiffres cités dans le texte : requête d'agrégat en lecture seule sur la table games de l'app, 258 matchs du 20/10 au 23/11/2026 (date US), hors matchs annulés. Horaires de Noël, du lundi 18 janvier, de Bercy et de Manchester : pr.nba.com (annonce du calendrier 2026-27) et nba.com/news/key-dates.",
   "title": "À quelle heure sont les matchs NBA en France ?",
   "description": "Pourquoi les matchs NBA tombent à 1 h ou 4 h du matin en France, les créneaux du week-end, les semaines de changement d'heure : le guide.",
   "h1": "À quelle heure sont les matchs NBA <em>en France</em> ?",
@@ -11,11 +11,12 @@
   "intro": "Tu te demandes <strong>à quelle heure</strong> tombent les matchs NBA en France ? La réponse tient en un mot : la nuit. Avec le <strong>décalage horaire</strong>, la grande majorité des coups d'envoi tombent entre 1 h et 4 h du matin, sauf quelques créneaux du week-end et des dates à cocher.",
   "primaryQuery": ["à quelle heure", "décalage horaire"],
   "forbiddenInTitle": ["ce soir", "cette nuit"],
-  "related": ["/saison/", "/saison/bercy/", "/pronostics-basket-entre-amis/", "/regles/", "/application-pronostics-basket/"],
+  "related": ["/saison/", "/saison/bercy/", "/saison/all-star/", "/pronostics-basket-entre-amis/", "/regles/", "/application-pronostics-basket/"],
   "schema": ["Article"],
   "ctaCampaign": "heure",
   "gabarit": "guide",
-  "modifiedOn": "2026-11-24",
+  "publishedOn": "2026-11-24",
+  "modifiedOn": "2026-11-25",
   "faq": [
     {
       "q": "Pourquoi les matchs NBA commencent-ils si tard en France ?",
@@ -62,23 +63,9 @@
 <p>Ces deux semaines de mars, c'est le moment où quelques matchs passent sous la barre de 1 h. Pense à vérifier l'heure de verrouillage de chaque match dans l'appli plutôt que de compter de tête.</p>
 
 <h2>La répartition réelle des coups d'envoi</h2>
-<p>On a compté, heure française, les coups d'envoi des 258 matchs joués entre le 20 octobre et le 23 novembre 2026, à partir du calendrier chargé dans l'appli. Cette période contient la semaine de fin octobre où l'écart n'était que de 5 heures.</p>
-<!--auto:start-->
-<div class="table"><table>
-<thead><tr><th>Coup d'envoi (heure française)</th><th>Matchs</th><th>Part</th></tr></thead>
-<tbody>
-<tr><td>Avant minuit (19 h à 23 h 59)</td><td>16</td><td class="pts">6 %</td></tr>
-<tr><td>Entre minuit et 1 h</td><td>25</td><td class="pts">10 %</td></tr>
-<tr><td>Entre 1 h et 2 h</td><td>89</td><td class="pts">34 %</td></tr>
-<tr><td>Entre 2 h et 3 h</td><td>67</td><td class="pts">26 %</td></tr>
-<tr><td>Entre 3 h et 4 h</td><td>30</td><td class="pts">12 %</td></tr>
-<tr><td>Entre 4 h et 5 h</td><td>29</td><td class="pts">11 %</td></tr>
-<tr><td>Après 5 h</td><td>2</td><td class="pts">1 %</td></tr>
-</tbody>
-</table></div>
-<p class="muted">Matchs du 20/10 au 23/11/2026, hors matchs annulés. Parts arrondies.</p>
-<!--auto:end-->
-<p>Le constat est net : six matchs sur dix démarrent entre 1 h et 3 h du matin, et près d'un sur quatre après 3 h, en général les matchs de l'Ouest. À l'inverse, seuls 16 matchs ont commencé avant minuit, et 14 d'entre eux tombaient un samedi ou un dimanche, quand les équipes jouent l'après-midi chez elles.</p>
+<p>Voici, en heure française, l'heure de coup d'envoi des matchs déjà joués cette saison, comptés à partir du calendrier chargé dans l'appli. La légende sous le tableau indique la période couverte.</p>
+{{auto:heures}}
+<p>Le constat des premières semaines était net : sur les 258 matchs joués du 20 octobre au 23 novembre 2026, six sur dix ont démarré entre 1 h et 3 h du matin, et près d'un sur quatre après 3 h, en général les matchs de l'Ouest. À l'inverse, seuls 16 ont commencé avant minuit, et 14 d'entre eux tombaient un samedi ou un dimanche, quand les équipes jouent l'après-midi chez elles. Cette période contenait aussi la semaine de fin octobre où l'écart n'était que de 5 heures.</p>
 
 <h2>Les matchs à suivre avant minuit</h2>
 <p>Si tu veux voir un match en direct sans mettre de réveil, vise ces créneaux :</p>

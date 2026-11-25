@@ -1,0 +1,81 @@
+<!--meta
+{
+  "_source": "Plan SEO, sections 2, 3 (ligne /presse/) et 7 (vague 2 : kit zip, angle du 14/01). Faits vérifiés : voir le commentaire en tête du corps et _src/pages/a-propos.html.",
+  "title": "Dunk League pour la presse : faits, visuels et contact",
+  "description": "Espace presse de Dunk League, l'appli de pronos basket entre potes : faits clés, dates de sortie, kit média avec logos et fiche de faits, contact presse.",
+  "h1": "Dunk League <em>pour la presse</em>",
+  "kicker": "Presse",
+  "crumb": "Presse",
+  "relatedLabel": "Presse",
+  "relatedBlurb": "Faits clés, kit média et contact",
+  "intro": "Tu écris sur le basket, les applis ou les soirées entre potes ? Voici l'<strong>espace presse de Dunk League</strong> : les faits clés, un angle pour le 14 janvier, le kit média à télécharger et l'adresse à laquelle nous écrire.",
+  "disclaimerTop": true,
+  "primaryQuery": ["Dunk League presse", "kit média"],
+  "forbiddenInTitle": ["à propos"],
+  "related": ["/a-propos/", "/saison/bercy/", "/application-pronostics-basket/", "/regles/", "/pronostics-basket-entre-amis/"],
+  "schema": ["WebPage"],
+  "ctaCampaign": "presse",
+  "gabarit": "presse",
+  "modifiedOn": "2026-11-25",
+  "faq": [
+    {
+      "q": "Peut-on reprendre le logo de Dunk League dans un article ?",
+      "a": "Oui, pour parler de l'appli : article, reportage, vidéo ou podcast. Utilise les fichiers du kit média tels quels, sans les déformer, les recolorer ni les associer à un logo d'équipe ou de compétition. Pour tout autre usage, écris-nous d'abord."
+    },
+    {
+      "q": "Dunk League communique-t-elle des chiffres d'audience ?",
+      "a": "Pas pour l'instant. L'appli est sortie en octobre 2026 et nous ne publions ni nombre de téléchargements ni nombre de joueurs. Les seuls chiffres de cette page sont ceux du jeu lui-même : le barème et les bonus."
+    },
+    {
+      "q": "Peut-on obtenir des captures d'écran de l'appli ?",
+      "a": "Oui, sur demande. Écris-nous en précisant le sujet de ton article : nous t'envoyons des captures récentes, sans données de joueurs, adaptées à ce que tu veux montrer."
+    }
+  ]
+}
+-->
+<!-- Faits vérifiés (25/11/2026), même relevé que _src/pages/a-propos.html :
+     - sorties : Google Play en octobre 2026, App Store le 28/10/2026 ; iPhone uniquement chez Apple (app.json supportsTablet=false) ; nom sur l'App Store « Dunk League – Jeu de pronos » (URL de la fiche dans _config/site.json).
+     - gratuit + Premium facultatif (abonnement mensuel ou annuel, achat unique « Zéro pub, à vie ») + packs de DUNK en achat intégré (src/lib/purchases.ts) ; publicité AdMob dans la version gratuite.
+     - âge minimum 13 ans : _src/pages/conditions.html.
+     - Bercy : Spurs-Pelicans, jeudi 14/01/2027, 20 h heure française, Accor Arena : sources citées dans _src/pages/saison/bercy.html. Seuls 16 des 258 matchs du 20/10 au 23/11/2026 ont commencé avant minuit en France (même page). Nom commercial de l'événement volontairement absent (plan 6 bis).
+     - aucun chiffre d'audience (plan : chiffres seulement s'ils sont publics et validés).
+     - captures d'écran : celles de dunk-league/store-assets (ios-screenshots, ios-screenshots-65, tools/out/screenshots) montrent des pastilles aux couleurs des équipes, des pseudos de joueurs (et une adresse email dans l'écran Réglages), un nom de ligue privée avec son code et l'ancien barème avec des DUNK par prono : aucune n'est publiable, le kit n'en contient pas. À refaire avec un compte de démonstration neutre, sans écran de match coloré.
+     - kit : généré hors dépôt (script temporaire du scratchpad), contenu listé dans le corps ; refaire le zip si le logo ou la fiche changent. PNG recompressés le 25/11/2026 (palette haute qualité, écart moyen inférieur à 0,3 sur 255 par canal, invisible à l'œil) : 1,6 Mo → 0,6 Mo. Fiche de faits corrigée le 25/11/2026 (date clé du 16/11 : +25 points au patron, fin du point de consolation ; le patron existait depuis juillet).
+     - fiche de faits : texte figé, que le build ne régénère pas. Le 30/11/2026, la refaire sans « 8 points pour les matchs joués avant le 30/11/2026 » ni « à partir des nuits du 30/11/2026 » (plan, 7), puis refaire le zip (checklist du 30/11 dans README.md).
+     TODO-VERIFIER : logo en SVG demandé par le plan (7, kit presse) : aucun vectoriel n'existe (ni dans dunk-league/assets ni dans store-assets/brand). L'ajouter au kit dès qu'un SVG fidèle existe, sans vectorisation approximative.
+     TODO-VERIFIER : prix de Premium et du « Zéro pub, à vie » tels qu'affichés dans les stores (le code n'a que des prix de repli, à revoir dans les consoles) avant de les ajouter à la fiche de faits.
+     TODO-VERIFIER : pays de disponibilité sur les deux stores (France, Belgique, Luxembourg et Monaco prévus dans store-assets/fiche-app-store.md et fiche-play-store.md) avant de les écrire.
+-->
+<h2>Dunk League en bref</h2>
+<p>Dunk League est une appli de pronos entre potes sur les matchs de basket américain. Chaque soir de match, tu choisis pour chaque rencontre le vainqueur et l'écart de points, avant le coup d'envoi. Les matchs se jouent pendant la nuit, heure française, et les points tombent au réveil. Ils servent à une seule chose : le classement de tes ligues.</p>
+<ul class="facts">
+<li><strong>Éditeur</strong> : Julien Fournier, éditeur indépendant, en France (<a href="/mentions-legales/">mentions légales</a>).</li>
+<li><strong>Sortie</strong> : sur Google Play en octobre 2026, sur l'App Store le 28 octobre 2026.</li>
+<li><strong>Plateformes</strong> : iPhone et Android, en français.</li>
+<li><strong>Prix</strong> : gratuit pour jouer, avec publicité. Premium est facultatif, en abonnement mensuel ou annuel, et un achat unique retire la publicité. Des packs de DUNK, la monnaie virtuelle réservée aux cosmétiques, sont aussi proposés en achat intégré. Aucun achat ne donne de points.</li>
+<li><strong>Sans argent réel</strong> : rien à déposer, rien à encaisser, aucun lot.</li>
+<li><strong>Âge minimum</strong> : 13 ans, selon <a href="/conditions/">les conditions d'utilisation</a>.</li>
+<li><strong>Instagram</strong> : <a href="{{site.instagram}}" rel="noopener">@dunk_league_pronos</a>.</li>
+</ul>
+
+<h2>Le principe du jeu</h2>
+<p>Deux choix par match, rien de plus : qui gagne, et de combien. Le barème tient en une phrase : {{bareme.phrases.resume}}. Deux bonus s'y ajoutent : {{bareme.phrases.mvp}}, et {{bareme.phrases.patron}}.</p>
+<p>On joue dans des ligues privées, créées en un geste et rejointes avec un code, et tout le monde entre aussi dans la MVP League, le classement commun à tous les joueurs. Le détail des paliers et des cas particuliers est sur <a href="/regles/">la page qui explique le barème</a>, et la création d'une ligue sur <a href="/pronostics-basket-entre-amis/">le guide pour jouer avec ta bande</a>.</p>
+
+<h2>Un angle pour le 14 janvier : le match qu'on pronostique à l'heure du dîner</h2>
+<p>En France, les matchs de saison régulière tombent d'habitude en pleine nuit, entre 1 h et 4 h du matin en semaine. Le jeudi 14 janvier 2027, Spurs-Pelicans se joue à l'Accor Arena, à Bercy, avec un coup d'envoi à 20 h. Pour une fois, toute une ligue de potes peut poser ses pronos avant de passer à table, regarder le match en entier et connaître le verdict avant d'aller se coucher.</p>
+<p>Dans l'appli, ce match se pronostique comme tous les autres, avec le même barème, et le prono se verrouille à 20 h pile. Horaires, diffusion et repères sont réunis sur <a href="/saison/bercy/">notre page consacrée au match de janvier à l'Accor Arena</a>. Nous pouvons en parler avec toi en amont du match.</p>
+
+<h2>Kit média</h2>
+<p><a href="/presse/dunk-league-kit-media.zip" download>Télécharger le kit média (zip, 0,6 Mo)</a>. Il contient :</p>
+<ul>
+<li>le monogramme Dunk League (le D et son ballon doré) en PNG, sur fond noir et sur fond transparent ;</li>
+<li>le logo complet, avec la mention « Basket · Pronos · Potes », en PNG sur fond noir ;</li>
+<li>l'icône de l'appli en PNG, en 1024 × 1024 ;</li>
+<li>la bannière horizontale des stores en PNG, en 1024 × 500 ;</li>
+<li>une fiche de faits en texte brut, à copier dans tes notes.</li>
+</ul>
+<p>Le kit ne contient pas de captures d'écran : nous les envoyons à la demande, à jour et sans données de joueurs. Le logo s'utilise tel quel, sans couleur ni logo d'équipe accolé.</p>
+
+<h2>Contact presse</h2>
+<p>Une question, une demande d'interview ou de captures : écris à <a href="mailto:{{site.contactEmail}}?subject=Presse">{{site.contactEmail}}</a>, en précisant ton média et ton délai. Pour mieux connaître l'éditeur et nos principes, lis aussi <a href="/a-propos/">la présentation de Dunk League</a>.</p>
