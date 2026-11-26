@@ -527,8 +527,10 @@ tr.off td{color:var(--muted)}
 if (Buffer.byteLength(CSS) > CSS_MAX) err('gabarit', `CSS en ligne de ${Buffer.byteLength(CSS)} octets (max ${CSS_MAX})`);
 
 // Choix du store : iOS → App Store, Android → Google Play, sinon ancre #telecharger. Barre mobile hors iOS.
-// TODO : brancher l'outil d'analytics sans cookie sur les clics [data-store] (clic_store_ios, clic_store_android).
-const JS = `(function(){var u=navigator.userAgent||"",d=document,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),an=/Android/i.test(u);d.querySelectorAll("[data-dl]").forEach(function(a){var h=ios?a.getAttribute("data-ios"):an?a.getAttribute("data-android"):null;if(h)a.setAttribute("href",h)});var s=d.getElementById("sticky");if(s&&!ios){var f=function(){var m=d.documentElement;if((m.scrollTop+innerHeight)/m.scrollHeight>.5){s.classList.add("on");removeEventListener("scroll",f)}};addEventListener("scroll",f,{passive:true})}})();`;
+// Mesure d'audience GoatCounter (sans cookie) : visites + événements clic-store-ios / clic-store-android
+// (page d'origine dans le titre de l'événement), sur les liens [data-store] et le bouton [data-dl].
+const GC = SITE.goatcounter ? `<script data-goatcounter="${SITE.goatcounter}" async src="https://gc.zgo.at/count.js"></script>` : '';
+const JS = `(function(){var u=navigator.userAgent||"",d=document,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),an=/Android/i.test(u);d.querySelectorAll("[data-dl]").forEach(function(a){var h=ios?a.getAttribute("data-ios"):an?a.getAttribute("data-android"):null;if(h)a.setAttribute("href",h)});d.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-store],a[data-dl]");if(!a||!window.goatcounter||!goatcounter.count)return;var h=a.getAttribute("href")||"",p=a.getAttribute("data-store")||(/apple\.com/.test(h)?"ios":/google\.com/.test(h)?"android":"");if(p)goatcounter.count({path:"clic-store-"+p,title:location.pathname,event:true})});var s=d.getElementById("sticky");if(s&&!ios){var f=function(){var m=d.documentElement;if((m.scrollTop+innerHeight)/m.scrollHeight>.5){s.classList.add("on");removeEventListener("scroll",f)}};addEventListener("scroll",f,{passive:true})}})();`;
 
 // ---------------------------------------------------------------- morceaux de gabarit
 function dlButton(c, cls = 'btn-dl') {
@@ -940,7 +942,8 @@ ${renderReassure()}
 ${renderDownload(M.ctaCampaign)}
 </main>
 ${renderFooter()}
-${sticky}<script>${JS}</script>
+${sticky}<script>${JS}</script>${GC ? `
+${GC}` : ''}
 </body>
 </html>
 `;
@@ -970,7 +973,8 @@ ${renderReassure()}
 ${renderDownload(c)}
 </main>
 ${renderFooter()}
-<script>${JS}</script>
+<script>${JS}</script>${GC ? `
+${GC}` : ''}
 </body>
 </html>
 `;
